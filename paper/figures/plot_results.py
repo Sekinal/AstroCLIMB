@@ -13,7 +13,7 @@ plt.rcParams.update({
     "axes.titlesize": 9, "axes.labelsize": 8,
     "xtick.labelsize": 8, "ytick.labelsize": 8,
     "pdf.fonttype": 42, "ps.fonttype": 42,
-    "svg.fonttype": "none", "axes.spines.top": False,
+    "svg.fonttype": "none", "svg.hashsalt": "astroclimb-results", "axes.spines.top": False,
     "axes.spines.right": False,
 })
 fig, (left, right) = plt.subplots(1, 2, figsize=(7.0, 2.25))
@@ -44,6 +44,8 @@ right.xaxis.set_major_formatter(FormatStrFormatter("%.3f"))
 right.grid(axis="x", color="0.9", linewidth=0.6, zorder=0)
 right.tick_params(axis="y", length=0)
 for fmt in ("pdf", "svg", "png"):
-    kwargs = {"metadata": {"CreationDate": None, "ModDate": None}} if fmt == "pdf" else {}
+    kwargs = {"metadata": {"CreationDate": None, "ModDate": None}} if fmt == "pdf" else ({"metadata": {"Date": None}} if fmt == "svg" else {})
     fig.savefig(HERE / f"results.{fmt}", dpi=220, **kwargs)
+svg = HERE / "results.svg"
+svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
 plt.close(fig)
