@@ -51,3 +51,5 @@ from Lium. The grant amount is not the amount spent on the experiments.
 Original project code is prepared for release under MIT; see [LICENSE](LICENSE)
 and [third-party notices](THIRD_PARTY_NOTICES.md). Nothing has been published
 from this local repository.
+
+The source ZIP also passed a [fresh-directory installation and build check](docs/release-validation.md).
