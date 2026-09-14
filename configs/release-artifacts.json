@@ -1,0 +1,306 @@
+{
+  "status": "PRIVATE_WEIGHTS_ONLY_ARCHIVES_REVIEW_REQUIRED",
+  "created_utc": "2026-09-14T03:20:55.317290+00:00",
+  "uploaded": false,
+  "public_download_url": null,
+  "raw_examples_included": false,
+  "optimizer_included": false,
+  "source_checkpoint_files_modified": false,
+  "privacy_notes": [
+    "Original meta.json, adapter_config.json and adapter README contain absolute machine cache paths; hashes are preserved and these review archives must remain private.",
+    "probe.pt is omitted: it contains a recoverable TRAIN example as token IDs and possibly image tensors. Omitting it prevents the current fresh-probe exporter from running directly. Resolve probe distribution or supply a separately documented synthetic replay path before release."
+  ],
+  "archives": {
+    "cxi837": {
+      "path": "release-artifacts/cxi837-weights-only-private.tar",
+      "sha256": "f692d41ecd2b5deaff5e7cd5b3ad22f65888d26b4c3b9720dc246780d0fda82a",
+      "bytes": 105031680,
+      "files": {
+        "adapter/README.md": {
+          "bytes": 5332,
+          "sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "bytes": 1358,
+          "sha256": "7d327ea3d88788a1ef6bd5e8b479d63a06bcb1255d91aeb6544c439113eb80ec"
+        },
+        "adapter/adapter_model.safetensors": {
+          "bytes": 84972248,
+          "sha256": "4a4fa3855cd38c1814d3aac39cdb358b56daab0324c3ffd18b116770d0f13d76"
+        },
+        "head.pt": {
+          "bytes": 42765,
+          "sha256": "3e11e4dabc9224ff1d9ac4fb8649ec342d9af43819d76c402d191ca0f5137edd"
+        },
+        "meta.json": {
+          "bytes": 1706,
+          "sha256": "88fca5b3d70aea5f0af11f434d2dac6665cc58adf132034cfa5876f3a603134d"
+        },
+        "processor/chat_template.jinja": {
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "bytes": 1189,
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "bytes": 19989511,
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "bytes": 1244,
+          "sha256": "61bf7d27be16f3b021d78b72c86964312a69e6743309a2ad30b0e7685c09de9c"
+        }
+      },
+      "all_archive_members_verified": true,
+      "parent_receipt_bound_files_verified": [
+        "probe.pt",
+        "head.pt",
+        "trainer.pt",
+        "meta.json",
+        "adapter/adapter_model.safetensors",
+        "adapter/README.md",
+        "adapter/adapter_config.json",
+        "processor/tokenizer.json",
+        "processor/chat_template.jinja",
+        "processor/tokenizer_config.json",
+        "processor/processor_config.json"
+      ],
+      "omitted_files": [
+        "probe.pt",
+        "trainer.pt"
+      ],
+      "omitted_probe_sha256": "5ee05b6d107759d7f763938614d9e98812b7c8cf9427680ffc1b1eef338ae8c8",
+      "public_url": null,
+      "bundle_type": "weights_and_metadata_without_replay_probe_or_optimizer",
+      "flagged_private_path_fields": {
+        "meta.json": [
+          "args.model",
+          "parent_checkpoint.path"
+        ],
+        "adapter/adapter_config.json": [
+          "base_model_name_or_path"
+        ],
+        "adapter/README.md": [
+          "base_model front matter"
+        ]
+      }
+    },
+    "ixi627": {
+      "path": "release-artifacts/ixi627-weights-only-private.tar",
+      "sha256": "af535a76182fcee6ded269ef630a9de20649cb7c71d016d71e2242a1e3027f8b",
+      "bytes": 105031680,
+      "files": {
+        "adapter/README.md": {
+          "bytes": 5332,
+          "sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "bytes": 1358,
+          "sha256": "34f80eb5cc9a3dd87fed27e2663d4e751a5ac9a05f43a576fa93e5ba9050275a"
+        },
+        "adapter/adapter_model.safetensors": {
+          "bytes": 84972248,
+          "sha256": "8c028184f68f8641d87a16181ec13b98340a8174388b3fc187a029d7dad85acd"
+        },
+        "head.pt": {
+          "bytes": 42765,
+          "sha256": "3f00e251025954f854d38f6ee23e21a9af361df39a0e1150940f7a05c120ec7a"
+        },
+        "meta.json": {
+          "bytes": 1784,
+          "sha256": "f791d0db8ac9c4b9db045b849be441e624805b463bf6b991508a67a1b9dfefd6"
+        },
+        "processor/chat_template.jinja": {
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "bytes": 1189,
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "bytes": 19989511,
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "bytes": 1139,
+          "sha256": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182"
+        }
+      },
+      "all_archive_members_verified": true,
+      "parent_receipt_bound_files_verified": [
+        "adapter/adapter_config.json",
+        "adapter/adapter_model.safetensors",
+        "head.pt",
+        "meta.json",
+        "probe.pt",
+        "processor/chat_template.jinja",
+        "processor/processor_config.json",
+        "processor/tokenizer.json",
+        "processor/tokenizer_config.json"
+      ],
+      "omitted_files": [
+        "probe.pt",
+        "trainer.pt"
+      ],
+      "omitted_probe_sha256": "48b586a63682303dc48736b4ad9091f0bbb4da8b91d25c929a12bf72b5231063",
+      "public_url": null,
+      "bundle_type": "weights_and_metadata_without_replay_probe_or_optimizer",
+      "flagged_private_path_fields": {
+        "meta.json": [
+          "args.model"
+        ],
+        "adapter/adapter_config.json": [
+          "base_model_name_or_path"
+        ],
+        "adapter/README.md": [
+          "base_model front matter"
+        ]
+      }
+    },
+    "cxc414": {
+      "path": "release-artifacts/cxc414-weights-only-private.tar",
+      "sha256": "fd5d4c8c3849a77df0b6962920056124a794ac172161adab5fa5ba3d129a07ba",
+      "bytes": 105031680,
+      "files": {
+        "adapter/README.md": {
+          "bytes": 5332,
+          "sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "bytes": 1358,
+          "sha256": "88f25fdcebe3a74e54f8f6564fda5f015350430d5d6b9a2bd45ea567f5ca43bd"
+        },
+        "adapter/adapter_model.safetensors": {
+          "bytes": 84972248,
+          "sha256": "c8f7ca3a86dcfb66b5c06bcfd9432f696ca3e7268410273205b2b1b16f069d6f"
+        },
+        "head.pt": {
+          "bytes": 42765,
+          "sha256": "a99de7cd74631d535fec30681478e4feff50009d4cadc7b04674b01c88816f8c"
+        },
+        "meta.json": {
+          "bytes": 1782,
+          "sha256": "a599b68606933c31e48c3a31e83e1ce15747355d7afbc4e3cb393ccdfcfcceed"
+        },
+        "processor/chat_template.jinja": {
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "bytes": 1189,
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "bytes": 19989511,
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "bytes": 1139,
+          "sha256": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182"
+        }
+      },
+      "all_archive_members_verified": true,
+      "parent_receipt_bound_files_verified": [
+        "adapter/adapter_config.json",
+        "adapter/adapter_model.safetensors",
+        "head.pt",
+        "meta.json",
+        "probe.pt",
+        "processor/chat_template.jinja",
+        "processor/processor_config.json",
+        "processor/tokenizer.json",
+        "processor/tokenizer_config.json"
+      ],
+      "omitted_files": [
+        "probe.pt",
+        "trainer.pt"
+      ],
+      "omitted_probe_sha256": "cd7b673649bb9ab8c3022afbdc461ddfc912c6c17cf12062153e0fc48251c03b",
+      "public_url": null,
+      "bundle_type": "weights_and_metadata_without_replay_probe_or_optimizer",
+      "flagged_private_path_fields": {
+        "meta.json": [
+          "args.model"
+        ],
+        "adapter/adapter_config.json": [
+          "base_model_name_or_path"
+        ],
+        "adapter/README.md": [
+          "base_model front matter"
+        ]
+      }
+    },
+    "public4000": {
+      "path": "release-artifacts/public4000-weights-only-private.tar",
+      "sha256": "d3961e0d3bcbb8f3feadc31c43cbfa14f98f05e0ad696144649a64303a92e559",
+      "bytes": 105031680,
+      "files": {
+        "adapter/README.md": {
+          "bytes": 5332,
+          "sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "bytes": 1358,
+          "sha256": "234fafbad2ba728e99cc8b29cb37d772574a7fd1c8901481cb4545daa8e06314"
+        },
+        "adapter/adapter_model.safetensors": {
+          "bytes": 84972248,
+          "sha256": "b00342e43d930b63b135d07c482587d46197de5822ba0ec914b42cea194c3aa9"
+        },
+        "head.pt": {
+          "bytes": 42765,
+          "sha256": "23749453bd6453497064fe44a5279071d0022666229db0a17a1c3b84f9a893af"
+        },
+        "meta.json": {
+          "bytes": 1053,
+          "sha256": "0c26ebfbccd934d845708d97caf6e218cb61b0feb590f41778c0d97b0d25831b"
+        },
+        "processor/chat_template.jinja": {
+          "bytes": 7756,
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "bytes": 1189,
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "bytes": 19989511,
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "bytes": 1244,
+          "sha256": "61bf7d27be16f3b021d78b72c86964312a69e6743309a2ad30b0e7685c09de9c"
+        }
+      },
+      "all_archive_members_verified": true,
+      "parent_receipt_bound_files_verified": [
+        "meta.json",
+        "adapter/adapter_config.json",
+        "adapter/adapter_model.safetensors",
+        "head.pt"
+      ],
+      "omitted_files": [
+        "probe.pt",
+        "trainer.pt"
+      ],
+      "omitted_probe_sha256": "ac51e23653206fa0bad8815c1189c71c2874a6fcf939bfdac340982f97ad0831",
+      "public_url": null,
+      "bundle_type": "weights_and_metadata_without_replay_probe_or_optimizer",
+      "flagged_private_path_fields": {
+        "meta.json": [
+          "args.model"
+        ],
+        "adapter/adapter_config.json": [
+          "base_model_name_or_path"
+        ],
+        "adapter/README.md": [
+          "base_model front matter"
+        ]
+      }
+    }
+  },
+  "drop_in_verified_checkpoint_bundle": false
+}

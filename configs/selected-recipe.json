@@ -1,0 +1,218 @@
+{
+  "model": {
+    "id": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "class_order": [
+    "same_figure",
+    "same_paper",
+    "related_papers",
+    "unrelated_papers"
+  ],
+  "selected": {
+    "cxi": {
+      "checkpoint_step": 837,
+      "public_parent_step": 4000,
+      "public_scheduler_horizon": 10000
+    },
+    "ixi": {
+      "checkpoint_step": 627,
+      "orientation_weights": {
+        "original": 0.5,
+        "reversed": 0.5
+      }
+    },
+    "cxc": {
+      "checkpoint_step": 414,
+      "scheduler_horizon": 621,
+      "orientation": "original"
+    }
+  },
+  "export": {
+    "batch_size": 1,
+    "chunk_size": 128,
+    "combine": "CXI and CXC direct; IXI arithmetic mean of original/reversed probabilities; argmax in class_order"
+  },
+  "checkpoint_files_sha256": {
+    "cxi837": {
+      "probe.pt": "5ee05b6d107759d7f763938614d9e98812b7c8cf9427680ffc1b1eef338ae8c8",
+      "head.pt": "3e11e4dabc9224ff1d9ac4fb8649ec342d9af43819d76c402d191ca0f5137edd",
+      "trainer.pt": "e439a4929b3bc416f3514bae56179598d8b57a5890e08f5bce77209e9dfc32d5",
+      "meta.json": "88fca5b3d70aea5f0af11f434d2dac6665cc58adf132034cfa5876f3a603134d",
+      "adapter/adapter_model.safetensors": "4a4fa3855cd38c1814d3aac39cdb358b56daab0324c3ffd18b116770d0f13d76",
+      "adapter/README.md": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad",
+      "adapter/adapter_config.json": "7d327ea3d88788a1ef6bd5e8b479d63a06bcb1255d91aeb6544c439113eb80ec",
+      "processor/tokenizer.json": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5",
+      "processor/chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "processor/tokenizer_config.json": "61bf7d27be16f3b021d78b72c86964312a69e6743309a2ad30b0e7685c09de9c",
+      "processor/processor_config.json": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+    },
+    "ixi627": {
+      "adapter/adapter_config.json": "34f80eb5cc9a3dd87fed27e2663d4e751a5ac9a05f43a576fa93e5ba9050275a",
+      "adapter/adapter_model.safetensors": "8c028184f68f8641d87a16181ec13b98340a8174388b3fc187a029d7dad85acd",
+      "head.pt": "3f00e251025954f854d38f6ee23e21a9af361df39a0e1150940f7a05c120ec7a",
+      "meta.json": "f791d0db8ac9c4b9db045b849be441e624805b463bf6b991508a67a1b9dfefd6",
+      "probe.pt": "48b586a63682303dc48736b4ad9091f0bbb4da8b91d25c929a12bf72b5231063",
+      "processor/chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "processor/processor_config.json": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e",
+      "processor/tokenizer.json": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5",
+      "processor/tokenizer_config.json": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182"
+    },
+    "cxc414": {
+      "adapter/adapter_config.json": "88f25fdcebe3a74e54f8f6564fda5f015350430d5d6b9a2bd45ea567f5ca43bd",
+      "adapter/adapter_model.safetensors": "c8f7ca3a86dcfb66b5c06bcfd9432f696ca3e7268410273205b2b1b16f069d6f",
+      "head.pt": "a99de7cd74631d535fec30681478e4feff50009d4cadc7b04674b01c88816f8c",
+      "meta.json": "a599b68606933c31e48c3a31e83e1ce15747355d7afbc4e3cb393ccdfcfcceed",
+      "probe.pt": "cd7b673649bb9ab8c3022afbdc461ddfc912c6c17cf12062153e0fc48251c03b",
+      "processor/chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+      "processor/processor_config.json": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e",
+      "processor/tokenizer.json": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5",
+      "processor/tokenizer_config.json": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182"
+    }
+  },
+  "verified_source_sha256": {
+    "vlm_cxi_peft.py": "16ec4fa3e06c4fc350dc552d8d4814dcc402e877b91d7808ebdc40b046db4cbf",
+    "vlm_ixi_peft.py": "979ff4fa3b035eee0b59d338b3a9b414f1de1e37247702bed79df06243ae94ea",
+    "vlm_cxc_peft.py": "28549270a190768ca963682d36011df91ba49260843151f78babefcdc14f3cda",
+    "vlm_ixi_shared.py": "4dc6b0b4d9cdcb7adc91496fa441da5554edb484059e2458caaeaff1d7393b3b",
+    "vlm_cxc_shared.py": "492de98f2b1064ef5acf8cbe09399a62a3fab4cb40d3ed0405950aaa6d2d8d41",
+    "final_vlm_export.py": "fa44fd9c4ce07bacf0f67561b6191832343df62e638feb92a5cb81446eca04cb",
+    "final_ixi_vlm_export.py": "a83ff3b593389090fb7ab88ecbf90f61060cb4f6870ef0dfc3a1e2eb49714018",
+    "final_cxc_vlm_export.py": "4bebb586d27d4e253e190f3b2ad67d4349a6d8cfbb5c8962b1b2496548930d74"
+  },
+  "training": {
+    "cxi": {
+      "batch": 1,
+      "accum": 8,
+      "epochs": 3,
+      "max_steps": 0,
+      "max_train": 0,
+      "val_limit": 794,
+      "lr": 3e-05,
+      "head_lr": 0.0001,
+      "lora_r": 16,
+      "max_pixels": 262144,
+      "max_cap_chars": 2400,
+      "save_every": 279,
+      "val_every": 279,
+      "guard_steps": 5,
+      "deadline_min": 90.0,
+      "seed": 7,
+      "four_bit": false,
+      "no_gradient_checkpointing": true,
+      "data_fingerprint": "74aa16193ff2bb3856c27344f141be736f0a88d353538c2e8119d28fc884e8f7"
+    },
+    "ixi": {
+      "batch": 1,
+      "accum": 8,
+      "epochs": 3,
+      "max_steps": 627,
+      "max_train": 0,
+      "val_limit": 590,
+      "lr": 3e-05,
+      "head_lr": 0.0001,
+      "lora_r": 16,
+      "max_pixels": 262144,
+      "max_cap_chars": 2400,
+      "save_every": 209,
+      "val_every": 209,
+      "guard_steps": 5,
+      "deadline_min": 120.0,
+      "seed": 7,
+      "four_bit": false,
+      "no_gradient_checkpointing": false,
+      "data_fingerprint": "18adc2262d26aad766578e7ba876013d1464f4a6f7a2f0f97e73a33a3ba993cd"
+    },
+    "cxc": {
+      "batch": 1,
+      "accum": 8,
+      "epochs": 3,
+      "max_steps": 0,
+      "max_train": 0,
+      "val_limit": 602,
+      "lr": 3e-05,
+      "head_lr": 0.0001,
+      "lora_r": 16,
+      "max_pixels": 262144,
+      "max_cap_chars": 2400,
+      "save_every": 207,
+      "val_every": 207,
+      "guard_steps": 5,
+      "deadline_min": 120.0,
+      "seed": 7,
+      "four_bit": false,
+      "no_gradient_checkpointing": false,
+      "data_fingerprint": "7b7b9c6926eab7cc3802a717dbd7bf2c55adc1d6f78802b7aea0e6891aac8ac6"
+    }
+  },
+  "observed_runtime_versions": {
+    "python": "3.12",
+    "torch": "2.12.0+cu130",
+    "transformers": "5.5.0",
+    "peft": "0.20.0",
+    "accelerate": "1.15.0",
+    "flash-linear-attention": "0.5.2",
+    "fla-core": "0.5.2",
+    "polars": "1.44.2",
+    "pillow": "12.2.0",
+    "numpy": "2.4.4",
+    "scikit-learn": "1.9.1",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.22.2"
+  },
+  "availability": "Checkpoint weights, exact corpus snapshots and image cache are not included; no clean retraining has been performed in this repository.",
+  "artifact_verification": {
+    "verified_at_utc": "2026-09-14T03:10:40.065788+00:00",
+    "weights_in_repository": false,
+    "bundles": {
+      "cxi837": {
+        "all_listed_files_present_and_sha256_verified": true,
+        "file_count": 11,
+        "distribution_path": "checkpoints/cxi837",
+        "available_in_source_workspace": true,
+        "public_download_url": null
+      },
+      "ixi627": {
+        "all_listed_files_present_and_sha256_verified": true,
+        "file_count": 9,
+        "distribution_path": "checkpoints/ixi627",
+        "available_in_source_workspace": true,
+        "public_download_url": null
+      },
+      "cxc414": {
+        "all_listed_files_present_and_sha256_verified": true,
+        "file_count": 9,
+        "distribution_path": "checkpoints/cxc414",
+        "available_in_source_workspace": true,
+        "public_download_url": null
+      }
+    }
+  },
+  "runtime_evidence": {
+    "core_packages": {
+      "source_receipt": "output/gspo_qwen35_prepare_20260913/ENVIRONMENT_CPU_CHECK.json",
+      "receipt_sha256": "76b7ae3728b8ce6f46377ee81402b22339693253b67cc1e8dd3d1e9662bd15f5",
+      "note": "Later isolated CPU check preserved the working classifier core; it does not establish that every ancillary package was identical during original training."
+    },
+    "ancillary_packages": "Observed working classifier environment inventory; separate data-preparation lock may differ."
+  },
+  "assembly": {
+    "entrypoint": "scripts/assemble_selected.py",
+    "output_columns": [
+      "id",
+      "same_figure",
+      "same_paper",
+      "related_papers",
+      "unrelated_papers"
+    ],
+    "output_encoding": "one-hot argmax after probability averaging",
+    "template_usage": "ignored",
+    "historical_replay": {
+      "rows": 10000,
+      "columns": 5,
+      "all_cells_equal_to_submitted_candidate": true,
+      "gpu_inference_rerun": false
+    },
+    "cpu_tests": 6
+  }
+}

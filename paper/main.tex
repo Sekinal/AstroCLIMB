@@ -1,0 +1,31 @@
+\documentclass[11pt]{article}
+\ifdefined\CameraReady
+  \usepackage[final]{acl}
+\else
+  \usepackage[review]{acl}
+\fi
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\input{metadata}
+\title{Public Scientific-Figure Adaptation for AstroCLIMB with a 4B Vision--Language Model}
+\author{\PaperAuthorName \\
+  \PaperAuthorAffiliation \\
+  \texttt{\PaperAuthorEmail}}
+\begin{document}
+\maketitle
+\input{sections}
+\section*{Acknowledgments}
+\input{ai-assistance}
+\ifdefined\CameraReady
+
+\PaperAcknowledgments
+\fi
+\bibliography{references}
+\end{document}

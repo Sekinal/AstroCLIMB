@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "scope": "Selected September13 public-step4000-to-gold837 CXI, nativegoldIXI627, nativegoldCXC414 data reconstruction",
+  "full_clean_repository_reconstruction_executed": false,
+  "public4k_meaning": "4000 optimizer steps on public80000 corpus, not4000 examples",
+  "public_dataset": {
+    "repo_id": "adsabs/AstroCLIMB",
+    "repo_type": "dataset",
+    "revision": "68e8d0ccb44be6bb86a77ccb90fdc8ba735dcdcb",
+    "data_glob": "data/train-*.parquet",
+    "shards": 114,
+    "rows": 94233,
+    "download_bytes": 72360746667,
+    "declared_license": "mit",
+    "license_source": "https://huggingface.co/datasets/adsabs/AstroCLIMB/blob/68e8d0ccb44be6bb86a77ccb90fdc8ba735dcdcb/README.md",
+    "license_verified_from_pinned_card": true,
+    "per_figure_rights_independently_audited": false
+  },
+  "competition_data": {
+    "competition": "astroclimb",
+    "url": "https://www.kaggle.com/competitions/astroclimb/data",
+    "named_inputs": [
+      "train.csv",
+      "test.csv",
+      "sample_submission.csv"
+    ],
+    "access": "Own authorized Kaggle account; competition terms separate from HF license",
+    "known_train_csv_bytes": 10096854159,
+    "known_test_csv_bytes": 10126138298,
+    "credentials_included": false,
+    "raw_inputs_included": false,
+    "whole_bundle_download_required": false
+  },
+  "split": {
+    "release_path": "data/splits/folds5_seed7_paper_strict.parquet",
+    "release_sha256": "60226e4414d37ceeed5f4af6e80a618d608618d4ccf4554d5035c3f068338318",
+    "columns": [
+      "pair_id",
+      "fold",
+      "group_id",
+      "mode"
+    ],
+    "rows": 10000,
+    "paper_groups": 2616,
+    "mode": "paper_strict",
+    "train_folds": [
+      2,
+      3,
+      4
+    ],
+    "development_fold": 1,
+    "audit_fold": 0,
+    "label_columns_included": false,
+    "source_path": "artifacts_final/validation/manifests/folds5_seed7_auto.parquet",
+    "source_sha256": "eb861f805dcabd086af7cfc76f275f18c713875eced76b89bd29182a01bf8535",
+    "omitted_source_columns": [
+      "checksum"
+    ],
+    "released_columns_exactly_preserved": true,
+    "generation": "Preserved historical assignment; not reconstructed from seed",
+    "limitations": [
+      "Original paper group candidate assignment is inherited, not regenerated from first principles.",
+      "Audit fold participated in historical model selection; not an untouched statistical test."
+    ]
+  },
+  "data_code": {
+    "scripts/final_gold_prepare.py": {
+      "sha256": "f6a62c06f66ee6456a50b38afacf033bde29c456289e2ce6cad6941bae3e0bac",
+      "byte_identical_to_reviewed_source": true
+    },
+    "scripts/final_test_prepare.py": {
+      "sha256": "63270ff0241dfdf4746d52cf08807580dcc29c13d027fc86eb00026609f346d3",
+      "byte_identical_to_reviewed_source": true
+    },
+    "scripts/final_public_prepare.py": {
+      "sha256": "fc41fa758d91df1602c390f7943d545db3ea31a4cc4d7131a8f5bfbd08691b41",
+      "byte_identical_to_reviewed_source": true
+    },
+    "scripts/final_public_prune.py": {
+      "sha256": "f9f9b92122e9dbc2182dd17c991f4a345ec2bc97672eb2ae93e649e416b2e385",
+      "byte_identical_to_reviewed_source": true
+    },
+    "src/astroclimb/utils.py": {
+      "sha256": "ab38e30c7fa3f599b8fc1f44d2eb72780a0b39d8b59752b7d03625aefff3ba02",
+      "byte_identical_to_reviewed_source": true
+    }
+  },
+  "python": ">=3.12",
+  "historical_lock_versions_not_remote_runtime_attestation": {
+    "huggingface-hub": "1.30.0",
+    "imagehash": "4.3.2",
+    "kaggle": "2.2.4",
+    "numpy": "2.5.3",
+    "pillow": "12.3.0",
+    "polars": "1.44.2",
+    "pyarrow": "25.0.1"
+  },
+  "exclusion": {
+    "normalized_caption": "lowercase and collapse whitespace",
+    "exact_image": "rawbyteMD5 and RGB shape+pixelMD5",
+    "near_image": "256bit dHash hash_size16 Hammingdistance<=8",
+    "closure": "Transitive public duplicate papers merged with inherited paper groups; test inputs exclusion-only",
+    "exposure_columns": [
+      "obj_key",
+      "modality",
+      "cap_text",
+      "cap_norm",
+      "bytes_md5",
+      "px_md5",
+      "dhash"
+    ],
+    "historical_exposure_rows": 29179,
+    "historical_exposure_sha256": "23e4774a0b1555bfe63c38aa42ce7651ca97159f2c88fd9e835bfc1f923ddfe5",
+    "historical_candidate_map_sha256": "030d001a3223dcf16c46f188a62628bc486b07110a3b4b1a34f83b4551d9e4f5",
+    "historical_index_manifest_sha256": "d2d0fbeaed927803e3e483920ee4c38f24c9dbe2843525189086d0b039d15f9d",
+    "forbidden_public_papers": 7500,
+    "eligible_public_figures": 21258,
+    "historical_retained_exposure_hits": 0,
+    "limitation": "Inherited paper groups and public DOI/candidate matching coverage."
+  },
+  "public_pair_generation": {
+    "seed": 20260913,
+    "train_rows": 80000,
+    "per_class": 20000,
+    "public_validation_rows": 2000,
+    "public_validation_per_class": 500,
+    "source_train_sha256": "6286495d5533b53e8cd463c691a17539955bf1c414e935ee896fee0577a7b63d",
+    "labels": [
+      "SF",
+      "SP",
+      "REL",
+      "UNR"
+    ],
+    "semantics": "samefigure, sameDOI, directcitationedge eitherdirection, noobserveddirectedge",
+    "original_caption_field": "cap_norm contains originalcase cap_text in public output",
+    "provenance_only_fields": [
+      "doi_a",
+      "doi_b",
+      "image_uuid",
+      "caption_uuid"
+    ],
+    "graph_completeness_assumed": true,
+    "public_validation_papers": 125,
+    "public_validation_citation_edges": 35,
+    "public_validation_correction": "Label-free citation-edge support seeding before component split"
+  },
+  "historical_gold_train": {
+    "cxi": {
+      "path": "output/final_gold_publicclean_20260913/cxi_train.parquet",
+      "rows": 2230,
+      "sha256": "68fd8a6b95941d101b4dfd18234015ae664f44a432e8ca5448d5984d708dd527"
+    },
+    "ixi": {
+      "path": "output/final_gold_publicclean_20260913/ixi_train.parquet",
+      "rows": 1670,
+      "sha256": "6e2cc0ae729506acab1ce0548b6c5703a1dabed0929a5a7353fef90066560417"
+    },
+    "cxc": {
+      "path": "output/final_gold_publicclean_20260913/cxc_train.parquet",
+      "rows": 1649,
+      "sha256": "d11b939811884c7c4e64761975d5c6f0ce030013c6f5c73d7f96d0a31efefb47"
+    }
+  },
+  "expected_development_counts": {
+    "cxi": 794,
+    "ixi": 590,
+    "cxc": 602
+  },
+  "label_indices": {
+    "same_figure": 0,
+    "same_paper": 1,
+    "related_papers": 2,
+    "unrelated_papers": 3
+  },
+  "required_generated_outputs": [
+    "output/final_gold_20260913/imgcache/",
+    "output/final_gold_publicclean_20260913/cxi_train.parquet",
+    "output/final_gold_publicclean_20260913/cxi_dev.parquet",
+    "output/final_gold_publicclean_20260913/ixi_train.parquet",
+    "output/final_gold_publicclean_20260913/ixi_dev.parquet",
+    "output/final_gold_publicclean_20260913/cxc_train.parquet",
+    "output/final_gold_publicclean_20260913/cxc_dev.parquet",
+    "output/final_public_20260913/train.parquet",
+    "output/final_public_20260913/val.parquet",
+    "output/final_public_20260913/imgcache/"
+  ],
+  "excluded_from_release": [
+    "raw competition inputs and labels",
+    "test or audit scoring labels",
+    "credentials",
+    "private conversation traces",
+    "legacy structural prediction artifacts"
+  ],
+  "remaining_reproducibility_gaps": [
+    "Raw authorized competition namedfiles and pinnedHFshards must be downloaded.",
+    "End-to-end clean repository pipeline has not been rerun.",
+    "Historical byte-identical generated corpus replay needs preserved outputs or verified rebuild; parallel ordering and projectedmanifest alter some hashes.",
+    "Exact trainedweights additionally need selectedpublicstep4000 parent, training environment and frozen model recipe."
+  ],
+  "hash_semantics": {
+    "parquet_file_sha256": "SHA256 of serialized file bytes; sensitive to compression,metadata,ordering",
+    "native_cxi_data_hash": "SHA256(json.dumps(all loaded TRAIN row dictionaries after seeded shuffle and max_train, sort_keys=True).encode()); includes provenance columns/path strings",
+    "native_ixi_cxc_resume": "Additionally requires originaltrain/val ParquetbyteSHA256",
+    "export_input_sha256": "SHA256 allowlisted inputframe.write_ndjson().encode(), not originalParquetbytes",
+    "do_not_equate_hash_types": true
+  },
+  "verification_performed": [
+    "Four preparation CLIs imported successfully and --help exited0 in CPUonlyuv environment",
+    "Projected split exact row equality to allowlisted originalcolumns",
+    "Copied preparation source byte identity",
+    "No end-to-end rawdata reconstruction executed"
+  ]
+}

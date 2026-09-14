@@ -1,0 +1,31 @@
+[project]
+name = "astroclimb"
+version = "0.1.0"
+description = "Scientific figure and caption relation classification for AstroCLIMB"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "numpy==2.4.4",
+  "polars==1.44.2",
+  "Pillow==12.2.0",
+  "safetensors==0.8.0",
+  "huggingface-hub>=0.34,<2",
+  "ImageHash==4.3.2",
+  "kaggle>=1.7,<3",
+]
+
+[project.optional-dependencies]
+train = [
+  "transformers==5.5.0",
+  "peft==0.20.0",
+  "accelerate==1.15.0",
+  "scikit-learn==1.9.1",
+]
+dev = ["pytest>=8,<10"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,64 @@
+{
+  "template_repository": "https://github.com/acl-org/acl-style-files",
+  "template_commit": "d5adc823ff0f80f98c80405ca0ab66c68e684409",
+  "website_repository": "https://github.com/adsabs/WIESP",
+  "website_commit": "20be856329f2f6c5f53d7d1b6928f3cb62336b53",
+  "files": {
+    "SOURCE_AND_REQUIREMENTS.md": {
+      "bytes": 4078,
+      "sha256": "8ff2668624a6b09c2ff21167c3f3d253e9fac5f7d1e202435d9e1d1005a59673"
+    },
+    "acl-style-files/.github/workflows/tests.yml": {
+      "bytes": 633,
+      "sha256": "cb16a7c051aa17a89fbb0ab2fe10e485fc3263a176fcc17ecbb13a86b2c3fb3b"
+    },
+    "acl-style-files/README.md": {
+      "bytes": 2417,
+      "sha256": "f5e4fe5096e8bc045b586a2351409f29ce6d55e0268a434602a06011f571d882"
+    },
+    "acl-style-files/acl.sty": {
+      "bytes": 11615,
+      "sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de"
+    },
+    "acl-style-files/acl_latex.tex": {
+      "bytes": 14533,
+      "sha256": "339c9ee9705c1767d44ef24b85365c0bb8619ecc3fcf66172bf1356292389614"
+    },
+    "acl-style-files/acl_lualatex.tex": {
+      "bytes": 3050,
+      "sha256": "0d9987ba833331a996f9abcd1a03eebba7d7ae331145793e7ddb6b5ae8db27b3"
+    },
+    "acl-style-files/acl_natbib.bst": {
+      "bytes": 45442,
+      "sha256": "6fbb306202290f4b68e74ac1460a8b27398500cb6dfeb4492e74c457eae7cd1e"
+    },
+    "acl-style-files/anthology.bib.txt": {
+      "bytes": 1169,
+      "sha256": "2b78d2d9aeda62e14c4e46099e8225b5fc116387d8e0a54aad776485e249ceff"
+    },
+    "acl-style-files/custom.bib": {
+      "bytes": 2071,
+      "sha256": "d76ccb30ddceb70c9e1ad0be3f43dfe301ad5765aab2c960fc830ef67bf8232a"
+    },
+    "acl-style-files/formatting.md": {
+      "bytes": 17923,
+      "sha256": "9e004a136c5dd43300d97e5bef5eb3a77d0e2a2d3502f0f2436ec011d1c49e9c"
+    },
+    "acl-style-files/tests/regression/run_tests.py": {
+      "bytes": 8610,
+      "sha256": "f712c240f7a9d3f9fa3936cabb0e124fc07a07dbfdfc2171f216de321cbda64f"
+    },
+    "sources/astroclimb_shared_task.md": {
+      "bytes": 6405,
+      "sha256": "31dc1b8e9f619d9a1c72f847c793f80f87ec4d61533d609ae1bdc2279f0cd15c"
+    },
+    "sources/wasp2026_call_for_papers.md": {
+      "bytes": 6998,
+      "sha256": "1ffda092ee25ae1de5ac76627405be878c760a97ff2d9457041ff7f3048d3bb2"
+    },
+    "sources/wasp2026_index.md": {
+      "bytes": 4358,
+      "sha256": "c4ed32cfba6b923bce4179310c133877f0d50032ed81a8132137decafadf20d5"
+    }
+  }
+}

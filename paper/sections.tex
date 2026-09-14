@@ -1,0 +1,121 @@
+\begin{abstract}
+We describe a 4B vision--language system for AstroCLIMB, which classifies relations between scientific figures and captions. A balanced public corpus supplies graph-derived caption--image supervision, followed by separate low-rank adaptations for caption--image, image--image, and caption--caption inputs. The submitted system obtains a Kaggle public score of 0.75149. Under a matched gold adaptation recipe, increasing public adaptation from 2,000 to 4,000 updates improves caption--image development macro-F1 from 0.70851 to 0.74839; 8,000 updates do not improve further. Standalone generative supervised and group sequence policy optimization replacements also fail to improve the selected classifier. We document data-exclusion boundaries, repeated development selection, and inference-context sensitivity to make these results interpretable.
+\end{abstract}
+
+\section{Introduction}
+
+AstroCLIMB \citep{astroclimb} asks whether two scientific objects originate from the same figure, the same paper, related papers, or unrelated papers. Inputs may be a caption--image pair (CXI), two images (IXI), or two captions (CXC). Recognizing shared scientific terminology or a similar plot is insufficient: different figures can describe the same phenomenon, while citation-related papers can contain visually dissimilar results.
+
+We build a content-based system around Qwen3.5-4B \citep{qwen35}, using public graph-derived caption--image supervision followed by task-specific low-rank adaptation (LoRA; \citealp{lora}). The submitted system obtains a four-class macro-F1 of \textbf{0.7562033665} on our development partition and an official Kaggle public score of \textbf{0.75149}. We make no leaderboard-rank claim. Our contribution is an empirically grounded system recipe and an account of what did not improve it: longer public adaptation, OCR augmentation, generative answer training, and reinforcement learning have different outcomes under controlled comparisons. We also document inference-context checks needed to interpret those comparisons reliably.
+
+\section{Data and Evaluation Boundaries}
+
+\paragraph{Gold partitions.}
+We use a fixed paper-component partition, reserving fold~1 for development and folds~2--4 for training. Following additional public-data duplicate checks, the training set contains 5,549 pairs and development contains 1,986 pairs (Table~\ref{tab:data}). An additional 2,001-pair fold was reserved from further tuning; it had appeared in historical experimentation and is therefore not an untouched statistical test. We do not report a new score on that fold here.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrr}
+\hline
+Input type & Training & Development \\
+\hline
+Caption--image & 2,230 & 794 \\
+Image--image & 1,670 & 590 \\
+Caption--caption & 1,649 & 602 \\
+\hline
+Total & 5,549 & 1,986 \\
+\hline
+\end{tabular}
+\caption{Gold partitions after exposure filtering.}
+\label{tab:data}
+\end{table}
+
+\paragraph{Public supervision.}
+We index all 114 shards of the public \texttt{adsabs/AstroCLIMB} release, containing 94,233 figures, and construct 80,000 balanced CXI training pairs and 2,000 public validation pairs. Labels follow figure identity, paper identity, and observed citation relations. Unrelated examples mix random-paper, same-journal, and two-hop citation pairs without a direct edge. These are graph-derived labels, not manually verified semantic judgments: missing citation edges can produce noisy negatives.
+
+Public and gold exposure checks use candidate paper identities, normalized captions, image-byte and decoded-pixel hashes, and 256-bit perceptual hashes at Hamming distance at most eight. Matches propagate through duplicate components and candidate-paper mappings; whole gold training components crossing protected boundaries are removed. Public validation components are separated before pair generation. These checks found no retained matches under the audited criteria, but unmatched objects and incomplete metadata prevent a claim of perfect paper-identity recovery. Identifiers and hashes serve only alignment, exclusion, and byte verification, never predictive features. The submitted classifier recipe does not use competition test labels. Earlier structurally derived submissions and exposed synthetic representations are excluded from this result lineage.
+
+\paragraph{Selection and reporting.}
+Main classifier checkpoint and recipe selection uses development data; separately declared feasibility canaries use TRAIN-only monitors. Consequently, the reported development scores reflect repeated selection, rather than an unbiased estimate or nested cross-validation. Whole-task macro-F1 is computed from the pooled four-class confusion matrix. IXI and CXC contain no same-figure examples; we additionally report their active-three-class macro-F1, which must not be confused with the four-class logger that assigns zero to the absent class. Public validation scores do not determine the public adaptation endpoint.
+
+\section{System}
+
+\paragraph{Task-specific classifiers.}
+We implement the classifiers with Transformers \citep{wolf-etal-2020-transformers} and PEFT \citep{peft}.
+Each branch uses a frozen BF16 Qwen3.5-4B base with rank-16 LoRA with alpha 32 (effective scaling 2) and a trainable four-class linear head over the final non-padding prompt representation. The adapters cover the language MLP projections in all 32 layers and query, key, value, and output projections in the eight full-attention layers, totaling approximately 21.2 million adapter parameters. The vision tower and the model's linear-attention projections remain frozen. We use zero adapter dropout and cross-entropy classification loss.
+
+The CXI prompt contains one image and its supplied caption; IXI contains Figure~A and Figure~B; CXC contains two explicitly separated captions. Caption content retains its original case and is capped at 2,400 characters per caption. Images are RGB-decoded from verified original bytes and limited to 262,144 pixels per image. Neither paper identifiers nor retrieved labels enter a prompt. IXI and CXC mask the same-figure logit consistently during training and prediction.
+
+\paragraph{Public adaptation and gold specialization.}
+Only the submitted CXI branch receives public adaptation. We train on the balanced public corpus with batch size four and two accumulation steps, adapter/head learning rates of $10^{-4}$ and $3\!\times\!10^{-4}$, and a 10,000-update warmup/cosine schedule. The submitted parent is the fixed 4,000-update checkpoint, corresponding to 32,000 pair presentations; stopping at this checkpoint does not compress the schedule to 4,000 updates.
+
+Gold adaptation initializes the CXI adapter and classifier head from that parent, but uses a fresh optimizer. IXI and CXC instead initialize independently from the pristine pretrained base. All three gold branches use batch size one, accumulation eight, three epochs, seed~7, and adapter/head learning rates of $3\!\times\!10^{-5}$ and $10^{-4}$. The resulting schedules contain 837, 627, and 621 updates for CXI, IXI, and CXC respectively. We evaluate at each epoch boundary and select the highest development macro-F1, breaking ties toward the earliest checkpoint. The submitted checkpoints are CXI837, IXI627, and CXC414.
+
+\paragraph{Prediction and reproducibility.}
+A prospectively specified arithmetic average of original and reversed image-pair probabilities improves IXI and is retained. The equivalent fixed caption-order average does not improve CXC, so CXC uses its original orientation. We route each pair by input modality and take the canonical-class argmax; we do not impose test class counts. The submission uses these development-selected models, without an all-label final refit.
+
+We preserve source, corpus, checkpoint, processor, and probability-artifact hashes and require fresh checkpoint replay before accepting exports. Canonical classifier inference uses batch size one. This matters empirically: for the public2k-to-gold837 CXI model, changing inference from batch one to two changed 11 of 794 predictions, with a maximum probability difference of 0.380. We retained the training-equivalent inference contract rather than treating this discrepancy as automatically negligible.
+
+\section{Results and Analysis}
+
+\paragraph{Transfer and modality specialization.}
+Table~\ref{tab:transfer} compares public exposure levels under the same three-epoch gold CXI recipe. Moving from 2,000 to 4,000 public updates improves development macro-F1 by approximately 0.040. The completed 8,000-update continuation does not improve further: its best scheduled gold evaluation is 0.74285. This is evidence against assuming monotonic benefit from additional synthetic exposure, not a general scaling law. A separately trained pristine gold-only CXI reference reaches 0.71367, although its gold-training schedule differs and is not a fully matched control.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrr}
+\hline
+Public updates & Selected gold update & CXI F1 \\
+\hline
+2,000 & 837 & 0.70851 \\
+4,000 & 837 & \textbf{0.74839} \\
+8,000 & 279 & 0.74285 \\
+\hline
+\end{tabular}
+\caption{Four-class development macro-F1 for matched gold CXI adaptation. The 8k result is verified by fresh batch-one inference after the full 837-update run completed.}
+\label{tab:transfer}
+\end{table}
+
+Native IXI training reaches active-class F1 of 0.65536, compared with 0.54052 for a frozen SigLIP~2 \citep{siglip2}/OCR feature baseline. The fixed image-order average increases this to 0.67791. Native CXC reaches 0.72756, versus 0.67277 for frozen Qwen3-Embedding-8B \citep{qwen3embedding} and BGE-base-en-v1.5 \citep{bgemodel,bgecpack} caption features. Its order average scores 0.72721 and is rejected. These selected branches produce the submitted whole-development score of 0.75620. Substituting the selected 8k CXI branch yields 0.75557 and is rejected.
+
+\paragraph{OCR and auxiliary transfer.}
+Correctly aligned PP-OCRv6 \citep{ppocr6} features alone reach only 0.44142 on CXI. An OCR-conditioned VLM adaptation also falls slightly below the pristine gold-only VLM, although a fixed 50/50 combination improves an earlier whole-system development baseline from 0.68987 to 0.69513. Public-to-gold transfer for a separate frozen-feature IXI classifier fails to improve its gold-only counterpart, including a matched-duration follow-up. Public supervision and complementary text therefore help some recipes, but are not uniformly beneficial.
+
+\paragraph{Generative training and reinforcement learning.}
+Using TRL \citep{trl}, we also study canonical answer generation with Group Sequence Policy Optimization (GSPO; \citealp{gspo}). The classifier-adapted model initially produces only 13 strictly valid answers among 64 sampled completions. Answer-tag supervised fine-tuning on 1,024 gold TRAIN pairs, for 128 updates, repairs this interface. However, valid formatting is not evidence of better classification.
+
+Subsequent GSPO runs use batch size 16, four completions per context, two uses of each rollout, learning rate $10^{-6}$, group-normalized rewards, and zero reference-KL weight. Reward is one only for a correct strict canonical answer terminated by EOS, and zero otherwise. Asymmetric clipping bounds are 0.0003 and 0.0004. These branches predict through the language-model output rather than the classifier head. A 32-update pilot and a 512-update extension both complete genuine gradient and parameter updates. Under the frozen full-development decision rule, neither outperforms the incumbent (Table~\ref{tab:generative}). The matched supervised control uses the same 64-context exposure and batch size as the short RL run.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lr}
+\hline
+CXI decision rule with fixed IXI/CXC & Whole F1 \\
+\hline
+Submitted classifier & \textbf{0.75620} \\
+Answer SFT & 0.74630 \\
+Matched supervised control & 0.74670 \\
+GSPO, 32 updates & 0.74494 \\
+GSPO, 512 updates & 0.75115 \\
+\hline
+\end{tabular}
+\caption{Native greedy generative alternatives on the same development set. These are different decision rules from the submitted classifier.}
+\label{tab:generative}
+\end{table}
+
+Unanimous group rewards motivate a separate TRAIN-only canary: inspired by dynamic sampling \citep{dapo}, select 16 contexts with mixed outcomes among eight samples and compare against 16 class-matched random contexts. Both receive 32 vLLM-assisted GSPO updates. Mixed selection yields 24 informative groups out of 32 versus 14 for the control, but their scores on the same frozen 256-context TRAIN monitor are nearly identical: 1,874 versus 1,875 correct draws out of 2,048. Both miss the prospective two-percentage-point accuracy-improvement screen. Increased training signal does not establish a mining advantage in this experiment.
+
+The isolated vLLM \citep{vllm} worker materially accelerates steady generation, reaching about 26.9 examples/s versus native batch-one inference at 2.1--2.2 on a fixed 64-example benchmark. Startup costs prevent interpreting this as an equivalent end-to-end speedup, and a larger comparison finds backend-dependent predictions. Native inference remains the canonical development evaluator. Generation/scoring and fresh-reload checks must also match batch shape and BF16 autocast context; successful parameter updates alone do not certify comparable probabilities.
+
+\paragraph{Sources of exploratory ideas.}
+Visual-RFT and VLM-R1 \citep{visualrft,vlmr1} motivated testing verifiable visual rewards. Dr.~GRPO \citep{drgrpo} informed our discussion of normalization, but the reported trials retained GSPO. STaR \citep{star} suggested verified explanation bootstrapping, which we did not implement. DeepEyes \citep{deepeyes} motivated a fixed-view feasibility check before any learned crop policy: three-vote accuracy on 64 TRAIN cases fell from 60/64 with repeated full views to 59/64 with a full view and two crops, so learned inspection was not pursued. Work on RL coverage and reasoning \citep{rlvrcoverage,rlvrreasoning} informed our distinction between finding a correct sampled answer and improving single-answer accuracy; our four-way task does not establish a general reasoning result.
+
+\section{Limitations and Conclusion}
+
+Our results support public synthetic adaptation followed by modality-specific specialization as a practical system recipe, while showing that longer adaptation and reinforcement learning need not improve the selected classifier. Most neural comparisons use a single seed. Repeated development selection, historically exposed reserved folds, incomplete citation graphs, imperfect identity recovery, and ancestor-exposed TRAIN monitors limit statistical and causal claims. The monitor results are engineering screens, not independent test estimates. We exclude historically exposed representations and incorrectly aligned OCR artifacts from clean comparisons.
+
+The reported public score belongs to the submitted content-based system, not to a claim of first place. Compute involved interrupted and recovered jobs on multiple machines; a billing-account total would not be a reconciled experiment cost. Our evidence establishes the implemented recipe and its observed outcomes, while leaving robustness across seeds, genuinely independent evaluation, and improved relation supervision to future work.
+
