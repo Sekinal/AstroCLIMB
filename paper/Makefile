@@ -2,7 +2,7 @@ TEXINPUTS := ./template/acl-style-files//:$(TEXINPUTS)
 BSTINPUTS := ./template/acl-style-files//:$(BSTINPUTS)
 export TEXINPUTS BSTINPUTS
 
-.PHONY: all review author clean
+.PHONY: all review author clean figures
 all: review author
 review:
 	latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
@@ -11,3 +11,6 @@ author:
 clean:
 	latexmk -C -outdir=build main.tex
 	latexmk -C -outdir=build -jobname=author main.tex
+
+figures:
+	cd .. && uv run --extra paper python paper/figures/plot_results.py

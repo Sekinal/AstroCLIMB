@@ -128,3 +128,13 @@ For a four-page paper, prioritize attribution for actual dependencies and the GS
 | `alkan-etal-2022-majority` | A Majority Voting Strategy of a {S}ci{BERT}-based Ensemble Models for Detecting Entities in the Astrophysics Literature (Shared Task) | 2022 | [ACL Anthology](https://aclanthology.org/2022.wiesp-1.17/) |
 | `ikoma-matsubara-2023-use` | On the Use of Language Models for Function Identification of Citations in Scholarly Papers | 2023 | [ACL Anthology](https://aclanthology.org/2023.wiesp-1.15/) |
 | `veeramani-etal-2023-automated` | Automated Citation Function Classification and Context Extraction in Astrophysics: Leveraging Paraphrasing and Question Answering | 2023 | [ACL Anthology](https://aclanthology.org/2023.wiesp-1.16/) |
+
+## Figure-generation addition
+
+The results figure added during manuscript revision uses Matplotlib. Hunter
+(2007), *Matplotlib: A 2D Graphics Environment*, DOI
+[10.1109/MCSE.2007.55](https://doi.org/10.1109/MCSE.2007.55), is credited in
+the manuscript acknowledgments. Bibliographic metadata was checked against
+[the official citation instructions](https://matplotlib.org/stable/project/citing.html).
+The new entry is in `references.bib`; the earlier 54-record historical
+inventory in `inspiration.bib` is unchanged.

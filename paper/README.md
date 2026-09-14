@@ -25,3 +25,9 @@ review supplement. Upload only the review PDF if the track requires anonymity.
 The manuscript includes an AI-assistance disclosure. `inspiration-audit.md`
 records attribution decisions; `inspiration.bib` is the wider research inventory,
 while `references.bib` contains the selectively integrated manuscript entries.
+
+Regenerate the two-panel results figure with `make -C paper figures`.
+Its numeric inputs are in `figures/results.json`; the script exports vector
+PDF/SVG and a PNG preview. It replaces the transfer and generative-result
+tables, keeps CXI and whole-development metrics on separately labeled axes,
+and shows single-seed selected scores without invented error bars.

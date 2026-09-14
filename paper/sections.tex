@@ -60,23 +60,14 @@ We preserve source, corpus, checkpoint, processor, and probability-artifact hash
 \section{Results and Analysis}
 
 \paragraph{Transfer and modality specialization.}
-Table~\ref{tab:transfer} compares public exposure levels under the same three-epoch gold CXI recipe. Moving from 2,000 to 4,000 public updates improves development macro-F1 by approximately 0.040. The completed 8,000-update continuation does not improve further: its best scheduled gold evaluation is 0.74285. This is evidence against assuming monotonic benefit from additional synthetic exposure, not a general scaling law. A separately trained pristine gold-only CXI reference reaches 0.71367, although its gold-training schedule differs and is not a fully matched control.
+Figure~\ref{fig:results}a compares public exposure levels under the same three-epoch gold CXI recipe. Moving from 2,000 to 4,000 public updates improves development macro-F1 by approximately 0.040. The completed 8,000-update continuation does not improve further: its best scheduled gold evaluation is 0.74285. This is evidence against assuming monotonic benefit from additional synthetic exposure, not a general scaling law. A separately trained pristine gold-only CXI reference reaches 0.71367, although its gold-training schedule differs and is not a fully matched control.
 
-\begin{table}[t]
+\begin{figure*}[t]
 \centering
-\small
-\begin{tabular}{lrr}
-\hline
-Public updates & Selected gold update & CXI F1 \\
-\hline
-2,000 & 837 & 0.70851 \\
-4,000 & 837 & \textbf{0.74839} \\
-8,000 & 279 & 0.74285 \\
-\hline
-\end{tabular}
-\caption{Four-class development macro-F1 for matched gold CXI adaptation. The 8k result is verified by fresh batch-one inference after the full 837-update run completed.}
-\label{tab:transfer}
-\end{table}
+\includegraphics[width=\textwidth]{figures/results.pdf}
+\caption{Development results, with zoomed score axes. (a) Public CXI adaptation followed by the same gold schedule; selected gold updates are 837, 837, and 279 respectively (794 pairs). (b) Generative CXI replacements with IXI/CXC fixed, scored on all 1,986 pairs. Orange diamonds mark the submitted choices. Points are single-seed selected results, not independent test estimates; no uncertainty intervals are available. GSPO runs differ in both context pool and update count.}
+\label{fig:results}
+\end{figure*}
 
 Native IXI training reaches active-class F1 of 0.65536, compared with 0.54052 for a frozen SigLIP~2 \citep{siglip2}/OCR feature baseline. The fixed image-order average increases this to 0.67791. Native CXC reaches 0.72756, versus 0.67277 for frozen Qwen3-Embedding-8B \citep{qwen3embedding} and BGE-base-en-v1.5 \citep{bgemodel,bgecpack} caption features. Its order average scores 0.72721 and is rejected. These selected branches produce the submitted whole-development score of 0.75620. Substituting the selected 8k CXI branch yields 0.75557 and is rejected.
 
@@ -86,25 +77,9 @@ Correctly aligned PP-OCRv6 \citep{ppocr6} features alone reach only 0.44142 on C
 \paragraph{Generative training and reinforcement learning.}
 Using TRL \citep{trl}, we also study canonical answer generation with Group Sequence Policy Optimization (GSPO; \citealp{gspo}). The classifier-adapted model initially produces only 13 strictly valid answers among 64 sampled completions. Answer-tag supervised fine-tuning on 1,024 gold TRAIN pairs, for 128 updates, repairs this interface. However, valid formatting is not evidence of better classification.
 
-Subsequent GSPO runs use batch size 16, four completions per context, two uses of each rollout, learning rate $10^{-6}$, group-normalized rewards, and zero reference-KL weight. Reward is one only for a correct strict canonical answer terminated by EOS, and zero otherwise. Asymmetric clipping bounds are 0.0003 and 0.0004. These branches predict through the language-model output rather than the classifier head. A 32-update pilot and a 512-update extension both complete genuine gradient and parameter updates. Under the frozen full-development decision rule, neither outperforms the incumbent (Table~\ref{tab:generative}). The matched supervised control uses the same 64-context exposure and batch size as the short RL run.
+Subsequent GSPO runs use batch size 16, four completions per context, two uses of each rollout, learning rate $10^{-6}$, group-normalized rewards, and zero reference-KL weight. Reward is one only for a correct strict canonical answer terminated by EOS, and zero otherwise. Asymmetric clipping bounds are 0.0003 and 0.0004. These branches predict through the language-model output rather than the classifier head. A 32-update pilot and a 512-update extension both complete genuine gradient and parameter updates. Under the frozen full-development decision rule, neither outperforms the incumbent (Figure~\ref{fig:results}b). The matched supervised control uses the same 64-context exposure and batch size as the short RL run.
 
-\begin{table}[t]
-\centering
-\small
-\begin{tabular}{lr}
-\hline
-CXI decision rule with fixed IXI/CXC & Whole F1 \\
-\hline
-Submitted classifier & \textbf{0.75620} \\
-Answer SFT & 0.74630 \\
-Matched supervised control & 0.74670 \\
-GSPO, 32 updates & 0.74494 \\
-GSPO, 512 updates & 0.75115 \\
-\hline
-\end{tabular}
-\caption{Native greedy generative alternatives on the same development set. These are different decision rules from the submitted classifier.}
-\label{tab:generative}
-\end{table}
+
 
 Unanimous group rewards motivate a separate TRAIN-only canary: inspired by dynamic sampling \citep{dapo}, select 16 contexts with mixed outcomes among eight samples and compare against 16 class-matched random contexts. Both receive 32 vLLM-assisted GSPO updates. Mixed selection yields 24 informative groups out of 32 versus 14 for the control, but their scores on the same frozen 256-context TRAIN monitor are nearly identical: 1,874 versus 1,875 correct draws out of 2,048. Both miss the prospective two-percentage-point accuracy-improvement screen. Increased training signal does not establish a mining advantage in this experiment.
 

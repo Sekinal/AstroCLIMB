@@ -1,0 +1,17 @@
+{
+  "metric": "macro-F1",
+  "selection": "Repeated development selection; single-seed results, no uncertainty estimate",
+  "public_adaptation": {
+    "scope": "CXI development, 794 pairs, four classes",
+    "public_updates": [2000, 4000, 8000],
+    "selected_gold_updates": [837, 837, 279],
+    "scores": [0.70851, 0.74839, 0.74285]
+  },
+  "generative_alternatives": {
+    "scope": "Pooled development, 1986 pairs, four classes; IXI/CXC held fixed",
+    "labels": ["Submitted classifier", "Answer SFT", "Matched SFT control", "GSPO: 32 updates", "GSPO: 512 updates"],
+    "scores": [0.75620, 0.74630, 0.74670, 0.74494, 0.75115]
+  },
+  "precision": "Five-decimal values from verified manuscript result tables; not Kaggle scores",
+  "caveat": "GSPO 32 and 512 runs differ in context pool as well as update count"
+}
