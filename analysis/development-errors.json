@@ -1,0 +1,189 @@
+{
+  "classes": [
+    "same_figure",
+    "same_paper",
+    "related_papers",
+    "unrelated_papers"
+  ],
+  "confusion_axes": "rows=true, columns=predicted",
+  "scope": "Post-hoc description of repeatedly selected DEV results; not independent evaluation",
+  "input_sha256": {
+    "cxi/labels": "1bb22652050eea8fc61a90ac5753a83d028abe56321abfb9f6c1e4333a4faf97",
+    "cxi/probabilities": "7d37efd70a82d91d4380192bc718be378c4ca4f61d475f25e965a064858f0006",
+    "ixi/labels": "42e5f0154ebd75cdbae32263a09015a9b7ec571cad3abe36b6c02df85ee317a9",
+    "ixi/probabilities": "efdd8a8177cf523cc6fa39202c37be5f0d71c9c325dbfd49f78489e82b553891",
+    "ixi/reversed_probabilities": "31f718e3e0f121c0d1553c64fb030cee3b4811be0d799bf8d2d1fbc55655c5ac",
+    "cxc/labels": "71adc0fa18f60a98c23ef5db284df28a21b7c3a71dbb392d874ad2dc62f95e22",
+    "cxc/probabilities": "8c3bff3b7e5a435271b780a5a7ed19fdf58ee3cf6b1f023112e6900935fbde45"
+  },
+  "results": {
+    "cxi": {
+      "confusion": [
+        [
+          185,
+          5,
+          2,
+          2
+        ],
+        [
+          15,
+          117,
+          56,
+          12
+        ],
+        [
+          5,
+          32,
+          125,
+          40
+        ],
+        [
+          0,
+          4,
+          25,
+          169
+        ]
+      ],
+      "support": [
+        194,
+        200,
+        202,
+        198
+      ],
+      "f1": [
+        0.9273182957393483,
+        0.6536312849162011,
+        0.6097560975609756,
+        0.8028503562945368
+      ],
+      "macro_f1": 0.7483890086277655,
+      "active_class_macro_f1": 0.7483890086277655
+    },
+    "ixi": {
+      "confusion": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          141,
+          42,
+          11
+        ],
+        [
+          0,
+          54,
+          106,
+          40
+        ],
+        [
+          0,
+          7,
+          35,
+          154
+        ]
+      ],
+      "support": [
+        0,
+        194,
+        200,
+        196
+      ],
+      "f1": [
+        0.0,
+        0.7121212121212122,
+        0.5535248041775457,
+        0.7680798004987531
+      ],
+      "macro_f1": 0.5084314541993777,
+      "active_class_macro_f1": 0.6779086055991703
+    },
+    "cxc": {
+      "confusion": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          158,
+          37,
+          6
+        ],
+        [
+          0,
+          60,
+          112,
+          30
+        ],
+        [
+          0,
+          2,
+          27,
+          170
+        ]
+      ],
+      "support": [
+        0,
+        201,
+        202,
+        199
+      ],
+      "f1": [
+        0.0,
+        0.7505938242280285,
+        0.5925925925925926,
+        0.8395061728395061
+      ],
+      "macro_f1": 0.5456731474150318,
+      "active_class_macro_f1": 0.7275641965533758
+    },
+    "pooled": {
+      "confusion": [
+        [
+          185,
+          5,
+          2,
+          2
+        ],
+        [
+          15,
+          416,
+          135,
+          29
+        ],
+        [
+          5,
+          146,
+          343,
+          110
+        ],
+        [
+          0,
+          13,
+          87,
+          493
+        ]
+      ],
+      "support": [
+        194,
+        595,
+        604,
+        593
+      ],
+      "f1": [
+        0.9273182957393483,
+        0.7080851063829787,
+        0.5858240819812126,
+        0.8035859820700897
+      ],
+      "macro_f1": 0.7562033665434074,
+      "active_class_macro_f1": 0.7562033665434074
+    }
+  }
+}
