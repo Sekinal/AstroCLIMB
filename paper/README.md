@@ -31,3 +31,6 @@ Its numeric inputs are in `figures/results.json`; the script exports vector
 PDF/SVG and a PNG preview. It replaces the transfer and generative-result
 tables, keeps CXI and whole-development metrics on separately labeled axes,
 and shows single-seed selected scores without invented error bars.
+
+See [submission-fields.md](submission-fields.md) for ready-to-copy fields and
+the live portal deadline conflict, verified after the workshop-page audit.

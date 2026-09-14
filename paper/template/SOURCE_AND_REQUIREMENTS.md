@@ -14,7 +14,7 @@ Retrieved 2026-09-14. This directory contains the unmodified official ACL templa
 
 The template is ACL, not CEUR. CFP says shared-task system descriptions receive light peer review and accepted papers enter WASP proceedings in ACL Anthology. General long/short submissions are double-blind: long papers at most8 content pages, short at most4, references unlimited; final versions allow one additional content page. Anonymity, preprints and simultaneous submissions follow AACL2026 policy.
 
-Unresolved: neither the shared-task page nor CFP provides a separate system-description page cap or explicit statement that system-description review is double-blind. Therefore the general8/4 limits and anonymous review mode are a conservative working format, not a verified system-track-specific rule. OpenReview's public rendered page exposes no form fields in this inspection; mandatory declarations, exact track choice, supplements, and any track-specific anonymity exceptions remain unverified. Do not claim appendices or limitations are exempt from limits based solely on this CFP. Shared-task instructions also say to join Kaggle and register for AACL-IJCNLP; exact attendance/registration conditions were not independently resolved.
+Unresolved: neither the shared-task page nor CFP provides a separate system-description page cap or explicit statement that system-description review is double-blind. Therefore the general8/4 limits and anonymous review mode are a conservative working format, not a verified system-track-specific rule. A later public API inspection recovered the submission form: see `../submission-fields.md` and `../submission-form-snapshot.json` for required profile metadata, declarations, and the CC BY 4.0 license field. No separate system-track selector, page cap, or anonymity exception is exposed. Do not claim appendices or limitations are exempt from limits based solely on this CFP. Shared-task instructions also say to join Kaggle and register for AACL-IJCNLP; exact attendance/registration conditions were not independently resolved.
 
 ## Current official dates and conflict
 
@@ -26,7 +26,7 @@ Updated CFP AND2026 index explicitly strike old dates and replace them:
 - Camera-ready: October12,2026.
 - Workshop: November9–10,2026.
 
-Submission deadlines are23:59 UTC−12(AoE). Paper deadline corresponds to September22,11:59UTC /05:59Mexico City. System-output deadline corresponds to September21,11:59UTC /05:59Mexico City. The shared_task.md timeline is stale and still lists September13/14; updated CFP/index supersede it on the official site source. Kaggle enforcement and the submission portal deadline were not verified here; do not silently extend compute spending based solely on this finding.
+Submission deadlines are23:59 UTC−12(AoE). Paper deadline corresponds to September22,11:59UTC /05:59Mexico City. System-output deadline corresponds to September21,11:59UTC /05:59Mexico City. The shared_task.md timeline is stale and still lists September13/14; updated CFP/index supersede it on the official site source. Kaggle enforcement was not verified. A later OpenReview API check found a conflicting, earlier due date: September15 at03:59UTC (September14 at21:59Mexico City), with expiration30minutes later. Use that earlier operational cutoff until the portal is updated; see `../submission-fields.md`. The website extension remains real, but portal enforcement cannot be inferred from it.
 
 ## License documentation
 

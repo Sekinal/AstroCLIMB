@@ -1,0 +1,166 @@
+{
+  "retrieved_at_utc": "2026-09-14T03:36:49.763707+00:00",
+  "source": "https://api2.openreview.net/invitations?id=aclweb.org%2FAACL-IJCNLP%2F2026%2FWorkshop%2FWASP%2F-%2FSubmission",
+  "invitation_id": "aclweb.org/AACL-IJCNLP/2026/Workshop/WASP/-/Submission",
+  "due_utc": "2026-09-15T03:59:00+00:00",
+  "expires_utc": "2026-09-15T04:29:00+00:00",
+  "fields": {
+    "title": {
+      "order": 1,
+      "description": "Title of paper. Add TeX formulas using the following formats: $In-line Formula$ or $$Block Formula$$.",
+      "value": {
+        "param": {
+          "type": "string",
+          "regex": "^.{1,250}$"
+        }
+      }
+    },
+    "authors": {
+      "order": 2,
+      "description": "Search author profile by name or profile ID. All authors must have an OpenReview profile prior to submitting a paper.",
+      "value": {
+        "param": {
+          "type": "author{}",
+          "properties": {
+            "fullname": {
+              "param": {
+                "type": "string"
+              }
+            },
+            "username": {
+              "param": {
+                "type": "string",
+                "regex": "^~\\S+$",
+                "mismatchError": "must be a valid profile ID"
+              }
+            },
+            "institutions": {
+              "param": {
+                "type": "object{}",
+                "properties": {
+                  "name": {
+                    "param": {
+                      "type": "string"
+                    }
+                  },
+                  "domain": {
+                    "param": {
+                      "type": "string"
+                    }
+                  },
+                  "country": {
+                    "param": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "optional": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "keywords": {
+      "description": "Comma separated list of keywords.",
+      "order": 4,
+      "value": {
+        "param": {
+          "type": "string[]",
+          "regex": ".+"
+        }
+      }
+    },
+    "TLDR": {
+      "order": 5,
+      "description": "\"Too Long; Didn't Read\": a short sentence describing your paper",
+      "value": {
+        "param": {
+          "fieldName": "TL;DR",
+          "type": "string",
+          "maxLength": 250,
+          "optional": true,
+          "deletable": true
+        }
+      }
+    },
+    "abstract": {
+      "order": 6,
+      "description": "Abstract of paper. Add TeX formulas using the following formats: $In-line Formula$ or $$Block Formula$$.",
+      "value": {
+        "param": {
+          "type": "string",
+          "maxLength": 5000,
+          "markdown": true,
+          "input": "textarea"
+        }
+      }
+    },
+    "pdf": {
+      "order": 7,
+      "description": "Upload a PDF file that ends with .pdf.",
+      "value": {
+        "param": {
+          "type": "file",
+          "maxSize": 50,
+          "extensions": [
+            "pdf"
+          ],
+          "optional": true
+        }
+      }
+    },
+    "email_sharing": {
+      "order": 50,
+      "description": "Please confirm you are aware that all author emails will be shared with Program Chairs.",
+      "value": {
+        "param": {
+          "type": "string",
+          "enum": [
+            "We authorize the sharing of all author emails with Program Chairs."
+          ],
+          "input": "radio"
+        }
+      }
+    },
+    "data_release": {
+      "order": 51,
+      "description": "Please confirm you are aware that accepted submissions, along with their author names, will be released to the public after the conference is over.",
+      "value": {
+        "param": {
+          "type": "string",
+          "enum": [
+            "We authorize the release of our submission and author names to the public in the event of acceptance."
+          ],
+          "input": "radio"
+        }
+      }
+    },
+    "venue": {
+      "value": {
+        "param": {
+          "const": "AACLIJCNLP 2026 Workshop WASP Submission",
+          "hidden": true
+        }
+      }
+    },
+    "venueid": {
+      "value": {
+        "param": {
+          "const": "aclweb.org/AACL-IJCNLP/2026/Workshop/WASP/Submission",
+          "hidden": true
+        }
+      }
+    }
+  },
+  "license": {
+    "param": {
+      "enum": [
+        {
+          "value": "CC BY 4.0",
+          "description": "CC BY 4.0"
+        }
+      ]
+    }
+  }
+}
