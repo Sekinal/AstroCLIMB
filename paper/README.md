@@ -10,7 +10,7 @@ BibTeX, and the standard packages imported by `main.tex`).
 The official ACL template is pinned and unmodified under `template/`.
 See `template/SOURCE_AND_REQUIREMENTS.md` for the official sources,
 extended dates, and the unresolved system-track-specific submission details.
-The current draft has at most four content pages; references continue onto page five.
+The current draft has at most four content pages; references occupy pages five and six.
 This fits the general short-paper content limit.
 
 This is a technical draft, not a submitted paper. The public score is a

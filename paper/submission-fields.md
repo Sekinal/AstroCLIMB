@@ -36,7 +36,7 @@ We describe a 4B vision–language system for AstroCLIMB, which classifies relat
 
 **PDF:** `paper/build/main.pdf` is the conservative anonymous review version;
 `paper/build/author.pdf` includes author/funding metadata. Both have at most
-four content pages, with references continuing onto page five. Use the
+four content pages, with references occupying pages five and six. Use the
 anonymous PDF unless the system track explicitly instructs otherwise.
 
 ## Form declarations for the author

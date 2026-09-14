@@ -1,4 +1,4 @@
-TEXINPUTS := ./template/acl-style-files//:$(TEXINPUTS)
+TEXINPUTS := ./vendor/lineno//:./template/acl-style-files//:$(TEXINPUTS)
 BSTINPUTS := ./template/acl-style-files//:$(BSTINPUTS)
 export TEXINPUTS BSTINPUTS
 

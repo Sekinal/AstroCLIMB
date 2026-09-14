@@ -138,3 +138,10 @@ the manuscript acknowledgments. Bibliographic metadata was checked against
 [the official citation instructions](https://matplotlib.org/stable/project/citing.html).
 The new entry is in `references.bib`; the earlier 54-record historical
 inventory in `inspiration.bib` is unchanged.
+
+## Subsequent related-work review
+
+The final writing pass added six published scientific-figure, citation-learning,
+and astronomy shared-task precedents. See [the related-work review](../docs/related-work-review.md)
+for sources and distinctions. These additions position the contribution; they
+are not retroactively attributed as historical experimental inspirations.
