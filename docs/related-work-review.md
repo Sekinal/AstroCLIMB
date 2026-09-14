@@ -65,3 +65,7 @@ Both anonymous and author PDFs were rebuilt. Content and acknowledgments fit
 within four pages; references occupy pages five and six. Bibliography keys were
 checked for duplicates and unresolved citations, and changed layouts inspected.
 Training code and recorded performance artifacts were not modified.
+
+Layout inspection also caught the installed lineno v5.7 two-column regression.
+The build now pins upstream v5.9; review numbers were visually verified in the
+outer margins. See `paper/vendor/LINENO_SOURCE.md`.

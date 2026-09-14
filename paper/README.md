@@ -34,3 +34,7 @@ and shows single-seed selected scores without invented error bars.
 
 See [submission-fields.md](submission-fields.md) for ready-to-copy fields and
 the live portal deadline conflict, verified after the workshop-page audit.
+
+The Makefile prefers the pinned `vendor/lineno` v5.9 dependency to avoid the
+installed v5.7 two-column numbering regression. See
+[vendor provenance](vendor/LINENO_SOURCE.md). The ACL style files are unchanged.
