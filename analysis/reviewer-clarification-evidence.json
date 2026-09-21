@@ -1,0 +1,47 @@
+{
+  "scope": "Evidence for reviewer clarifications; historical files preserved privately, paths relative to historical workspace; hashes alone do not provide public access.",
+  "source_sha256": {
+    "output/final_gold_publicclean_20260913/RECOVERY_PUBLIC_CLOSURE.json": "834061e6b9fb98b06a86ef521bea305ac11cd1bb83b646d34e06ab740acefd3a",
+    "output/final_gold_publicclean_20260913/ROOT_COMPONENT_AUDIT.json": "3c82545a2820977d2a7710cf7b6f2427af693ba0e56e215fe12f99dafb4c1cf5",
+    "output/final_public4k_gold_preflight_20260913/checkpoint-00000837/meta.json": "88fca5b3d70aea5f0af11f434d2dac6665cc58adf132034cfa5876f3a603134d",
+    "output/gspo_answer_D2_b16_matched_v2_20260913/metadata.json": "1585ceb95641fd2d01d21cb4067f3b5ef37c99538f552edd9ce61ef71a329ca2",
+    "output/gspo_C3_b16_pilot_20260913/metadata.json": "65250e3095fd82cfebb7a91828ff6817b84695936d5e915e3a79103b12af53f1",
+    "output/gspo_greedy_dev794_plan_20260913/ROOT_COMPARISON.json": "4cbc679131ed3bb1ac271f43fc02023e7fe30d87b12fe3c4a5a41f0ac7f64d3e",
+    "output/final_ixi_cpu_20260913/metrics.json": "fbfaef7a988a1e13f9865b0994ce24ea888f6808169b329a418770154f7cb133",
+    "scripts/final_ixi_cpu.py": "0a0c537ee8f2efb87b682207b7071b7fddececf36dca632bc58169eb4271d668",
+    "output/final_cxc_dense_20260913/metrics.json": "64309c3565682a68b319ba27cea415ca33ac180cec63d3c4e2de944e21946820",
+    "output/final_cxc_head_20260913/MODEL_OPERATION_MANIFEST.json": "a5031d4cc5e6cea05f604aeb5fa26ee72a8f6e797960f48ca9eca0cbccf086a9",
+    "src/astroclimb/validate_models/cxc_qwen8.py": "78aed94f26c9bbdea25316e99481e513e032509d2de3c1ee04d99c2a08985907"
+  },
+  "score_lineage": {
+    "historical_cxi": 0.7483890086277655,
+    "historical_gpu": "NVIDIA L40S",
+    "fresh_seed7_cxi": 0.7561928104575164,
+    "fresh_gpu": "NVIDIA RTX 3090",
+    "parent_file_hashes_identical": true,
+    "training_row_hash_identical": true,
+    "config_differences": [
+      "corpus path",
+      "output path",
+      "parent path",
+      "deadline_min (90 to 880)"
+    ],
+    "score_discrepancy_cause": "Not isolated; hardware/runtime differs but no causal attribution is established."
+  },
+  "gold_public_closure": {
+    "removed_train_pairs": 450,
+    "removed_dev_pairs": 7,
+    "remaining_train_pairs": 5549,
+    "remaining_dev_pairs": 1986
+  },
+  "public_exclusion": {
+    "forbidden_papers": 7500,
+    "eligible_figures": 21258,
+    "retained_content_hits_under_checks": 0
+  },
+  "availability": {
+    "public_source_url": null,
+    "public_checkpoint_url": null,
+    "status": "Private source package and checkpoints; no public access claimed."
+  }
+}

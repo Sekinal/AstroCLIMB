@@ -1,0 +1,64 @@
+{
+  "model": {
+    "id": "Qwen/Qwen3.5-4B",
+    "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a"
+  },
+  "class_order": [
+    "same_figure",
+    "same_paper",
+    "related_papers",
+    "unrelated_papers"
+  ],
+  "chat_template": {
+    "role": "user",
+    "add_generation_prompt": true,
+    "processor": "Checkpoint-bundled processor; hashes in selected-recipe.json"
+  },
+  "prompts": {
+    "cxi": {
+      "content_order": [
+        "image",
+        "text"
+      ],
+      "text": "Caption A: {caption}\nQuestion: what is the relation of this figure to the caption?",
+      "source": "scripts/vlm_cxi_peft.py:encode"
+    },
+    "ixi": {
+      "content_order": [
+        "text: Figure A:",
+        "image A",
+        "text: Figure B:",
+        "image B",
+        "text: question"
+      ],
+      "question": "Are Figure A and Figure B from the same paper, related papers, or unrelated papers?",
+      "source": "scripts/vlm_ixi_shared.py:_build_prompt"
+    },
+    "cxc": {
+      "content_order": [
+        "text"
+      ],
+      "text": "Caption A:\n{caption_a}\n\nCaption B:\n{caption_b}\n\nAre Caption A and Caption B from the same paper, related papers, or unrelated papers?",
+      "source": "scripts/vlm_cxc_shared.py:encode_cxc"
+    }
+  },
+  "preprocessing": {
+    "caption_character_limit_each": 2400,
+    "caption_case": "original",
+    "image_mode": "RGB",
+    "max_pixels_each": 262144
+  },
+  "prediction": {
+    "batch_size": 1,
+    "output": "Four-class head on final non-padding representation",
+    "masked_class_for_ixi_cxc": "same_figure",
+    "ixi": "Arithmetic mean of original/reversed probabilities",
+    "cxi_cxc": "Original orientation",
+    "decision": "Canonical-class argmax",
+    "test_class_counts_used": false
+  },
+  "recipe": "configs/selected-recipe.json",
+  "data": "configs/data-provenance.json",
+  "source_public_url": null,
+  "checkpoint_public_url": null
+}

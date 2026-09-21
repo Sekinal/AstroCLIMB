@@ -93,3 +93,22 @@ The final prose pass develops each comparison around its purpose and result;
 see [editorial references and checks](prose-revision.md). A separate factual
 review found no material drift; the identified averaging ambiguity was repaired.
 Both PDF variants and the submission abstract include this revision.
+
+## Reviewer clarifications and policy check (September 21)
+
+The manuscript now specifies filtering directions and final-pass removal counts,
+historical exposure, historical versus fresh score provenance, the short SFT
+control, feature baselines, private artifact status, and conditional paired
+bootstrap intervals. The public arm's additional compute is explicit. Smaller
+historical score differences are not established by intervals spanning zero.
+Evidence: `docs/reviewer-clarifications.md`,
+`analysis/reviewer-clarification-evidence.json`, and
+`configs/inference-manifest.json`. A critical simulated reviewer checked the
+revision without finding a new substantive contradiction.
+
+Both ACL PDFs were rebuilt and all pages rendered and inspected: four content
+pages including acknowledgments, six total. All 28 citation keys remain. No
+undefined citations/references or overfull boxes. The abstract is unchanged.
+`docs/ai-policy-check.md` records the ACL policy and live WASP form check; AI
+assistance is disclosed across all manuscript sections. The author must still
+review and approve the final content. Nothing has been submitted or published.

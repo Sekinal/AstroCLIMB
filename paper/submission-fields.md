@@ -56,3 +56,6 @@ repository contains author metadata and is not an anonymous review supplement.
 timestamps. Fresh matched CXI GPU runs are verified for three gold-stage seeds. Full data
 reconstruction and independent end-to-end reproduction of all three submitted
 modalities from the source release remain incomplete.
+
+AI-policy check: see `docs/ai-policy-check.md`. The September 21 live form has
+no separate AI-use field; the PDF acknowledgments disclose the scope of assistance.
