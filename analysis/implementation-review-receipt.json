@@ -422,10 +422,56 @@
         "grep": 2
       },
       "checks": []
+    },
+    {
+      "name": "final-three-seed-paper-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "turns": 3,
+      "elapsedMs": 127445,
+      "toolCalls": {
+        "read": 4,
+        "grep": 1,
+        "find": 1
+      },
+      "checks": []
+    },
+    {
+      "name": "matched-final-plot-fix-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "turns": 5,
+      "elapsedMs": 42754,
+      "toolCalls": {
+        "read": 3,
+        "edit": 1,
+        "grep": 1
+      },
+      "checks": []
+    },
+    {
+      "name": "complete-matched-paper-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "turns": 2,
+      "elapsedMs": 123425,
+      "toolCalls": {
+        "read": 3
+      },
+      "checks": []
     }
   ],
   "coordinator_validation": "62 CPU tests and 6 subtests passed; archived training source unchanged. Portability review exact-explicit-model finding rejected by design: omitted --model adopts parent identity; explicit --model must match it. Other review findings repaired and tested.",
   "operational_validation": "Replication launcher and continuation pass bash syntax checks. Export coordinator path assertions pass; remote preflight confirms actual gold label field and 794 unique label-free export rows. Fresh GPU exports are pending, not claimed complete. Operational scripts are private and are not the archived training source.",
   "editorial_validation": "Original academic rewrite reviewed against previous manuscript; no substantive factual drift found. Coordinator clarified matched gold schedule and inference wording. All 28 citation keys resolve. Both ACL PDFs compile with four content pages, six total; page renders inspected. Ongoing matched controls remain outside manuscript pending verification/replication.",
-  "matched_seed7_validation": "Both 837-update arms complete. Fresh-process batch-one predictions exactly reproduce training scores; replay max-logit difference zero for both. Retrieved logs independently regenerate aggregate receipt; downloaded predictions/logs SHA-256 verified. Ready-event configs differ only in out/init_checkpoint with equal data hash. Matched-control figure rendered and visually checked on the real one-pair receipt, with replication still pending. No plot lint/test run was claimed."
+  "matched_seed7_validation": "Both 837-update arms complete. Fresh-process batch-one predictions exactly reproduce training scores; replay max-logit difference zero for both. Retrieved logs independently regenerate aggregate receipt; downloaded predictions/logs SHA-256 verified. Ready-event configs differ only in out/init_checkpoint with equal data hash. Matched-control figure rendered and visually checked on the real one-pair receipt, with replication still pending. No plot lint/test run was claimed.",
+  "final_matched_validation": "All three gold-stage pairs complete 837 updates. Eight fresh selected/final exports reproduce scores exactly, all replay maximum logit differences zero. Local prediction/export-log hashes rechecked. Within-pair config differences only out/init_checkpoint, training hashes equal. Three-seed plot rendered and visually inspected.",
+  "final_editorial_validation": "Two Pi/Muse paper jobs returned without edits; coordinator completed manuscript integration. All 28 citation keys preserved and resolve. Both ACL PDFs compile without undefined references/citations or overfull boxes, four content pages and six total. All twelve rendered pages visually checked. Submission abstract synchronized. Historical prior validation fields describe earlier snapshots.",
+  "gpu_shutdown_validation": "Required backups verified first. Exact project two-GPU instance deletion accepted by Lium at 2026-09-21T17:43:18Z; subsequent provider query confirmed absent from active pods. Private receipt retained locally."
 }

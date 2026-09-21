@@ -1,5 +1,12 @@
 # Related-work review and revision record
 
+**September 21 update:** the previously missing matched gold-only comparison
+is now complete for three gold-stage seeds, conditional on one fixed public
+parent. The mean selected-checkpoint CXI DEV gain is 0.06738; all fresh exports
+and replay checks pass. See [the final handoff](final-analysis-handoff.md).
+The historical review below records the earlier evidence state; its independent
+evaluation and long-SFT-control concerns remain unresolved.
+
 Targeted review completed 2026-09-14 against primary publisher records and papers.
 This is related-work positioning added during writing, not a claim that all these
 papers inspired the historical experiments. The broader historical inspiration

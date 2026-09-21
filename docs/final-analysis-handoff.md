@@ -27,21 +27,29 @@ wording or the portal grace period.
   unchanged. Pi/Muse implementation/review metadata is preserved in
   `analysis/implementation-review-receipt.json`; private raw sessions are excluded.
 
-## Running experiment
+## Completed matched experiment
 
-The seed-7 matched pair completed all 837 updates. Fresh-process batch-one
-exports reproduce logged DEV macro-F1 exactly: **0.6890615484 gold-only** and
-**0.7561928105 public4k**, a paired difference of **0.0671312620**. Both selected
-checkpoints are the final epoch. Both fresh replay probes match with zero maximum
-logit difference. Retrieved logs regenerate the remote aggregate receipt, and
-prediction/log SHA-256 values match. Ready configurations differ only in output
-path and parent initialization; training-data hashes are identical.
+All six runs completed 837 gold updates; the guarded campaign finished at
+2026-09-21 09:18:20 UTC. Fresh batch-one exports reproduce every selected and
+final checkpoint score, with zero maximum logit difference on all replay probes.
+Retrieved training logs independently regenerate all three aggregate receipts;
+prediction/log SHA-256 checks pass. Within each pair, ready configurations differ
+only in output path and parent initialization, with identical training-data hashes.
 
-This is one paired seed on repeatedly consulted CXI DEV, not a new Kaggle result
-or a seed-robust estimate. Receipts are `analysis/matched-gold-controls.json` and
-`analysis/matched-gold-seed7-verification.json`. Both RTX 3090s now train seed 19;
-seed 37 remains queued behind verification. Public pretraining stays fixed at
-its original seed-7 parent, and adds compute to the transfer arm.
+| Gold seed | Gold only | Public4k | Paired gain |
+|---|---:|---:|---:|
+| 7 | 0.689062 | 0.756193 | +0.067131 |
+| 19 | 0.676980 | 0.748111 | +0.071132 |
+| 37 | 0.681808 | 0.745694 | +0.063885 |
+
+The mean selected-checkpoint gain is 0.067383; the mean fixed-final-epoch gain is
+0.067716. Seed 19 selects step 558 in both arms; seeds 7 and 37 select 837.
+These are new-runtime CXI development controls, not new Kaggle scores. The public
+parent is fixed at its original seed 7; only gold-stage variability is measured.
+Public adaptation adds compute, and repeatedly consulted DEV remains a limitation.
+Receipts: `analysis/matched-gold-controls.json` and
+`analysis/matched-gold-verification.json`. The standalone PDF/PNG plot includes
+all three pairs and has been visually checked.
 
 The first setup attempt exposed a model-path identity mismatch in the transfer
 arm, before transfer training began. Its parallel gold-only attempt was stopped
@@ -56,61 +64,27 @@ TRAIN/DEV rows; it does not use nonselected labels. The full 2.27 GB image archi
 has a locally verified SHA-256 backup. Download credentials were removed from the
 GPU machine after staging.
 
-## Remaining work
+## Preservation and GPU shutdown completed
 
-1. Require both arms of seeds 19 and 37 to finish all 837 updates and reload checks.
-2. Fresh-process batch-one export selected and final checkpoints, recompute aligned
-   DEV macro-F1, and compare against logged values before reporting any result.
-3. If measured runtime fits the collection cutoff, repeat paired gold-stage seeds
-   19 and 37, conditional on the same seed-7 public parent. The decision is based
-   on runtime, never favorable scores. Report every completed pair.
-4. Preserve logs, export receipts, and checkpoint artifacts. Available local disk
-   is limited: do not blindly download all optimizer states or duplicate caches.
-5. Revise the paper only after verified results; distinguish the matched new-runtime
-   controls from the historical submitted model. Update limitations, figures,
-   reproduction status, metadata receipts, and the source ZIP consistently.
-6. Compile both paper variants, check citations and page limits, and visually inspect
-   rendered pages. The author still handles OpenReview submission and consents.
+Original gold images, all selected/final inference checkpoints, processors,
+private replay probes, predictions, logs, and export/environment receipts are
+preserved locally. Archive and member-level integrity checks passed. Optimizer
+states were intentionally excluded from the final inference-only backup.
+Private training probes and row-level data are not public release artifacts.
 
-Operational paths, launcher scripts, private logs and prediction tables live in
-ignored local output/harness directories and on the GPU machine. Do not publish
-raw session logs, authentication files, row-level gold data, or training probes.
+The author authorized termination after verified preservation. Lium accepted
+termination of the exact project two-GPU instance at **2026-09-21 17:43:18 UTC**
+(HTTP 200); the subsequent account query confirmed it absent from active pods.
+No unrelated instance was touched. The private provider receipt is
+`output/final_analysis_20260921/lium-termination.json`.
 
-## Continuation staged and running
+## Final manuscript integration
 
-The guarded coordinator verified seed 7 and launched seed 19. Seed 37 follows
-after seed 19 completes with matching fresh exports. Each replication pair has a
-two-hour outer training limit and must have at least four hours remaining before
-the collection cutoff. Export subprocesses have 30-minute timeouts. A failed
-completion, replay, or score check stops continuation; scores never gate whether
-a replication is attempted. The coordinator holds an exclusive process lock.
-Remote preflight verified 794 unique label-free inference rows and the actual
-gold label field before launch. Seed-7 results are verified; replication results
-are still pending.
-
-## Editorial revision completed
-
-The manuscript now follows the public-adaptation question, class-level evidence,
-and alternative methods more directly. The abstract and introduction were rewritten
-and the submission abstract synchronized. All 28 citation keys remain; a separate
-Pi/Muse review found no substantive factual drift. Both PDFs compile cleanly and
-render correctly at four content pages and six total pages. New matched-control
-results remain in analysis receipts until seed replication is complete.
-
-Seed-7 inference checkpoints and their private replay probes are backed up locally
-(221,900,800 bytes). Remote/local archive hashes and all 20 members match;
-optimizer states are intentionally excluded. These private probes are not release
-artifacts. The standalone matched-control figure currently shows one verified pair
-and will be regenerated with every completed replication.
-
-## Authorized GPU shutdown
-
-The author explicitly authorized terminating the Lium GPU instances after the
-work is done. Before termination, finish or explicitly account for every queued
-run, verify required exports, and preserve all needed checkpoints, predictions,
-logs, environment/provenance receipts, and analysis inputs outside the instance.
-Confirm backup integrity and that no remaining paper/reproduction work needs the
-GPUs. Then identify and terminate the exact Lium instance(s) used for this project
-and confirm their stopped/deleted state with the provider. This authorization
-persists; no further confirmation is required. Do not terminate unrelated account
-instances or publish account credentials. GPU shutdown is not yet completed.
+The matched-control table and interpretation are integrated into the paper.
+Submission fields are synchronized; both PDFs compile cleanly with four content
+pages and six total. All 28 citation keys resolve and remain credited. All twelve
+rendered pages and the standalone three-seed plot passed visual inspection.
+The source ZIP is refreshed from the final committed snapshot.
+The author still handles OpenReview submission and its profile/consent fields.
+No submission has been created. Fresh CXI controls do not constitute independent
+end-to-end reproduction of the full three-modality submitted system.

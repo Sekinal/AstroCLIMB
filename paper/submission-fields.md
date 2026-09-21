@@ -28,11 +28,11 @@ contact address, research@irvingernesto.com. No profile ID is guessed here.
 **Keywords:** scientific figures, multimodal classification, astronomy,
 parameter-efficient fine-tuning, reinforcement learning
 
-**TL;DR:** Public scientific-figure adaptation and modality-specific 4B classifiers achieve 0.75149 on AstroCLIMB; further adaptation and tested RL alternatives do not improve the selected system.
+**TL;DR:** Public scientific-figure adaptation improves CXI development macro-F1 by 0.0674 across three matched gold-stage seeds; the submitted modality-specific system scores 0.75149 on Kaggle.
 
 **Abstract:**
 
-We study public supervised adaptation for AstroCLIMB, a task that classifies relations between scientific figures and captions. Our system adapts a 4B vision–language model on graph-derived figure–caption pairs, then trains separate classifiers for each input modality. It obtains a Kaggle public score of 0.75149. With the gold adaptation recipe held fixed, increasing public adaptation from 2,000 to 4,000 updates raises caption–image development macro-F1 from 0.70851 to 0.74839. The gains concentrate in paper relations; 8,000 updates bring no further improvement. Generative supervision and the tested group sequence policy optimization variants also fail to improve the selected classifier. These comparisons use repeatedly consulted development data, and we describe the resulting limits on interpretation.
+We study public supervised adaptation for AstroCLIMB, which classifies relations between scientific figures and captions. A 4B vision–language model adapted on graph-derived public pairs improves caption–image development macro-F1 by 0.0674 on average over gold-only training across three gold-stage seeds, conditional on one public checkpoint. Our modality-specific system obtains a Kaggle public score of 0.75149. Increasing public adaptation from 2,000 to 4,000 updates improves paper-relation classification, but 8,000 updates bring no further gain. Generative supervision and the tested group sequence policy optimization variants do not improve the selected classifier. These comparisons use repeatedly consulted development data, limiting their interpretation.
 
 **PDF:** `paper/build/main.pdf` is the conservative anonymous review version;
 `paper/build/author.pdf` includes author/funding metadata. Both have at most
@@ -53,5 +53,6 @@ the identifying funding statement is suppressed in review mode. The source
 repository contains author metadata and is not an anonymous review supplement.
 
 `submission-form-snapshot.json` preserves the relevant public form schema and
-timestamps. Full data reconstruction and a fresh GPU training run have not been
-performed from the source release; do not represent those as completed checks.
+timestamps. Fresh matched CXI GPU runs are verified for three gold-stage seeds. Full data
+reconstruction and independent end-to-end reproduction of all three submitted
+modalities from the source release remain incomplete.

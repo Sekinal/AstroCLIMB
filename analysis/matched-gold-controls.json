@@ -1,9 +1,9 @@
 {
   "scope": "Aggregate receipt from retrieved train.jsonl logs; validation macro-F1 only",
   "expected_horizon": 837,
-  "n_runs": 2,
-  "n_complete": 2,
-  "n_pairs": 1,
+  "n_runs": 6,
+  "n_complete": 6,
+  "n_pairs": 3,
   "seed_results": [
     {
       "arm": "gold_only",
@@ -52,6 +52,102 @@
       "chosen_step": 837,
       "chosen_score": 0.7561928104575164,
       "final_epoch_score": 0.7561928104575164
+    },
+    {
+      "arm": "gold_only",
+      "seed": 19,
+      "status": "complete",
+      "expected_horizon": 837,
+      "source_sha256": "25c1b105dcda35dd934f01b59146cf2b71738ff3f2764773a37be79573e2d14b",
+      "validation_scores": [
+        {
+          "step": 279,
+          "macro_f1": 0.644489560575104
+        },
+        {
+          "step": 558,
+          "macro_f1": 0.67697972938954
+        },
+        {
+          "step": 837,
+          "macro_f1": 0.6751476995318891
+        }
+      ],
+      "chosen_step": 558,
+      "chosen_score": 0.67697972938954,
+      "final_epoch_score": 0.6751476995318891
+    },
+    {
+      "arm": "public4k",
+      "seed": 19,
+      "status": "complete",
+      "expected_horizon": 837,
+      "source_sha256": "2f1f12602d67f051606911b054aa6d19239a8a09a6b66f2a65d4eb7961dabf42",
+      "validation_scores": [
+        {
+          "step": 279,
+          "macro_f1": 0.6943287512877705
+        },
+        {
+          "step": 558,
+          "macro_f1": 0.7481113031019686
+        },
+        {
+          "step": 837,
+          "macro_f1": 0.7472779833797467
+        }
+      ],
+      "chosen_step": 558,
+      "chosen_score": 0.7481113031019686,
+      "final_epoch_score": 0.7472779833797467
+    },
+    {
+      "arm": "gold_only",
+      "seed": 37,
+      "status": "complete",
+      "expected_horizon": 837,
+      "source_sha256": "7b4cf60682b58709b92339505ac5d43a50a284b2f142a74ca69c5a965db6e8b7",
+      "validation_scores": [
+        {
+          "step": 279,
+          "macro_f1": 0.6277943977131147
+        },
+        {
+          "step": 558,
+          "macro_f1": 0.669868808919408
+        },
+        {
+          "step": 837,
+          "macro_f1": 0.6818083099566284
+        }
+      ],
+      "chosen_step": 837,
+      "chosen_score": 0.6818083099566284,
+      "final_epoch_score": 0.6818083099566284
+    },
+    {
+      "arm": "public4k",
+      "seed": 37,
+      "status": "complete",
+      "expected_horizon": 837,
+      "source_sha256": "c79a9f3a8fd40da71e356cf3156f0248735b20509369d61598876c063835b092",
+      "validation_scores": [
+        {
+          "step": 279,
+          "macro_f1": 0.7320703171560399
+        },
+        {
+          "step": 558,
+          "macro_f1": 0.7433365624625751
+        },
+        {
+          "step": 837,
+          "macro_f1": 0.7456937560086401
+        }
+      ],
+      "chosen_step": 837,
+      "chosen_score": 0.7456937560086401,
+      "final_epoch_score": 0.7456937560086401
     }
   ],
   "pairs": [
@@ -71,8 +167,44 @@
       },
       "paired_difference": 0.06713126202096797,
       "paired_final_epoch_difference": 0.06713126202096797
+    },
+    {
+      "seed": 19,
+      "gold_only": {
+        "chosen_step": 558,
+        "chosen_score": 0.67697972938954,
+        "final_epoch_score": 0.6751476995318891,
+        "source_sha256": "25c1b105dcda35dd934f01b59146cf2b71738ff3f2764773a37be79573e2d14b"
+      },
+      "public4k": {
+        "chosen_step": 558,
+        "chosen_score": 0.7481113031019686,
+        "final_epoch_score": 0.7472779833797467,
+        "source_sha256": "2f1f12602d67f051606911b054aa6d19239a8a09a6b66f2a65d4eb7961dabf42"
+      },
+      "paired_difference": 0.07113157371242862,
+      "paired_final_epoch_difference": 0.07213028384785758
+    },
+    {
+      "seed": 37,
+      "gold_only": {
+        "chosen_step": 837,
+        "chosen_score": 0.6818083099566284,
+        "final_epoch_score": 0.6818083099566284,
+        "source_sha256": "7b4cf60682b58709b92339505ac5d43a50a284b2f142a74ca69c5a965db6e8b7"
+      },
+      "public4k": {
+        "chosen_step": 837,
+        "chosen_score": 0.7456937560086401,
+        "final_epoch_score": 0.7456937560086401,
+        "source_sha256": "c79a9f3a8fd40da71e356cf3156f0248735b20509369d61598876c063835b092"
+      },
+      "paired_difference": 0.06388544605201163,
+      "paired_final_epoch_difference": 0.06388544605201163
     }
   ],
   "uncertainty": "Descriptive only; no confidence intervals computed (small n).",
-  "descriptive_note": "Mean paired difference omitted: fewer than two complete pairs."
+  "descriptive_mean_paired_difference": 0.06738276059513608,
+  "descriptive_mean_paired_final_epoch_difference": 0.0677156639736124,
+  "descriptive_note": "Means of paired differences (public4k minus gold_only) for chosen and final-epoch scores; descriptive only, no CI."
 }

@@ -1,0 +1,450 @@
+{
+  "scope": "Three gold-stage seeds conditional on one fixed public4k parent; repeated CXI DEV, additional public training compute, no independent test or new Kaggle result.",
+  "seeds": [
+    {
+      "expected_horizon": 837,
+      "records": [
+        {
+          "absolute_difference": 0.0,
+          "arm": "gold_only",
+          "class_f1": [
+            0.8888888888888888,
+            0.5625,
+            0.5356265356265356,
+            0.7692307692307693
+          ],
+          "confusion_matrix": [
+            [
+              172,
+              18,
+              2,
+              2
+            ],
+            [
+              16,
+              99,
+              69,
+              16
+            ],
+            [
+              5,
+              32,
+              109,
+              56
+            ],
+            [
+              0,
+              3,
+              25,
+              170
+            ]
+          ],
+          "export_log": "seed7-gold_only-837.export.log",
+          "export_log_sha256": "5844925289ceb1c914a81834497d3e7892d46ad7bc5cade3ca7ff25e9761062d",
+          "export_macro_f1": 0.6890615484365484,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.6890615484365484,
+          "nrows": 794,
+          "output": "seed7-gold_only-837.parquet",
+          "predictions_sha256": "d4d5265b22de1cda2bff46ca2844380ea3b8c548d1ea583b48b7a33547e72306",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 7,
+          "step": 837,
+          "train_macro_f1": 0.6890615484365484
+        },
+        {
+          "absolute_difference": 0.0,
+          "arm": "public4k",
+          "class_f1": [
+            0.93,
+            0.6722222222222223,
+            0.6225490196078431,
+            0.8
+          ],
+          "confusion_matrix": [
+            [
+              186,
+              4,
+              2,
+              2
+            ],
+            [
+              15,
+              121,
+              51,
+              13
+            ],
+            [
+              5,
+              31,
+              127,
+              39
+            ],
+            [
+              0,
+              4,
+              26,
+              168
+            ]
+          ],
+          "export_log": "seed7-public4k-837.export.log",
+          "export_log_sha256": "7d45680027c2918c73958ee86170bca01be23a5946b470cf652f411b02cfcb60",
+          "export_macro_f1": 0.7561928104575164,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.7561928104575164,
+          "nrows": 794,
+          "output": "seed7-public4k-837.parquet",
+          "predictions_sha256": "5bc3769e4022e70219cbc68312174606f4590244d4f888fc216d13eb7367ef1a",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 7,
+          "step": 837,
+          "train_macro_f1": 0.7561928104575164
+        }
+      ],
+      "seed": 7,
+      "training_receipt": "seed7-training.json",
+      "val_export": "data/cxi/val_export.parquet",
+      "configuration_comparison": {
+        "differing_keys": [
+          "out",
+          "init_checkpoint"
+        ],
+        "training_data_hash_matches": true
+      }
+    },
+    {
+      "expected_horizon": 837,
+      "records": [
+        {
+          "absolute_difference": 0.0,
+          "arm": "gold_only",
+          "class_f1": [
+            0.8805970149253731,
+            0.5378151260504201,
+            0.5294117647058824,
+            0.7600950118764845
+          ],
+          "confusion_matrix": [
+            [
+              177,
+              13,
+              1,
+              3
+            ],
+            [
+              24,
+              96,
+              64,
+              16
+            ],
+            [
+              7,
+              43,
+              108,
+              44
+            ],
+            [
+              0,
+              5,
+              33,
+              160
+            ]
+          ],
+          "export_log": "seed19-gold_only-558.export.log",
+          "export_log_sha256": "61ab55751ad8d34224af882b2d8713e8f27dda70f1a5c19f344077667229d037",
+          "export_macro_f1": 0.67697972938954,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.67697972938954,
+          "nrows": 794,
+          "output": "seed19-gold_only-558.parquet",
+          "predictions_sha256": "f06876ebe4f5d9a36e2e36c35b07afac779017b53e08872747d094e91304ef47",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 19,
+          "step": 558,
+          "train_macro_f1": 0.67697972938954
+        },
+        {
+          "absolute_difference": 0.0,
+          "arm": "gold_only",
+          "class_f1": [
+            0.8728179551122195,
+            0.5384615384615384,
+            0.517948717948718,
+            0.7713625866050808
+          ],
+          "confusion_matrix": [
+            [
+              175,
+              15,
+              1,
+              3
+            ],
+            [
+              25,
+              98,
+              60,
+              17
+            ],
+            [
+              7,
+              46,
+              101,
+              48
+            ],
+            [
+              0,
+              5,
+              26,
+              167
+            ]
+          ],
+          "export_log": "seed19-gold_only-837.export.log",
+          "export_log_sha256": "125f894a25e6ba4d04bc7696dfb6da672bfaebc46be743b7c340d488de06663d",
+          "export_macro_f1": 0.6751476995318891,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.6751476995318891,
+          "nrows": 794,
+          "output": "seed19-gold_only-837.parquet",
+          "predictions_sha256": "06fe18f3b1c69a4034ede5a61447e6d9206410be1787ddc40512fa7cd3fca965",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 19,
+          "step": 837,
+          "train_macro_f1": 0.6751476995318891
+        },
+        {
+          "absolute_difference": 0.0,
+          "arm": "public4k",
+          "class_f1": [
+            0.928395061728395,
+            0.6337209302325582,
+            0.6210268948655256,
+            0.8093023255813954
+          ],
+          "confusion_matrix": [
+            [
+              188,
+              3,
+              2,
+              1
+            ],
+            [
+              18,
+              109,
+              58,
+              15
+            ],
+            [
+              5,
+              28,
+              127,
+              42
+            ],
+            [
+              0,
+              4,
+              20,
+              174
+            ]
+          ],
+          "export_log": "seed19-public4k-558.export.log",
+          "export_log_sha256": "0ea9b59a69d59e37ba37405d5d323c7fcf55c0435354e7413dc9548a8f3a91d3",
+          "export_macro_f1": 0.7481113031019686,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.7481113031019686,
+          "nrows": 794,
+          "output": "seed19-public4k-558.parquet",
+          "predictions_sha256": "d73d705390de708d7413ed90b25e37d46d68c9b8404134b95e631363535ce926",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 19,
+          "step": 558,
+          "train_macro_f1": 0.7481113031019686
+        },
+        {
+          "absolute_difference": 0.0,
+          "arm": "public4k",
+          "class_f1": [
+            0.9323308270676691,
+            0.6442577030812325,
+            0.6086956521739131,
+            0.8038277511961722
+          ],
+          "confusion_matrix": [
+            [
+              186,
+              5,
+              2,
+              1
+            ],
+            [
+              15,
+              115,
+              58,
+              12
+            ],
+            [
+              4,
+              33,
+              126,
+              39
+            ],
+            [
+              0,
+              4,
+              26,
+              168
+            ]
+          ],
+          "export_log": "seed19-public4k-837.export.log",
+          "export_log_sha256": "a138cd1112d0d3fe93a25c79c61cd3f1ec7cc3038fb5d8e5a7d20f05f5cf6e40",
+          "export_macro_f1": 0.7472779833797467,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.7472779833797467,
+          "nrows": 794,
+          "output": "seed19-public4k-837.parquet",
+          "predictions_sha256": "9b9295348bec892c50e3b54214c6f1c52facaf046044821f6a5a2338e91895b6",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 19,
+          "step": 837,
+          "train_macro_f1": 0.7472779833797467
+        }
+      ],
+      "seed": 19,
+      "training_receipt": "seed19-training.json",
+      "val_export": "data/cxi/val_export.parquet",
+      "configuration_comparison": {
+        "differing_keys": [
+          "out",
+          "init_checkpoint"
+        ],
+        "training_data_hash_matches": true
+      }
+    },
+    {
+      "expected_horizon": 837,
+      "records": [
+        {
+          "absolute_difference": 0.0,
+          "arm": "gold_only",
+          "class_f1": [
+            0.8883374689826302,
+            0.5879396984924623,
+            0.4909560723514212,
+            0.76
+          ],
+          "confusion_matrix": [
+            [
+              179,
+              13,
+              2,
+              0
+            ],
+            [
+              23,
+              117,
+              49,
+              11
+            ],
+            [
+              7,
+              61,
+              95,
+              39
+            ],
+            [
+              0,
+              7,
+              39,
+              152
+            ]
+          ],
+          "export_log": "seed37-gold_only-837.export.log",
+          "export_log_sha256": "d0420d24735e14cf5a60c15c41a2bcaadb709de7c50082aa588c3cc90f417005",
+          "export_macro_f1": 0.6818083099566284,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.6818083099566284,
+          "nrows": 794,
+          "output": "seed37-gold_only-837.parquet",
+          "predictions_sha256": "28de787c98994f1617ca0d216a22c0507cfe844db61cc60907d192ed857ab77f",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 37,
+          "step": 837,
+          "train_macro_f1": 0.6818083099566284
+        },
+        {
+          "absolute_difference": 0.0,
+          "arm": "public4k",
+          "class_f1": [
+            0.9230769230769231,
+            0.6557377049180327,
+            0.6039603960396039,
+            0.8
+          ],
+          "confusion_matrix": [
+            [
+              186,
+              4,
+              2,
+              2
+            ],
+            [
+              18,
+              120,
+              50,
+              12
+            ],
+            [
+              5,
+              38,
+              122,
+              37
+            ],
+            [
+              0,
+              4,
+              28,
+              166
+            ]
+          ],
+          "export_log": "seed37-public4k-837.export.log",
+          "export_log_sha256": "3a4b8663707fb0d3ebee6735069e9e194f6a2df1887d1868f938f49b7e1faf22",
+          "export_macro_f1": 0.7456937560086401,
+          "fresh_replay_passed": true,
+          "label_field": "y",
+          "macro_f1": 0.7456937560086401,
+          "nrows": 794,
+          "output": "seed37-public4k-837.parquet",
+          "predictions_sha256": "47fa0a98bab575e6b9d210a92bb3e22fa319e6a4483424abdb3dace4663d1592",
+          "replay_max_logit_diff": 0.0,
+          "score_match": true,
+          "seed": 37,
+          "step": 837,
+          "train_macro_f1": 0.7456937560086401
+        }
+      ],
+      "seed": 37,
+      "training_receipt": "seed37-training.json",
+      "val_export": "data/cxi/val_export.parquet",
+      "configuration_comparison": {
+        "differing_keys": [
+          "out",
+          "init_checkpoint"
+        ],
+        "training_data_hash_matches": true
+      }
+    }
+  ]
+}

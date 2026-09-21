@@ -1,5 +1,12 @@
 # Internal critical review of the AstroCLIMB manuscript
 
+**September 21 update:** the previously missing matched gold-only comparison
+is now complete for three gold-stage seeds, conditional on one fixed public
+parent. The mean selected-checkpoint CXI DEV gain is 0.06738; all fresh exports
+and replay checks pass. See [the final handoff](final-analysis-handoff.md).
+The historical review below records the earlier evidence state; its independent
+evaluation and long-SFT-control concerns remain unresolved.
+
 Reviewed 2026-09-14, at the author's request. This is an author-side review of a
 public-facing draft, not a confidential external review. References to manuscript
 lines identify the version reviewed before the current revision. No additional

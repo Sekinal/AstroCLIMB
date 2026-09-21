@@ -1,12 +1,12 @@
 \begin{abstract}
-We study public supervised adaptation for AstroCLIMB, a task that classifies relations between scientific figures and captions. Our system adapts a 4B vision--language model on graph-derived figure--caption pairs, then trains separate classifiers for each input modality. It obtains a Kaggle public score of 0.75149. With the gold adaptation recipe held fixed, increasing public adaptation from 2,000 to 4,000 updates raises caption--image development macro-F1 from 0.70851 to 0.74839. The gains concentrate in paper relations; 8,000 updates bring no further improvement. Generative supervision and the tested group sequence policy optimization variants also fail to improve the selected classifier. These comparisons use repeatedly consulted development data, and we describe the resulting limits on interpretation.
+We study public supervised adaptation for AstroCLIMB, which classifies relations between scientific figures and captions. A 4B vision--language model adapted on graph-derived public pairs improves caption--image development macro-F1 by 0.0674 on average over gold-only training across three gold-stage seeds, conditional on one public checkpoint. Our modality-specific system obtains a Kaggle public score of 0.75149. Increasing public adaptation from 2,000 to 4,000 updates improves paper-relation classification, but 8,000 updates bring no further gain. Generative supervision and the tested group sequence policy optimization variants do not improve the selected classifier. These comparisons use repeatedly consulted development data, limiting their interpretation.
 \end{abstract}
 
 \section{Introduction}
 
-AstroCLIMB \citep{astroclimb} asks whether two scientific objects come from the same figure, the same paper, citation-related papers (an edge in either direction), or unrelated papers. Inputs may be a caption--image pair (CXI), two images (IXI), or two captions (CXC). Figure identity is only part of the task: a model must also distinguish relations between papers from the content of their figures and captions.
+AstroCLIMB \citep{astroclimb} asks whether two scientific objects come from the same figure, the same paper, citation-related papers (an edge in either direction), or unrelated papers. Inputs may be a caption--image pair (CXI), two images (IXI), or two captions (CXC). Models must distinguish paper relations from figure and caption content.
 
-We examine public supervised adaptation as a way to learn these distinctions. Starting from Qwen3.5-4B \citep{qwen35}, we use graph-derived public pairs for caption--image adaptation, followed by task-specific low-rank adaptation (LoRA; \citealp{lora}). We compare adaptation durations and examine which relation classes improve, then test OCR, answer generation, and reinforcement learning as alternatives. The submitted system reaches four-class macro-F1 of \textbf{0.7562033665} on development and an official Kaggle public score of \textbf{0.75149}. We report these as results of a task-specific system study and make no leaderboard-rank claim.
+We examine public supervised adaptation as a way to learn these distinctions. Starting from Qwen3.5-4B \citep{qwen35}, we use graph-derived public pairs for caption--image adaptation, followed by task-specific low-rank adaptation (LoRA; \citealp{lora}). We compare public adaptation against gold-only training, vary its duration, and test OCR, answer generation, and reinforcement learning. The submitted system reaches four-class macro-F1 of \textbf{0.7562033665} on development and an official Kaggle public score of \textbf{0.75149}. We make no leaderboard-rank claim.
 
 \paragraph{Related work.}
 Figure--caption correspondence learning predates this task \citep{lookreadenrich}; MedICaT studies scientific image--text alignment \citep{subramanian-etal-2020-medicat}, and SciCap studies figure captioning \citep{hsu-etal-2021-scicap-generating}. SciOL demonstrates multimodal pretraining on scientific figures and text \citep{sciol}. Citation-derived supervision also underlies SPECTER's document representations \citep{cohan-etal-2020-specter}. We contribute a task-specific recipe comparison. TRACS concerns telescope references and categorization \citep{grezes-etal-2025-overview}; its scores are not comparable.
@@ -35,12 +35,12 @@ Total & 5,549 & 1,986 \\
 \end{table}
 
 \paragraph{Public supervision.}
-We index all 114 shards of the public \texttt{adsabs/AstroCLIMB} release, with 94,233 figures, and build 80,000 balanced CXI training pairs plus 2,000 public validation pairs. Labels follow figure and paper identity and observed citation relations; unrelated cases mix random-paper, same-journal, and two-hop pairs without a direct edge. These labels are not manually verified, so missing edges can create noisy negatives.
+We index all 114 shards of the public \texttt{adsabs/AstroCLIMB} release, with 94,233 figures, and build 80,000 balanced CXI training pairs plus 2,000 public validation pairs. Labels follow figure and paper identity and observed citation relations; unrelated cases mix random-paper, same-journal, and two-hop pairs without a direct edge. Missing edges can create noisy negatives; labels are not manually verified.
 
-Exclusion checks cover label-free test content and use candidate paper identities, normalized captions, image-byte and decoded-pixel hashes, and 256-bit perceptual hashes at Hamming distance at most eight. Matches propagate through duplicate components and candidate-paper mappings; whole gold training components crossing protected boundaries are removed, and public validation components are separated before pair generation. The checks found no retained matches under the audited criteria, but unmatched objects and incomplete metadata rule out a claim of perfect paper-identity recovery. Identifiers and hashes support alignment, exclusion, and byte verification only, never prediction. The classifier recipe uses no competition test labels. Earlier exploration had exposed released scoring information and a structural shortcut; the affected submissions and representations are excluded from this lineage, although the benchmark was not wholly unseen at project level.
+Exclusion checks cover label-free test content and use candidate paper identities, normalized captions, image-byte and decoded-pixel hashes, and 256-bit perceptual hashes at Hamming distance at most eight. Matches propagate through duplicate components and candidate-paper mappings; whole gold training components crossing protected boundaries are removed, and public validation components are separated before pair generation. No retained matches were found, but unmatched objects and incomplete metadata prevent perfect identity recovery. Identifiers and hashes support auditing, never prediction. The classifier recipe uses no competition test labels. Earlier exploration had exposed released scoring information and a structural shortcut; the affected submissions and representations are excluded from this lineage, although the benchmark was not wholly unseen at project level.
 
 \paragraph{Selection and reporting.}
-Classifier and recipe selection use development data, while feasibility canaries use separately declared TRAIN-only monitors. Development scores therefore reflect repeated selection rather than unbiased estimation or nested cross-validation. Whole-task macro-F1 pools the four-class confusion matrix. IXI and CXC have no same-figure cases; alongside the four-class logger, which assigns zero to the absent class, we report active-three-class macro-F1. Public validation does not set the adaptation endpoint.
+Selection uses development data; feasibility canaries use declared TRAIN-only monitors. Development scores reflect repeated selection, not unbiased estimation or nested cross-validation. Whole-task macro-F1 pools the four-class confusion matrix. IXI and CXC have no same-figure cases; alongside the four-class logger, which assigns zero to the absent class, we report active-three-class macro-F1. Public validation does not set the adaptation endpoint.
 
 \section{System}
 
@@ -62,10 +62,29 @@ We preserve source, corpus, checkpoint, processor, and probability-artifact hash
 
 \section{Results and Analysis}
 
-\paragraph{Public adaptation.}
+\paragraph{Matched gold-only controls.}
+We retrain both CXI arms in the same RTX 3090 runtime using the gold recipe above, varying gold seeds 7, 19, and 37. Only initialization differs: pristine base versus the fixed public4k adapter and head. All six runs complete 837 updates; fresh batch-one exports reproduce selected and final scores with zero replay-logit discrepancy. Public initialization improves every pair (Table~\ref{tab:matched}), averaging $+0.06738$ for selected checkpoints and $+0.06772$ at the fixed final epoch. Both arms select step 558 for seed 19 and 837 otherwise. Public training adds compute; these controls measure gold-stage variability conditional on one public parent, not public-pretraining variability or new Kaggle performance.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{rrrr}
+\hline
+Gold seed & Gold only & Public4k & Difference \\
+\hline
+7 & 0.68906 & 0.75619 & +0.06713 \\
+19 & 0.67698 & 0.74811 & +0.07113 \\
+37 & 0.68181 & 0.74569 & +0.06389 \\
+\hline
+\end{tabular}
+\caption{Matched CXI controls on 794 DEV pairs, with epoch-boundary selection and one fixed public parent. Fresh runs, distinct from the submitted model.}
+\label{tab:matched}
+\end{table}
+
+\paragraph{Public adaptation duration.}
 Under the same gold schedule, increasing public adaptation from 2,000 to 4,000 updates improves CXI development macro-F1 from 0.70851 to 0.74839 (Figure~\ref{fig:results}a). The change is concentrated in paper relations: class F1 changes by $-0.005$ (same figure), $+0.052$ (same paper), $+0.072$ (related), and $+0.041$ (unrelated), with 81 corrections against 49 regressions on the same 794 pairs.
 
-Continuing to 8,000 updates reaches 0.74285, with same-paper F1 $-0.049$, related $+0.018$, and unrelated $+0.011$ relative to 4,000 updates, and 45 corrections against 47 regressions. The additional updates improve some classes at the expense of others; they do not establish a capacity ceiling. A pristine gold-only CXI reference reaches 0.71367 under a different gold schedule and is not a matched control for the duration comparison.
+Continuing to 8,000 updates reaches 0.74285, with same-paper F1 $-0.049$, related $+0.018$, and unrelated $+0.011$ relative to 4,000 updates, and 45 corrections against 47 regressions. This tradeoff does not establish a capacity ceiling.
 
 \begin{figure*}[t]
 \centering
@@ -78,7 +97,7 @@ Continuing to 8,000 updates reaches 0.74285, with same-paper F1 $-0.049$, relate
 Native IXI training reaches active-class F1 of 0.65536, compared with 0.54052 for a frozen SigLIP~2 \citep{siglip2}/OCR feature baseline, rising to 0.67791 with the fixed image-order average. Native CXC reaches 0.72756, versus 0.67277 for frozen Qwen3-Embedding-8B \citep{qwen3embedding} and BGE-base-en-v1.5 \citep{bgemodel,bgecpack} caption features; its order average scores 0.72721, so the original orientation is retained. Combined with the selected CXI branch, these give a whole-development score of 0.75620; substituting the 8k CXI branch gives 0.75557, so the 4k branch is retained.
 
 \paragraph{Relation-level errors.}
-Replaying the saved development predictions exactly recovers the pooled score. Per-class F1 is 0.92732 for same figure, 0.70809 for same paper, 0.58582 for related papers, and 0.80359 for unrelated papers. Related-paper F1 is lowest in every modality. Same-paper/related-paper confusions account for 281 of 549 errors (51.2\%). This post-hoc breakdown locates the remaining difficulty at paper-relation boundaries; it does not separate missing visual evidence from noisy graph supervision.
+Per-class F1 is 0.92732 for same figure, 0.70809 for same paper, 0.58582 for related papers, and 0.80359 for unrelated papers. Related-paper F1 is lowest in every modality. Same-paper/related-paper confusions account for 281 of 549 errors (51.2\%). This breakdown cannot distinguish missing visual evidence from noisy graph supervision.
 
 \paragraph{OCR and auxiliary transfer.}
 Correctly aligned PP-OCRv6 \citep{ppocr6} features alone reach only 0.44142 on CXI. An OCR-conditioned VLM adaptation scores slightly below the pristine gold-only VLM, although a fixed 50/50 combination improves an earlier whole-system development baseline from 0.68987 to 0.69513. Public-to-gold transfer for a separate frozen-feature IXI classifier fails to improve its gold-only counterpart, including a matched-duration follow-up.
@@ -86,7 +105,7 @@ Correctly aligned PP-OCRv6 \citep{ppocr6} features alone reach only 0.44142 on C
 \paragraph{Generative training and reinforcement learning.}
 Using TRL \citep{trl}, we also test canonical answer generation with Group Sequence Policy Optimization (GSPO; \citealp{gspo}). The classifier-adapted model at first yields only 13 strictly valid answers among 64 sampled completions. Answer-tag supervised fine-tuning on 1,024 gold TRAIN pairs, for 128 updates, repairs this interface.
 
-Later GSPO runs use batch size 16, four completions per context, two uses of each rollout, learning rate $10^{-6}$, group-normalized rewards, zero reference-KL weight, reward one only for a correct strict canonical answer terminated by EOS, and asymmetric clipping bounds 0.0003 and 0.0004. These branches predict through the language-model output rather than the classifier head. A 32-update pilot and a 512-update extension both completed verified parameter updates. Under the frozen full-development decision rule, neither surpasses the classifier (Figure~\ref{fig:results}b). The 512-update branch scores 0.75115, above the answer-SFT reference (0.74630) but below the classifier (0.75620). Paired comparison gives 26 corrections (25 related-paper) against 19 regressions (all outside that class). Without a matched 512-update SFT control, we cannot attribute the improvement over answer-SFT specifically to reinforcement learning.
+Later GSPO runs use batch size 16, four completions per context, two uses of each rollout, learning rate $10^{-6}$, group-normalized rewards, zero reference-KL weight, reward one only for a correct strict canonical answer terminated by EOS, and asymmetric clipping bounds 0.0003 and 0.0004. These branches predict through the language-model output rather than the classifier head. Verified 32- and 512-update runs do not surpass the classifier under the frozen full-development decision rule (Figure~\ref{fig:results}b). The 512-update branch scores 0.75115, above the answer-SFT reference (0.74630) but below the classifier (0.75620). Paired comparison gives 26 corrections (25 related-paper) against 19 regressions (all outside that class). Without a matched 512-update SFT control, we cannot attribute the improvement over answer-SFT specifically to reinforcement learning.
 
 Unanimous group rewards motivate a separate TRAIN-only canary: inspired by dynamic sampling \citep{dapo}, we select 16 contexts with mixed outcomes among eight samples and compare against 16 class-matched random contexts. Both receive 32 vLLM-assisted GSPO updates. Mixed selection yields 24 versus 14 informative groups out of 32, but scores on the same frozen 256-context TRAIN monitor are nearly identical: 1,874 versus 1,875 of 2,048. Both miss the prospective two-percentage-point screen, so stronger signal does not establish a mining advantage here.
 
@@ -97,6 +116,6 @@ Visual-RFT and VLM-R1 \citep{visualrft,vlmr1} motivated tests of verifiable visu
 
 \section{Limitations and Conclusion}
 
-Longer public adaptation shifts class tradeoffs without uniformly improving the classifier, and the tested reinforcement-learning variants do not surpass it. Most neural comparisons use one seed. Repeated development selection, previously exposed folds, incomplete citation graphs, imperfect identity recovery, unknown base-model exposure, and TRAIN monitors exposed to ancestor models restrict causal and statistical claims. The monitors provide engineering screens, not independent test estimates.
+Longer public adaptation shifts class tradeoffs without uniformly improving the classifier, and the tested reinforcement-learning variants do not surpass it. Only the matched CXI controls vary gold-stage seeds; other neural comparisons use one seed. Repeated development selection, previously exposed folds, incomplete citation graphs, imperfect identity recovery, unknown base-model exposure, and TRAIN monitors exposed to ancestor models restrict causal and statistical claims. The monitors provide engineering screens, not independent test estimates.
 
-Independent evaluation, more seeds, and better relation labels remain future work. Account-wide billing does not isolate experiment costs.
+Independent evaluation, public-pretraining seed replication, and better relation labels remain future work. Account-wide billing does not isolate experiment costs.

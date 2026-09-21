@@ -16,6 +16,12 @@ verified rank. Development data was used repeatedly for selection.
 | Image–image | Pristine Qwen3.5-4B | 627 | Mean of original/reversed probabilities |
 | Caption–caption | Pristine Qwen3.5-4B | 414 | Original orientation |
 
+A later [matched CXI analysis](analysis/matched-gold-findings.md) compares
+public initialization with gold-only training under the same gold schedule.
+All three gold-stage seeds improve, with a mean development macro-F1 gain of
+**0.06738**, conditional on one fixed public parent. These new controls do not
+change the submitted Kaggle result and use additional public-training compute.
+
 Start with [data preparation](docs/data.md), then follow
 [training and inference](docs/reproduction.md). Exact recipe settings are
 in [configs/selected-recipe.json](configs/selected-recipe.json).

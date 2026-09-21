@@ -251,6 +251,8 @@ def render(receipt, out_prefix):
         mid = (lo + hi) / 2.0
         lo = max(0.0, mid - 0.04)
         hi = min(1.0, mid + 0.04)
+    lo = min(lo, 0.50)
+    hi = max(hi, 0.80)
     shared_ylim = (lo, hi)
 
     ax = axes[0]
@@ -279,7 +281,7 @@ def render(receipt, out_prefix):
     )
     ax.grid(True, color="#DDDDDD", linewidth=0.5, alpha=0.9)
     ax.set_axisbelow(True)
-    ax.legend(fontsize=9, loc="best", framealpha=0.9)
+    ax.legend(fontsize=9, loc="lower left", ncol=2, framealpha=0.9)
     ax.spines[["top", "right"]].set_visible(False)
 
     bx = axes[1]
@@ -297,25 +299,18 @@ def render(receipt, out_prefix):
             linewidth=1.6,
             label=f"seed {seed}",
         )
-    # Unobtrusive delta labels with simple vertical de-collision.
-    order_pub = sorted(pairs, key=lambda d: d["public4k"]["chosen_score"])
-    placed = []
-    for p in order_pub:
-        y = p["public4k"]["chosen_score"]
-        for q in placed:
-            if abs(y - q) < 0.03:
-                y = min(1.0, q + 0.03)
-        placed.append(y)
+    for i, p in enumerate(sorted(pairs, key=lambda d: d["seed"])):
         seed = p["seed"]
         color = seed_color(seed, seed_order[seed])
         bx.text(
-            1.015,
-            y,
-            f"{p['paired_difference']:+.3f} (seed {seed})",
+            0.55,
+            0.30 - 0.08 * i,
+            f"seed {seed}: {p['paired_difference']:+.3f}",
             ha="left",
             va="center",
             fontsize=9,
             color=color,
+            transform=bx.transAxes,
         )
     bx.set(
         title="(b) Selected checkpoints by seed",
@@ -323,7 +318,7 @@ def render(receipt, out_prefix):
         ylabel="Chosen CXI macro-F1 (DEV)",
         xticks=[0, 1],
         xticklabels=["Gold only", "Public4k→gold"],
-        xlim=(-0.08, 1.55),
+        xlim=(-0.08, 1.15),
         ylim=shared_ylim,
     )
     bx.grid(True, color="#DDDDDD", linewidth=0.5, alpha=0.9, axis="y")
