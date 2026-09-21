@@ -39,10 +39,10 @@ We index all 114 shards of \texttt{adsabs/AstroCLIMB} (94,233 figures) and label
 
 Before generating pairs, we match public papers against every gold split and label-free test content using normalized captions, image-byte and decoded-pixel hashes, and 256-bit dHashes within Hamming distance eight. Dropping every public duplicate-paper component touching a match, 7,500 forbidden papers leave 21,258 eligible figures. The same matches link inherited gold groups through candidate public papers, so we also drop training groups tied to nontraining gold or test content and development groups tied to reserved gold (including exposed fold~0) or test content, removing 450 training and seven development pairs. No matches remain, although incomplete identity coverage may still miss dependencies; test content serves only for exclusion and never carries labels.
 
-Earlier exploration exposed released scoring information and a structural shortcut, used synthetic data overlapping gold content with label-dependent sampling, and relied on misaligned OCR; everything it touched is excluded. The recipe uses no competition test labels, but the exposure cannot be undone.
+Earlier exploration exposed released scoring information and a structural shortcut and used synthetic data overlapping gold content with label-dependent sampling; the models, features, and results affected by that exploration are excluded from this paper. The recipe uses no competition test labels, but the exposure cannot be undone.
 
 \paragraph{Selection and reporting.}
-Feasibility trials are screened on declared TRAIN-only monitors; public validation never decides when adaptation stops. Whole-task macro-F1 comes from the pooled four-class confusion matrix; because IXI and CXC have no same-figure pairs, we also report active-three-class macro-F1 for them, the four-class logger scoring the absent class as zero.
+Feasibility trials are screened on declared TRAIN-only monitors; public validation never decides when adaptation stops. Whole-task macro-F1 comes from the pooled four-class confusion matrix; because IXI and CXC have no same-figure pairs, we also report active-three-class macro-F1 for them, with the four-class score counting the absent class as zero.
 
 \section{System}
 
@@ -59,7 +59,7 @@ CXI gold training starts from the public adapter and head with a fresh optimizer
 \paragraph{Prediction and reproducibility.}
 Each classifier predicts by canonical-class argmax without imposing test class counts; for IXI we average class probabilities over both image orders, fixed before evaluation. The submission uses development-selected models directly, without refitting on all labels.
 
-We hash source, data, model, and prediction artifacts and require a fresh replay before accepting any export. Inference uses batch size one to match training, because batch size two changed 11 of 794 CXI predictions for the public2k-to-gold837 model, with maximum probability difference 0.380. Source, prompts, configurations, and adapter/head weights are public.\ifdefined\CameraReady\footnote{\url{https://github.com/Sekinal/AstroCLIMB}; model downloads are linked there.}\else\footnote{Repository and model links omitted for anonymous review.}\fi Packaged inference is manifest-checked but not GPU-validated, and full retraining from the release is not independently verified. Historical replay probes remain private because they contain training examples.
+We hash source, data, model, and prediction artifacts and require a fresh replay before accepting any export. Inference uses batch size one to match training, because batch size two changed 11 of 794 CXI predictions for the public2k-to-gold837 model, with maximum probability difference 0.380. Source, prompts, configurations, and adapter/head weights are public.\ifdefined\CameraReady\footnote{\url{https://github.com/Sekinal/AstroCLIMB}; model downloads are linked there.}\else\footnote{Repository and model links omitted for anonymous review.}\fi Packaged inference is manifest-checked but not GPU-validated, and full retraining from the release is not independently verified.
 
 \section{Results and Analysis}
 
@@ -103,14 +103,14 @@ Gold training lifts IXI and CXC above frozen-feature baselines. IXI reaches acti
 Related-paper pairs remain the weakest class in every modality: pooled F1 is 0.92732 for same figure, 0.70809 for same paper, 0.58582 for related, and 0.80359 for unrelated, and same-paper versus related-paper confusions make up 281 of 549 errors (51.2\%). Our data cannot separate missing visual evidence from noisy supervision.
 
 \paragraph{OCR and auxiliary transfer.}
-OCR adds little: correctly aligned PP-OCRv6 \citep{ppocr6} features alone score 0.44142 on CXI, and OCR-conditioned VLM adaptation falls slightly below the pristine gold-only VLM, although a fixed 50/50 combination lifts a superseded whole-system baseline from 0.68987 to 0.69513. Public-to-gold transfer also fails to help a separate frozen-feature IXI classifier, even in a matched-duration follow-up.
+OCR adds little: PP-OCRv6 \citep{ppocr6} features alone score 0.44142 on CXI, and OCR-conditioned VLM adaptation falls slightly below the pristine gold-only VLM, although a fixed 50/50 combination lifts a superseded whole-system baseline from 0.68987 to 0.69513. Public-to-gold transfer also fails to help a separate frozen-feature IXI classifier, even in a matched-duration follow-up.
 
 \paragraph{Generative training and reinforcement learning.}
 Visual-RFT and VLM-R1 \citep{visualrft,vlmr1} motivated visual rewards, RL coverage and reasoning studies \citep{rlvrcoverage,rlvrreasoning} our sampled versus single-answer evaluation, and DeepEyes \citep{deepeyes} fixed-view trials. We apply Group Sequence Policy Optimization (GSPO; \citealp{gspo}) with TRL \citep{trl} to canonical answer generation. Because the classifier-adapted model initially yields only 13 strictly valid answers in 64 completions, we first teach answer tags with 1,024 gold TRAIN pairs and 128 supervised updates.
 
 GSPO uses batch size 16, four completions per context, two uses of each rollout, learning rate $10^{-6}$, group-normalized rewards, no reference-KL term, and asymmetric clipping bounds of 0.0003 and 0.0004; the reward is one only for a correct canonical answer terminated by EOS, and prediction uses the generated answer, not the classifier head.
 
-Neither the 32- nor the 512-update run beats the classifier under the frozen full-development decision rule, though both verifiably update parameters. The 512-update model scores 0.75115, above answer-SFT at 0.74630 and below the classifier at 0.75620; 25 of its 26 corrections are related-paper cases, and all 19 regressions lie elsewhere. A short SFT control matches GSPO32 in parent (answer-SFT128), 64 TRAIN contexts, 32 updates, batch 16, learning rate, and seed~7, but not in tokens, FLOPs, or wall time; without a matched 512-update SFT control, the gain over answer-SFT cannot be credited to reinforcement learning.
+Neither the 32- nor the 512-update run beats the classifier under the frozen full-development decision rule. The 512-update model scores 0.75115, above answer-SFT at 0.74630 and below the classifier at 0.75620; 25 of its 26 corrections are related-paper cases, and all 19 regressions lie elsewhere. A short SFT control matches GSPO32 in parent (answer-SFT128), 64 TRAIN contexts, 32 updates, batch 16, learning rate, and seed~7, but not in tokens, FLOPs, or wall time; without a matched 512-update SFT control, the gain over answer-SFT cannot be credited to reinforcement learning.
 
 Unanimous rewards give zero group-relative advantage, which dynamic sampling \citep{dapo} exploits, so a TRAIN-only trial compares 16 contexts with mixed outcomes among eight samples against 16 class-matched random contexts, each given 32 vLLM-assisted GSPO updates. Mixed selection raises informative groups from 14 to 24 of 32, yet the frozen 256-context TRAIN monitor barely moves (1,874 versus 1,875 correct of 2,048), and neither trial meets the prespecified two-percentage-point screen.
 
@@ -122,4 +122,4 @@ Public initialization improves CXI over gold-only training across three gold-sta
 
 Repeated development selection and earlier project exposure preclude independent benchmark claims; incomplete citation graphs, imperfect identity recovery, and unknown base-model exposure further limit interpretation; TRAIN monitors exposed to ancestor models serve only as engineering screens.
 
-Future work includes public-stage seed replication, a compute-matched gold-only arm, a long SFT control for GSPO512, and independent evaluation and retraining from the release. Billing does not isolate experiment costs.
+Future work includes public-stage seed replication, a compute-matched gold-only arm, a long SFT control for GSPO512, and independent evaluation and retraining from the release.
