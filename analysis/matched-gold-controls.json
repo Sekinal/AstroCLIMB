@@ -1,0 +1,78 @@
+{
+  "scope": "Aggregate receipt from retrieved train.jsonl logs; validation macro-F1 only",
+  "expected_horizon": 837,
+  "n_runs": 2,
+  "n_complete": 2,
+  "n_pairs": 1,
+  "seed_results": [
+    {
+      "arm": "gold_only",
+      "seed": 7,
+      "status": "complete",
+      "expected_horizon": 837,
+      "source_sha256": "cf1c63a5e76c71238d90b8643cc2325ab3dbec0c95db34cbdca5c217f0a31813",
+      "validation_scores": [
+        {
+          "step": 279,
+          "macro_f1": 0.6184316862694554
+        },
+        {
+          "step": 558,
+          "macro_f1": 0.6670647132752874
+        },
+        {
+          "step": 837,
+          "macro_f1": 0.6890615484365484
+        }
+      ],
+      "chosen_step": 837,
+      "chosen_score": 0.6890615484365484,
+      "final_epoch_score": 0.6890615484365484
+    },
+    {
+      "arm": "public4k",
+      "seed": 7,
+      "status": "complete",
+      "expected_horizon": 837,
+      "source_sha256": "f0303820d36172a7b398a25f34379d445d635d350ba71cd53298c7c8e88cee59",
+      "validation_scores": [
+        {
+          "step": 279,
+          "macro_f1": 0.7276152393580116
+        },
+        {
+          "step": 558,
+          "macro_f1": 0.7334500035127469
+        },
+        {
+          "step": 837,
+          "macro_f1": 0.7561928104575164
+        }
+      ],
+      "chosen_step": 837,
+      "chosen_score": 0.7561928104575164,
+      "final_epoch_score": 0.7561928104575164
+    }
+  ],
+  "pairs": [
+    {
+      "seed": 7,
+      "gold_only": {
+        "chosen_step": 837,
+        "chosen_score": 0.6890615484365484,
+        "final_epoch_score": 0.6890615484365484,
+        "source_sha256": "cf1c63a5e76c71238d90b8643cc2325ab3dbec0c95db34cbdca5c217f0a31813"
+      },
+      "public4k": {
+        "chosen_step": 837,
+        "chosen_score": 0.7561928104575164,
+        "final_epoch_score": 0.7561928104575164,
+        "source_sha256": "f0303820d36172a7b398a25f34379d445d635d350ba71cd53298c7c8e88cee59"
+      },
+      "paired_difference": 0.06713126202096797,
+      "paired_final_epoch_difference": 0.06713126202096797
+    }
+  ],
+  "uncertainty": "Descriptive only; no confidence intervals computed (small n).",
+  "descriptive_note": "Mean paired difference omitted: fewer than two complete pairs."
+}

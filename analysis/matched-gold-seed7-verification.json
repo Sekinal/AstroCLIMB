@@ -1,0 +1,117 @@
+{
+  "expected_horizon": 837,
+  "records": [
+    {
+      "absolute_difference": 0.0,
+      "arm": "gold_only",
+      "class_f1": [
+        0.8888888888888888,
+        0.5625,
+        0.5356265356265356,
+        0.7692307692307693
+      ],
+      "confusion_matrix": [
+        [
+          172,
+          18,
+          2,
+          2
+        ],
+        [
+          16,
+          99,
+          69,
+          16
+        ],
+        [
+          5,
+          32,
+          109,
+          56
+        ],
+        [
+          0,
+          3,
+          25,
+          170
+        ]
+      ],
+      "export_log": "seed7-gold_only-837.export.log",
+      "export_log_sha256": "5844925289ceb1c914a81834497d3e7892d46ad7bc5cade3ca7ff25e9761062d",
+      "export_macro_f1": 0.6890615484365484,
+      "fresh_replay_passed": true,
+      "label_field": "y",
+      "macro_f1": 0.6890615484365484,
+      "nrows": 794,
+      "output": "seed7-gold_only-837.parquet",
+      "predictions_sha256": "d4d5265b22de1cda2bff46ca2844380ea3b8c548d1ea583b48b7a33547e72306",
+      "replay_max_logit_diff": 0.0,
+      "score_match": true,
+      "seed": 7,
+      "step": 837,
+      "train_macro_f1": 0.6890615484365484
+    },
+    {
+      "absolute_difference": 0.0,
+      "arm": "public4k",
+      "class_f1": [
+        0.93,
+        0.6722222222222223,
+        0.6225490196078431,
+        0.8
+      ],
+      "confusion_matrix": [
+        [
+          186,
+          4,
+          2,
+          2
+        ],
+        [
+          15,
+          121,
+          51,
+          13
+        ],
+        [
+          5,
+          31,
+          127,
+          39
+        ],
+        [
+          0,
+          4,
+          26,
+          168
+        ]
+      ],
+      "export_log": "seed7-public4k-837.export.log",
+      "export_log_sha256": "7d45680027c2918c73958ee86170bca01be23a5946b470cf652f411b02cfcb60",
+      "export_macro_f1": 0.7561928104575164,
+      "fresh_replay_passed": true,
+      "label_field": "y",
+      "macro_f1": 0.7561928104575164,
+      "nrows": 794,
+      "output": "seed7-public4k-837.parquet",
+      "predictions_sha256": "5bc3769e4022e70219cbc68312174606f4590244d4f888fc216d13eb7367ef1a",
+      "replay_max_logit_diff": 0.0,
+      "score_match": true,
+      "seed": 7,
+      "step": 837,
+      "train_macro_f1": 0.7561928104575164
+    }
+  ],
+  "seed": 7,
+  "training_receipt": "seed7-training.json",
+  "val_export": "data/cxi/val_export.parquet",
+  "configuration_comparison": {
+    "differing_keys": [
+      "out",
+      "init_checkpoint"
+    ],
+    "training_data_hash_matches": true,
+    "basis": "retrieved ready events"
+  },
+  "scope": "One completed seed; seeds 19 and 37 pending. Fresh-process batch-one exports reproduce logged DEV macro-F1 exactly. Fixed public seed-7 parent; additional public compute; no independent test or Kaggle result."
+}

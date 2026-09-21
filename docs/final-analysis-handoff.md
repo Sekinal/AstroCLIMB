@@ -29,12 +29,19 @@ wording or the portal grace period.
 
 ## Running experiment
 
-Two RTX 3090 GPUs run gold-only and public4k-initialized CXI with the same
-three-epoch, 837-update, seed-7 schedule. Both passed gradient/update and saved
-checkpoint replay guards. At the first 279-update validation, logged CXI macro-F1 is 0.6184316863
-for gold-only and 0.7276152394 for public4k initialization. These are interim
-training-log values; full three-epoch results and fresh exports remain pending.
-They do not constitute a new Kaggle result or a completed matched comparison.
+The seed-7 matched pair completed all 837 updates. Fresh-process batch-one
+exports reproduce logged DEV macro-F1 exactly: **0.6890615484 gold-only** and
+**0.7561928105 public4k**, a paired difference of **0.0671312620**. Both selected
+checkpoints are the final epoch. Both fresh replay probes match with zero maximum
+logit difference. Retrieved logs regenerate the remote aggregate receipt, and
+prediction/log SHA-256 values match. Ready configurations differ only in output
+path and parent initialization; training-data hashes are identical.
+
+This is one paired seed on repeatedly consulted CXI DEV, not a new Kaggle result
+or a seed-robust estimate. Receipts are `analysis/matched-gold-controls.json` and
+`analysis/matched-gold-seed7-verification.json`. Both RTX 3090s now train seed 19;
+seed 37 remains queued behind verification. Public pretraining stays fixed at
+its original seed-7 parent, and adds compute to the transfer arm.
 
 The first setup attempt exposed a model-path identity mismatch in the transfer
 arm, before transfer training began. Its parallel gold-only attempt was stopped
@@ -51,7 +58,7 @@ GPU machine after staging.
 
 ## Remaining work
 
-1. Require both arms to finish all 837 updates and their scheduled reload checks.
+1. Require both arms of seeds 19 and 37 to finish all 837 updates and reload checks.
 2. Fresh-process batch-one export selected and final checkpoints, recompute aligned
    DEV macro-F1, and compare against logged values before reporting any result.
 3. If measured runtime fits the collection cutoff, repeat paired gold-stage seeds
@@ -71,11 +78,27 @@ raw session logs, authentication files, row-level gold data, or training probes.
 
 ## Continuation staged and running
 
-A guarded coordinator waits for seed 7, requires completion and matching fresh
-exports, then launches seeds 19 and 37 sequentially. Each replication pair has a
+The guarded coordinator verified seed 7 and launched seed 19. Seed 37 follows
+after seed 19 completes with matching fresh exports. Each replication pair has a
 two-hour outer training limit and must have at least four hours remaining before
 the collection cutoff. Export subprocesses have 30-minute timeouts. A failed
 completion, replay, or score check stops continuation; scores never gate whether
 a replication is attempted. The coordinator holds an exclusive process lock.
 Remote preflight verified 794 unique label-free inference rows and the actual
-gold label field before launch. Final experiment results are still pending.
+gold label field before launch. Seed-7 results are verified; replication results
+are still pending.
+
+## Editorial revision completed
+
+The manuscript now follows the public-adaptation question, class-level evidence,
+and alternative methods more directly. The abstract and introduction were rewritten
+and the submission abstract synchronized. All 28 citation keys remain; a separate
+Pi/Muse review found no substantive factual drift. Both PDFs compile cleanly and
+render correctly at four content pages and six total pages. New matched-control
+results remain in analysis receipts until seed replication is complete.
+
+Seed-7 inference checkpoints and their private replay probes are backed up locally
+(221,900,800 bytes). Remote/local archive hashes and all 20 members match;
+optimizer states are intentionally excluded. These private probes are not release
+artifacts. The standalone matched-control figure currently shows one verified pair
+and will be regenerated with every completed replication.
