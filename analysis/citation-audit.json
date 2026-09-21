@@ -1,0 +1,175 @@
+{
+  "date": "2026-09-21",
+  "agents": [
+    {
+      "job": "citations-research-0921",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor"
+    },
+    {
+      "job": "citations-resources-0921",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor"
+    },
+    {
+      "job": "citations-support-0921",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor"
+    }
+  ],
+  "scope": "28 bibliography records; 26 cited references. Primary metadata and claim-association audit, not independent experiment replication.",
+  "entries": [
+    {
+      "key": "lora",
+      "primary_url": "https://arxiv.org/abs/2106.09685",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "gspo",
+      "primary_url": "https://arxiv.org/abs/2507.18071",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "dapo",
+      "primary_url": "https://arxiv.org/abs/2503.14476",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "qwen35",
+      "primary_url": "https://huggingface.co/Qwen/Qwen3.5-4B/tree/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "finding": "Pinned model-card revision verified. Kept artifact-specific citation rather than replacing it with the broader family blog."
+    },
+    {
+      "key": "astroclimb",
+      "primary_url": "https://ui.adsabs.harvard.edu/WIESP/2026/shared_task",
+      "finding": "Official task URL is sometimes JS-gated; task corroborated by adsabs/AstroCLIMB and Kaggle. Organizational attribution identifies the website, not a research-paper author list."
+    },
+    {
+      "key": "drgrpo",
+      "primary_url": "https://arxiv.org/abs/2503.20783",
+      "finding": "Exists and metadata checked; not cited in the final paper because it was discussed but not implemented."
+    },
+    {
+      "key": "visualrft",
+      "primary_url": "https://arxiv.org/abs/2503.01785",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "vlmr1",
+      "primary_url": "https://arxiv.org/abs/2504.07615",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "star",
+      "primary_url": "https://arxiv.org/abs/2203.14465",
+      "finding": "Exists and metadata checked; not cited in the final paper because it was discussed but not implemented."
+    },
+    {
+      "key": "deepeyes",
+      "primary_url": "https://arxiv.org/abs/2505.14362",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "rlvrcoverage",
+      "primary_url": "https://arxiv.org/abs/2504.13837",
+      "finding": "Two distinct authors share the name Yang Yue; retained both, as confirmed by the full-text author footnote."
+    },
+    {
+      "key": "rlvrreasoning",
+      "primary_url": "https://arxiv.org/abs/2506.14245",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "siglip2",
+      "primary_url": "https://arxiv.org/abs/2502.14786",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "qwen3embedding",
+      "primary_url": "https://arxiv.org/abs/2506.05176",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "bgecpack",
+      "primary_url": "https://arxiv.org/abs/2309.07597",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "vllm",
+      "primary_url": "https://arxiv.org/abs/2309.06180",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "wolf-etal-2020-transformers",
+      "primary_url": "https://aclanthology.org/2020.emnlp-demos.6/",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "peft",
+      "primary_url": "https://github.com/huggingface/peft",
+      "finding": "Matches project-recommended software BibTeX; no separate research paper invented."
+    },
+    {
+      "key": "trl",
+      "primary_url": "https://github.com/huggingface/trl",
+      "finding": "Matches official CITATION.cff author order and 2020 release year."
+    },
+    {
+      "key": "bgemodel",
+      "primary_url": "https://huggingface.co/BAAI/bge-base-en-v1.5",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "ppocr6",
+      "primary_url": "https://arxiv.org/abs/2606.13108",
+      "finding": "Replaced model-collection citation with dedicated paper arXiv:2606.13108, including all 16 authors. Model collection remains documented in inspiration notes."
+    },
+    {
+      "key": "matplotlib",
+      "primary_url": "https://doi.org/10.1109/MCSE.2007.55",
+      "finding": "Already cited in paper/main.tex acknowledgments; rejected reviewer suggestion that it was orphaned."
+    },
+    {
+      "key": "cohan-etal-2020-specter",
+      "primary_url": "https://aclanthology.org/2020.acl-main.207/",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "hsu-etal-2021-scicap-generating",
+      "primary_url": "https://aclanthology.org/2021.findings-emnlp.277/",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "subramanian-etal-2020-medicat",
+      "primary_url": "https://aclanthology.org/2020.findings-emnlp.191/",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "grezes-etal-2025-overview",
+      "primary_url": "https://aclanthology.org/2025.wasp-main.2/",
+      "finding": "Existence, bibliographic metadata and identifier checked against primary records."
+    },
+    {
+      "key": "lookreadenrich",
+      "primary_url": "https://doi.org/10.1145/3360901.3364420",
+      "finding": "Normalized title separator to publisher metadata. Claim support additionally confirmed in author preprint arXiv:1909.09070."
+    },
+    {
+      "key": "sciol",
+      "primary_url": "https://openaccess.thecvf.com/content/WACV2024/html/Tarsi_SciOL_and_MuLMS-Img_Introducing_a_Large-Scale_Multimodal_Scientific_Dataset_and_WACV_2024_paper.html",
+      "finding": "Added DOI and used IEEE/Crossref pages 4548–4559. CVF open-access version instead numbers pages 4560–4571; both refer to the same work."
+    }
+  ],
+  "coordinator_additional_sources": [
+    "https://arxiv.org/abs/2606.13108",
+    "https://arxiv.org/html/2504.13837v5",
+    "https://arxiv.org/html/2503.14476v2",
+    "https://arxiv.org/abs/1909.09070",
+    "https://api.crossref.org/works/10.1109/WACV57701.2024.00450"
+  ],
+  "limitations": [
+    "Some publisher pages block automated access; primary arXiv, CVF, official bibliographic exports or publisher-deposited DOI metadata were used instead.",
+    "Matching metadata does not independently verify our numerical experiments.",
+    "Primary-source records can themselves contain errors; this is a documented verification, not an absolute guarantee."
+  ]
+}

@@ -1,6 +1,6 @@
 # AI-assistance evidence for author disclosure
 
-AI assistants supported programming, debugging, experiment coordination, documentation and manuscript preparation. The authors remain responsible for the scientific claims, implementation, citations and submitted text. This note distinguishes recorded execution from model names mentioned in requests; it is an evidence inventory, not a claim that every generated contribution was correct or retained.
+AI assistants supported programming, debugging, experiment coordination, documentation and manuscript preparation. The author remains responsible for the scientific claims, implementation, citations and submitted text. This note distinguishes recorded execution from model names mentioned in requests; it is an evidence inventory, not a claim that every generated contribution was correct or retained.
 
 | Model name | Evidence status | Scope and limitation |
 |---|---|---|

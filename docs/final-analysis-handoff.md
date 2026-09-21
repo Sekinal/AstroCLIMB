@@ -125,3 +125,12 @@ omitted. `scripts/predict_public.py` provides a separate manifest-checked path
 without weakening historical replay guards. Its CPU checks pass, but this new
 public entry point has not been GPU-validated. Full end-to-end retraining is
 still unverified. These release statements supersede earlier private-only status.
+
+## Final citation audit
+
+Three Muse Spark 1.3 Contributor workers verified all 28 bibliography records;
+26 are cited after removing unused Dr. GRPO/STaR discussion. Corrections and
+primary-source checks are in `docs/citation-audit.md` and
+`analysis/citation-audit.json`. The updated paper cites the PP-OCRv6 research
+paper directly and standardizes SciOL's DOI/pagination. Both PDF variants retain
+four content pages and six total, with no unresolved citations or overfull boxes.
