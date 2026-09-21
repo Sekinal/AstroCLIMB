@@ -112,3 +112,16 @@ undefined citations/references or overfull boxes. The abstract is unchanged.
 `docs/ai-policy-check.md` records the ACL policy and live WASP form check; AI
 assistance is disclosed across all manuscript sections. The author must still
 review and approve the final content. Nothing has been submitted or published.
+
+## Public release (September 21)
+
+Source: https://github.com/Sekinal/AstroCLIMB
+Weights: https://huggingface.co/Thermostatic/AstroCLIMB-Qwen3.5-4B
+
+Public packages include the three submitted adapter/head checkpoints and the
+public4000 parent. All tensor files retain original SHA-256 hashes. Metadata
+paths are normalized; private training-example probes and optimizer states are
+omitted. `scripts/predict_public.py` provides a separate manifest-checked path
+without weakening historical replay guards. Its CPU checks pass, but this new
+public entry point has not been GPU-validated. Full end-to-end retraining is
+still unverified. These release statements supersede earlier private-only status.

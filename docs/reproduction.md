@@ -4,7 +4,7 @@ This repository contains the source closure for the selected Qwen3.5-4B system: 
 
 ## What is available
 
-Eight historical training/export files in `scripts/` were copied byte-for-byte. Their SHA-256 values and the selected checkpoint file hashes are in `configs/selected-recipe.json`. Every listed selected checkpoint file was found and hashed in the source workspace during curation. The adapters, heads, optimizer states, probes, processors, exact corpus snapshots and image cache are **not distributed in this checkout**, and no public checkpoint download URL is supplied. This is a runnable source release conditional on obtaining those artifacts, not a demonstrated clean retraining reproduction. The data preparation documentation describes available upstream reconstruction tools; rebuilding a corpus is not proof of matching the recorded corpus fingerprints.
+Eight historical training/export files in `scripts/` were copied byte-for-byte. Their SHA-256 values and the selected checkpoint file hashes are in `configs/selected-recipe.json`. Every listed selected checkpoint file was found and hashed in the source workspace during curation. The [public Hugging Face release](https://huggingface.co/Thermostatic/AstroCLIMB-Qwen3.5-4B) supplies adapters, heads, processors and sanitized metadata. Training-example probes, optimizer states and exact corpus/cache snapshots are not distributed. See [public inference](public-inference.md) for these weights; the historical replay commands below require original complete checkpoints or newly trained local checkpoints. Full end-to-end retraining from the public package has not been verified.
 
 A supplied checkpoint bundle needs `adapter/`, `processor/`, `meta.json`, `head.pt`, and `probe.pt`; exact training resume also needs `trainer.pt`. Retain original checkpoint metadata and saved processor bytes. Expected release locations are `checkpoints/cxi837`, `checkpoints/ixi627` and `checkpoints/cxc414`. Do not substitute a generative LM adapter for one of these classifier checkpoints.
 
@@ -176,8 +176,14 @@ python -m compileall -q scripts src
 
 Assembly validation: six CPU tests passed, covering reordered rows, probability averaging, missing/duplicate/cross-task IDs, invalid probabilities, class schema swaps and the same-figure mask. An in-memory replay from the historical four probability exports matched every cell of the selected 10,000-row, five-column candidate CSV. No new predictions were submitted.
 
-## Privately staged pretrained weights
+## Public pretrained weights
 
-`configs/release-artifacts.json` inventories four locally staged, unuploaded weights-only archives: CXI837, IXI627, CXC414 and public4000. Each contains nine original adapter/head/processor/metadata files with verified SHA-256 hashes. Archives live in ignored `release-artifacts/` with private filesystem permissions; no public download URLs exist. The manifest lists machine-path fields by name, without publishing their values. Generic historical cache paths remain in the private archive payloads; original hash-bound files were not rewritten.
+Four checkpoint packages are published on [Hugging Face](https://huggingface.co/Thermostatic/AstroCLIMB-Qwen3.5-4B).
+`configs/public-weights-manifest.json` records public and original file hashes.
+Adapter/head tensors are unchanged; metadata paths are normalized. The historical
+private staging record in `configs/release-artifacts.json` is retained as provenance.
 
-These are **not drop-in verified checkpoint bundles**. Optimizer state is omitted, and `probe.pt` is deliberately omitted because the historical probe serializes a TRAIN example's token IDs and sometimes image tensors. The historical exporter still requires that original private probe and performs its existing replay checks. We have not bypassed that guard. Creating a distributable synthetic replay probe and validating it in a fresh model process is a separate future release step. Retraining from authorized data creates a new local probe normally. Consequently source reproduction and privately staged pretrained weights have different readiness levels; neither implies a published checkpoint release.
+The public packages omit optimizer state and `probe.pt`, which contains a TRAIN
+example. They cannot use the historical probe-requiring exporter directly.
+Follow [public inference](public-inference.md); its separate manifest-checked path
+makes no historical replay-equivalence claim. No legacy replay guard was removed.

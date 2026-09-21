@@ -59,14 +59,14 @@ For gold training, CXI inherits the public adapter and head but uses a fresh opt
 \paragraph{Prediction and reproducibility.}
 For IXI, we average class probabilities over both image orders, as specified before evaluation. We route each pair to its modality classifier and take the canonical-class argmax, without imposing test class counts. Submission uses the development-selected models directly, without an all-label final refit.
 
-We hash source, data, model, and prediction artifacts and require fresh replay before accepting exports. Inference uses batch size one to match training. For the public2k-to-gold837 model, batch two changed 11 of 794 CXI predictions, with a maximum probability difference of 0.380. Source, exact prompts, configurations, and replay records are preserved in a private repository. Public code and weights are not yet available, nor is independent end-to-end GPU reproduction.
+We hash source, data, model, and prediction artifacts and require fresh replay before accepting exports. Inference uses batch size one to match training. For the public2k-to-gold837 model, batch two changed 11 of 794 CXI predictions, with a maximum probability difference of 0.380. Source, prompts, and configurations are public; adapter/head weights are released separately.\ifdefined\CameraReady\footnote{\url{https://github.com/Sekinal/AstroCLIMB}; model downloads are linked there.}\else\footnote{Repository and model links omitted for anonymous review.}\fi Historical replay probes remain private because they contain training examples. Full retraining from the release has not been independently verified.
 
 \section{Results and Analysis}
 
 \paragraph{Matched gold-only controls.}
 We compare public initialization with gold-only training under identical gold schedules. Total compute is not matched: the public arm also incurs public adaptation. Both arms use the same RTX 3090 runtime and gold seeds 7, 19, and 37; only initialization differs. All six complete 837 updates. Fresh exports exactly reproduce selected and final predictions.
 
-Public adaptation improves all three pairs (Table~\ref{tab:matched}). The mean gain is $0.06738$ for selected checkpoints and $0.06772$ at the final epoch. Both arms select update 558 for seed 19 and 837 otherwise. All runs share one public checkpoint, so this comparison tests variation in gold adaptation, not public pretraining. The submitted CXI model scores 0.74839 (L40S); fresh seed~7 scores 0.75619 (RTX 3090). Both use identical public-parent files, training-data hashes, and gold hyperparameters. The cause of this cross-runtime difference remains unresolved. Fresh controls compare retrained models within one runtime. Batch-one inference controls the observed batch sensitivity operationally; its cause also remains unresolved.
+Public adaptation improves all three pairs (Table~\ref{tab:matched}). The mean gain is $0.06738$ for selected checkpoints and $0.06772$ at the final epoch. Both arms select update 558 for seed 19 and 837 otherwise. All runs share one public checkpoint, so this comparison tests variation in gold adaptation, not public pretraining. The submitted CXI model scores 0.74839 (L40S); fresh seed~7 scores 0.75619 (RTX 3090). Both use identical public-parent files, training-data hashes, and gold hyperparameters. The reason these two retraining runs differ has not been isolated. Fresh controls compare retrained models within one runtime. Batch-one inference controls the observed batch sensitivity operationally; its cause also remains unresolved.
 
 \begin{table}[t]
 \centering
@@ -114,10 +114,10 @@ Both the 32- and 512-update runs complete verified parameter updates, but neithe
 
 To test more informative training examples, motivated by unanimous rewards and dynamic sampling \citep{dapo}, a TRAIN-only trial compares 16 contexts with mixed outcomes among eight samples against 16 class-matched random contexts. Each receives 32 vLLM-assisted GSPO updates. Mixed selection increases informative groups from 14 to 24 of 32, but the frozen 256-context TRAIN monitor barely changes: 1,874 versus 1,875 correct answers out of 2,048. Neither meets the prespecified two-percentage-point screen.
 
-An isolated vLLM \citep{vllm} worker generates about 26.9 examples/s, versus 2.1--2.2 natively, on a fixed 64-example benchmark. Startup costs prevent an end-to-end speedup claim. Predictions also depend on the backend. We retain native inference as canonical and match batch shape and BF16 autocast across generation, scoring, and fresh-reload checks.
+We use vLLM \citep{vllm} for rollout generation but retain native inference for evaluation because predictions vary across backends. Batch shape and BF16 autocast are matched across scoring and reload checks.
 
 \paragraph{Sources of exploratory ideas.}
-Visual-RFT and VLM-R1 \citep{visualrft,vlmr1} motivated visual rewards; DeepEyes \citep{deepeyes} motivated fixed-view trials. Dr.~GRPO \citep{drgrpo} and STaR \citep{star} were discussed but not implemented. RL coverage and reasoning work \citep{rlvrcoverage,rlvrreasoning} informed the distinction between sampled and single-answer accuracy.
+Visual-RFT and VLM-R1 \citep{visualrft,vlmr1} motivated visual rewards; DeepEyes \citep{deepeyes} motivated fixed-view trials. RL coverage and reasoning work \citep{rlvrcoverage,rlvrreasoning} informed the distinction between sampled and single-answer accuracy.
 
 \section{Limitations and Conclusion}
 

@@ -508,6 +508,21 @@
         "edit": 6
       },
       "checks": []
+    },
+    {
+      "name": "public-predict-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "turns": 11,
+      "elapsedMs": 170641,
+      "toolCalls": {
+        "read": 23,
+        "find": 1,
+        "write": 3
+      },
+      "checks": []
     }
   ],
   "coordinator_validation": "62 CPU tests and 6 subtests passed; archived training source unchanged. Portability review exact-explicit-model finding rejected by design: omitted --model adopts parent identity; explicit --model must match it. Other review findings repaired and tested.",
@@ -518,5 +533,6 @@
   "final_editorial_validation": "Two Pi/Muse paper jobs returned without edits; coordinator completed manuscript integration. All 28 citation keys preserved and resolve. Both ACL PDFs compile without undefined references/citations or overfull boxes, four content pages and six total. All twelve rendered pages visually checked. Submission abstract synchronized. Historical prior validation fields describe earlier snapshots.",
   "gpu_shutdown_validation": "Required backups verified first. Exact project two-GPU instance deletion accepted by Lium at 2026-09-21T17:43:18Z; subsequent provider query confirmed absent from active pods. Private receipt retained locally.",
   "prose_revision_validation": "Original prose revision using two documented empirical-paper references for exposition. Coordinator refined Pi draft and removed repetition. Separate Pi review found no material factual drift or citation omissions; its IXI averaging ambiguity was fixed by specifying arithmetic mean of class probabilities. All numerical tokens preserved, all 28 citations resolve. Both PDFs compile without undefined references/citations or overfull boxes, four content pages and six total; page renders checked. Submission abstract synchronized.",
-  "reviewer_clarifications_validation": "Integrated filtering/exposure, historical/fresh lineage, short SFT matching, feature baseline definitions, private availability, and conditional historical CXI bootstrap intervals. Critical reviewer followup found no substantive contradiction; restored explicit unmatched total compute and clarified interval scope. Coordinator checked manifest prompts against source. All 28 citation keys preserved; both PDFs compile without overfull boxes or undefined references/citations, four content pages and six total; all twelve page renders inspected. AI disclosure scope and live WASP form checked against ACL policy. No new GPU work."
+  "reviewer_clarifications_validation": "Integrated filtering/exposure, historical/fresh lineage, short SFT matching, feature baseline definitions, private availability, and conditional historical CXI bootstrap intervals. Critical reviewer followup found no substantive contradiction; restored explicit unmatched total compute and clarified interval scope. Coordinator checked manifest prompts against source. All 28 citation keys preserved; both PDFs compile without overfull boxes or undefined references/citations, four content pages and six total; all twelve page renders inspected. AI disclosure scope and live WASP form checked against ACL policy. No new GPU work.",
+  "public_release_validation": "Coordinator ran 29 script CPU tests, all passed. Actual four packaged checkpoints pass hash/config checks; selected task markers match. Public HF metadata independently confirms 36 file sizes and all LFS tensor SHA-256 values. Public inference has not been GPU-tested. Legacy source unmodified. Source history scanner six findings individually verified as tokenizer SHA-256 false positives."
 }

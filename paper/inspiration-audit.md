@@ -145,3 +145,11 @@ The final writing pass added six published scientific-figure, citation-learning,
 and astronomy shared-task precedents. See [the related-work review](../docs/related-work-review.md)
 for sources and distinctions. These additions position the contribution; they
 are not retroactively attributed as historical experimental inspirations.
+
+## Scope refinement before public release
+
+Dr. GRPO (Liu et al., 2025; `drgrpo`) and STaR (Zelikman et al., 2022; `star`)
+were discussed during planning but not implemented. Their bibliographic records
+remain in the source bibliography and this audit. The main paper no longer cites
+them merely to list unused ideas. The vLLM throughput microbenchmark likewise
+moves to `docs/reviewer-clarifications.md`; its actual rollout use remains cited.

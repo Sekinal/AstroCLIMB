@@ -59,6 +59,6 @@
   },
   "recipe": "configs/selected-recipe.json",
   "data": "configs/data-provenance.json",
-  "source_public_url": null,
-  "checkpoint_public_url": null
+  "source_public_url": "https://github.com/Sekinal/AstroCLIMB",
+  "checkpoint_public_url": "https://huggingface.co/Thermostatic/AstroCLIMB-Qwen3.5-4B"
 }

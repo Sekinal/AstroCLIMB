@@ -302,5 +302,10 @@
       }
     }
   },
-  "drop_in_verified_checkpoint_bundle": false
+  "drop_in_verified_checkpoint_bundle": false,
+  "public_successor": {
+    "url": "https://huggingface.co/Thermostatic/AstroCLIMB-Qwen3.5-4B",
+    "manifest": "configs/public-weights-manifest.json",
+    "note": "Original private archive inventory retained below. Public derivative packages preserve tensors, normalize metadata paths, and omit training-example probes."
+  }
 }

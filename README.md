@@ -54,8 +54,16 @@ Contact: research@irvingernesto.com.
 This research was supported by an unrestricted US$1,000 GPU compute grant
 from Lium. The grant amount is not the amount spent on the experiments.
 
-Original project code is prepared for release under MIT; see [LICENSE](LICENSE)
-and [third-party notices](THIRD_PARTY_NOTICES.md). Nothing has been published
-from this local repository.
+Original project code is released under MIT; see [LICENSE](LICENSE) and
+[third-party notices](THIRD_PARTY_NOTICES.md).
 
 The source ZIP also passed a [fresh-directory installation and build check](docs/release-validation.md).
+
+## Public model artifacts
+
+The four [adapter/head packages](https://huggingface.co/Thermostatic/AstroCLIMB-Qwen3.5-4B) include the submitted
+CXI/IXI/CXC models and their public-adaptation parent. Tensor hashes match the
+original checkpoints. [Public inference](docs/public-inference.md) validates
+release hashes without requiring the private training-example replay probe.
+This new packaging and entry point have CPU checks; fresh GPU validation of
+the public entry point and full retraining from this release remain unverified.

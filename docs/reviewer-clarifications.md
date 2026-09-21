@@ -1,8 +1,8 @@
 # Clarifications after simulated workshop review
 
 This note records evidence behind the September 21 manuscript clarifications.
-The repository and model weights remain private; local preservation is not public
-availability. Source-file hashes are in `analysis/reviewer-clarification-evidence.json`.
+Update: source and sanitized model weights are now public on GitHub and Hugging
+Face; the private artifact statements below describe the pre-publication review. Source-file hashes are in `analysis/reviewer-clarification-evidence.json`.
 
 ## Filtering directions and counts
 
@@ -111,5 +111,13 @@ Existing manuscript citations retain these attributions.
 
 Exact classifier prompt text, content order, preprocessing and decision rules
 are collected in `configs/inference-manifest.json`, with source pointers and no
-private example content. This improves the source package but does not create a
-public artifact location. No repository or checkpoint URL has been fabricated.
+private example content. Public locations are recorded in that manifest after publication; historical
+replay probes remain private.
+
+## Rollout throughput detail moved out of the paper
+
+An isolated vLLM worker generated about 26.9 examples/s versus 2.1–2.2 natively
+on a fixed 64-example benchmark. Startup costs prevent an end-to-end speedup
+claim. Native inference remains canonical because predictions vary with the
+backend. Batch shape and BF16 autocast are matched for scoring/reload checks.
+This engineering measurement is peripheral to the paper's adaptation result.

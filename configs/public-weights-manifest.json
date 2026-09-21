@@ -1,0 +1,238 @@
+{
+  "format_version": 1,
+  "base_model": "Qwen/Qwen3.5-4B",
+  "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "checkpoints": {
+    "cxi837": {
+      "files": {
+        "adapter/README.md": {
+          "sha256": "9bed55ee10ede4dd4776ea1bfe7b144850d214b1bcca0d760a026b28245a6127",
+          "bytes": 5154,
+          "original_sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "sha256": "b5dc49d8d41f38c1deb9585fd8b4d18077dfec8c9e2db50e7a5072b6d5952c50",
+          "bytes": 1270,
+          "original_sha256": "7d327ea3d88788a1ef6bd5e8b479d63a06bcb1255d91aeb6544c439113eb80ec"
+        },
+        "adapter/adapter_model.safetensors": {
+          "sha256": "4a4fa3855cd38c1814d3aac39cdb358b56daab0324c3ffd18b116770d0f13d76",
+          "bytes": 84972248,
+          "original_sha256": "4a4fa3855cd38c1814d3aac39cdb358b56daab0324c3ffd18b116770d0f13d76"
+        },
+        "head.pt": {
+          "sha256": "3e11e4dabc9224ff1d9ac4fb8649ec342d9af43819d76c402d191ca0f5137edd",
+          "bytes": 42765,
+          "original_sha256": "3e11e4dabc9224ff1d9ac4fb8649ec342d9af43819d76c402d191ca0f5137edd"
+        },
+        "meta.json": {
+          "sha256": "b2cec1fc81ec1902de8ef063d77fc2a2ec4987e8e6fc5d141ae499706ccaecc5",
+          "bytes": 1707,
+          "original_sha256": "88fca5b3d70aea5f0af11f434d2dac6665cc58adf132034cfa5876f3a603134d"
+        },
+        "processor/chat_template.jinja": {
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+          "bytes": 7756,
+          "original_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e",
+          "bytes": 1189,
+          "original_sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5",
+          "bytes": 19989511,
+          "original_sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "sha256": "61bf7d27be16f3b021d78b72c86964312a69e6743309a2ad30b0e7685c09de9c",
+          "bytes": 1244,
+          "original_sha256": "61bf7d27be16f3b021d78b72c86964312a69e6743309a2ad30b0e7685c09de9c"
+        }
+      },
+      "metadata_changed": [
+        "adapter/README.md",
+        "adapter/adapter_config.json",
+        "meta.json"
+      ],
+      "weights_unchanged": true
+    },
+    "ixi627": {
+      "files": {
+        "adapter/README.md": {
+          "sha256": "9bed55ee10ede4dd4776ea1bfe7b144850d214b1bcca0d760a026b28245a6127",
+          "bytes": 5154,
+          "original_sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "sha256": "1fabd64a5e336ac2dcdd70b42f0ab7e5d88b9b2825da4c4d6d071c43b1741261",
+          "bytes": 1270,
+          "original_sha256": "34f80eb5cc9a3dd87fed27e2663d4e751a5ac9a05f43a576fa93e5ba9050275a"
+        },
+        "adapter/adapter_model.safetensors": {
+          "sha256": "8c028184f68f8641d87a16181ec13b98340a8174388b3fc187a029d7dad85acd",
+          "bytes": 84972248,
+          "original_sha256": "8c028184f68f8641d87a16181ec13b98340a8174388b3fc187a029d7dad85acd"
+        },
+        "head.pt": {
+          "sha256": "3f00e251025954f854d38f6ee23e21a9af361df39a0e1150940f7a05c120ec7a",
+          "bytes": 42765,
+          "original_sha256": "3f00e251025954f854d38f6ee23e21a9af361df39a0e1150940f7a05c120ec7a"
+        },
+        "meta.json": {
+          "sha256": "54aa48b02f73b76088837be70d01960bf47bdd7b2bfc6533123ab8f2db1aae6f",
+          "bytes": 1881,
+          "original_sha256": "f791d0db8ac9c4b9db045b849be441e624805b463bf6b991508a67a1b9dfefd6"
+        },
+        "processor/chat_template.jinja": {
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+          "bytes": 7756,
+          "original_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e",
+          "bytes": 1189,
+          "original_sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5",
+          "bytes": 19989511,
+          "original_sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "sha256": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182",
+          "bytes": 1139,
+          "original_sha256": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182"
+        }
+      },
+      "metadata_changed": [
+        "adapter/README.md",
+        "adapter/adapter_config.json",
+        "meta.json"
+      ],
+      "weights_unchanged": true
+    },
+    "cxc414": {
+      "files": {
+        "adapter/README.md": {
+          "sha256": "9bed55ee10ede4dd4776ea1bfe7b144850d214b1bcca0d760a026b28245a6127",
+          "bytes": 5154,
+          "original_sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "sha256": "cdb9d7748dc14b8b7df6c3951dd6e2a036764cc55ca1562ce2372c3a871b2a71",
+          "bytes": 1270,
+          "original_sha256": "88f25fdcebe3a74e54f8f6564fda5f015350430d5d6b9a2bd45ea567f5ca43bd"
+        },
+        "adapter/adapter_model.safetensors": {
+          "sha256": "c8f7ca3a86dcfb66b5c06bcfd9432f696ca3e7268410273205b2b1b16f069d6f",
+          "bytes": 84972248,
+          "original_sha256": "c8f7ca3a86dcfb66b5c06bcfd9432f696ca3e7268410273205b2b1b16f069d6f"
+        },
+        "head.pt": {
+          "sha256": "a99de7cd74631d535fec30681478e4feff50009d4cadc7b04674b01c88816f8c",
+          "bytes": 42765,
+          "original_sha256": "a99de7cd74631d535fec30681478e4feff50009d4cadc7b04674b01c88816f8c"
+        },
+        "meta.json": {
+          "sha256": "cd198140468d79a200d5aefd175cb8f4a76e0d0b583d7d14005d7ab6366ae1dc",
+          "bytes": 1879,
+          "original_sha256": "a599b68606933c31e48c3a31e83e1ce15747355d7afbc4e3cb393ccdfcfcceed"
+        },
+        "processor/chat_template.jinja": {
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+          "bytes": 7756,
+          "original_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e",
+          "bytes": 1189,
+          "original_sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5",
+          "bytes": 19989511,
+          "original_sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "sha256": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182",
+          "bytes": 1139,
+          "original_sha256": "e98f1901ac6f0adff67b1d540bfa0c36ac1a0cf59eb72ed78146ef89aafa1182"
+        }
+      },
+      "metadata_changed": [
+        "adapter/README.md",
+        "adapter/adapter_config.json",
+        "meta.json"
+      ],
+      "weights_unchanged": true
+    },
+    "public4000": {
+      "files": {
+        "adapter/README.md": {
+          "sha256": "9bed55ee10ede4dd4776ea1bfe7b144850d214b1bcca0d760a026b28245a6127",
+          "bytes": 5154,
+          "original_sha256": "285bcf73e30210752cddaebdb7f9672aebd633d806cb7c417c06a6f488a49cad"
+        },
+        "adapter/adapter_config.json": {
+          "sha256": "88f9b0ce6ca8319aec52f13b34a0998b9757778afdc0162a23270b570ac664be",
+          "bytes": 1270,
+          "original_sha256": "234fafbad2ba728e99cc8b29cb37d772574a7fd1c8901481cb4545daa8e06314"
+        },
+        "adapter/adapter_model.safetensors": {
+          "sha256": "b00342e43d930b63b135d07c482587d46197de5822ba0ec914b42cea194c3aa9",
+          "bytes": 84972248,
+          "original_sha256": "b00342e43d930b63b135d07c482587d46197de5822ba0ec914b42cea194c3aa9"
+        },
+        "head.pt": {
+          "sha256": "23749453bd6453497064fe44a5279071d0022666229db0a17a1c3b84f9a893af",
+          "bytes": 42765,
+          "original_sha256": "23749453bd6453497064fe44a5279071d0022666229db0a17a1c3b84f9a893af"
+        },
+        "meta.json": {
+          "sha256": "e90040e91c336643fa841e0ef56f84b9eaa1fe5ec207c8379026deebb812d4b9",
+          "bytes": 1112,
+          "original_sha256": "0c26ebfbccd934d845708d97caf6e218cb61b0feb590f41778c0d97b0d25831b"
+        },
+        "processor/chat_template.jinja": {
+          "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+          "bytes": 7756,
+          "original_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+        },
+        "processor/processor_config.json": {
+          "sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e",
+          "bytes": 1189,
+          "original_sha256": "990d8466b2d193797665e4d84d30b8c25cba64a30a0c37b91e60f1b620db422e"
+        },
+        "processor/tokenizer.json": {
+          "sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5",
+          "bytes": 19989511,
+          "original_sha256": "547a658514e17c019c67b63c1c8ad0b57239d96b04f20cf1fa421827961631a5"
+        },
+        "processor/tokenizer_config.json": {
+          "sha256": "61bf7d27be16f3b021d78b72c86964312a69e6743309a2ad30b0e7685c09de9c",
+          "bytes": 1244,
+          "original_sha256": "61bf7d27be16f3b021d78b72c86964312a69e6743309a2ad30b0e7685c09de9c"
+        }
+      },
+      "metadata_changed": [
+        "adapter/README.md",
+        "adapter/adapter_config.json",
+        "meta.json"
+      ],
+      "weights_unchanged": true
+    }
+  },
+  "omitted": [
+    "probe.pt",
+    "trainer.pt"
+  ],
+  "gpu_validation": "Historical full checkpoints were replay-verified; this sanitized public packaging has hash validation only.",
+  "class_order": [
+    "same_figure",
+    "same_paper",
+    "related_papers",
+    "unrelated_papers"
+  ]
+}
