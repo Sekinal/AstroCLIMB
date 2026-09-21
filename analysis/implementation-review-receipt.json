@@ -96,7 +96,211 @@
         "grep": 1
       },
       "checks": []
+    },
+    {
+      "name": "matched-summary-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 150195,
+      "toolCalls": {
+        "read": 7,
+        "find": 1,
+        "write": 2,
+        "edit": 5,
+        "run_checks": 1,
+        "grep": 1
+      },
+      "checks": [
+        {
+          "kind": null,
+          "status": "rejected",
+          "exitCode": null,
+          "files": [],
+          "tsconfig": null,
+          "durationMs": null
+        }
+      ]
+    },
+    {
+      "name": "summary-hardening-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 165870,
+      "toolCalls": {
+        "read": 2,
+        "write": 2,
+        "run_checks": 1
+      },
+      "checks": [
+        {
+          "kind": "pytest",
+          "status": "pass",
+          "exitCode": 0,
+          "files": [
+            "analysis/test_summarize_matched_runs.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 379
+        }
+      ]
+    },
+    {
+      "name": "summary-schema-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 60382,
+      "toolCalls": {
+        "read": 3,
+        "edit": 1,
+        "write": 1,
+        "run_checks": 1
+      },
+      "checks": [
+        {
+          "kind": "pytest",
+          "status": "pass",
+          "exitCode": 0,
+          "files": [
+            "analysis/test_summarize_matched_runs.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 379
+        }
+      ]
+    },
+    {
+      "name": "parent-relocation-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 304756,
+      "toolCalls": {
+        "read": 9,
+        "grep": 11,
+        "find": 2,
+        "write": 1,
+        "edit": 5,
+        "run_checks": 2
+      },
+      "checks": [
+        {
+          "kind": "pytest",
+          "status": "fail",
+          "exitCode": 1,
+          "files": [
+            "scripts/test_selected_portability.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 549
+        },
+        {
+          "kind": "pytest",
+          "status": "pass",
+          "exitCode": 0,
+          "files": [
+            "scripts/test_selected_portability.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 322
+        }
+      ]
+    },
+    {
+      "name": "portability-review-0921",
+      "mode": "review",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 61826,
+      "toolCalls": {
+        "read": 5,
+        "find": 1,
+        "grep": 2
+      },
+      "checks": []
+    },
+    {
+      "name": "portability-finish-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 151599,
+      "toolCalls": {
+        "read": 6,
+        "edit": 5,
+        "grep": 1,
+        "run_checks": 1
+      },
+      "checks": [
+        {
+          "kind": "pytest",
+          "status": "pass",
+          "exitCode": 0,
+          "files": [
+            "scripts/test_selected_portability.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 281
+        }
+      ]
+    },
+    {
+      "name": "public-diagnostics-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 84417,
+      "toolCalls": {
+        "find": 1,
+        "read": 5,
+        "write": 2,
+        "run_checks": 2,
+        "grep": 1
+      },
+      "checks": [
+        {
+          "kind": "pytest",
+          "status": "pass",
+          "exitCode": 0,
+          "files": [
+            "analysis/test_public_supervision_diagnostics.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 620
+        },
+        {
+          "kind": null,
+          "status": "rejected",
+          "exitCode": null,
+          "files": [],
+          "tsconfig": null,
+          "durationMs": null
+        }
+      ]
+    },
+    {
+      "name": "train-diagnostics-note-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 37541,
+      "toolCalls": {
+        "read": 3,
+        "find": 1,
+        "write": 1
+      },
+      "checks": []
     }
   ],
-  "coordinator_validation": "16 CPU tests and 6 subtests passed; archive training code unchanged; both PDFs compile"
+  "coordinator_validation": "62 CPU tests and 6 subtests passed; archived training source unchanged. Portability review exact-explicit-model finding rejected by design: omitted --model adopts parent identity; explicit --model must match it. Other review findings repaired and tested."
 }

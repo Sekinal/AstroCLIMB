@@ -1,0 +1,110 @@
+{
+  "scope": "TRAIN-only descriptive diagnostics for exact effective input (image byte MD5, case-preserving caption[:2400]) label conflicts and caption truncation exposure; no training, selection, or val/DEV/test use",
+  "cap_limit": 2400,
+  "input_sha256": {
+    "public_train": "6286495d5533b53e8cd463c691a17539955bf1c414e935ee896fee0577a7b63d",
+    "gold_train": "68fd8a6b95941d101b4dfd18234015ae664f44a432e8ca5448d5984d708dd527"
+  },
+  "datasets": {
+    "public_train": {
+      "n_rows": 80000,
+      "counts_per_class": [
+        20000,
+        20000,
+        20000,
+        20000
+      ],
+      "caption_len_quantiles": {
+        "levels": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "values": [
+          40.0,
+          260.75,
+          424.0,
+          648.0,
+          3227.0
+        ]
+      },
+      "n_truncated": 19,
+      "full": {
+        "n_distinct": 80000,
+        "n_duplicate_groups": 0,
+        "n_contradictory_groups": 0,
+        "n_contradictory_rows": 0,
+        "lower_bound_errors": 0
+      },
+      "effective": {
+        "n_distinct": 80000,
+        "n_duplicate_groups": 0,
+        "n_contradictory_groups": 0,
+        "n_contradictory_rows": 0,
+        "lower_bound_errors": 0
+      },
+      "truncation_merger": {
+        "n_effective_contradictory_groups_merging_distinct_full": 0,
+        "n_new_contradictory_groups_from_truncation_verified": 0,
+        "n_new_rows_affected_verified": 0
+      },
+      "caption_column_used": "cap_norm"
+    },
+    "gold_train": {
+      "n_rows": 2230,
+      "counts_per_class": [
+        580,
+        570,
+        534,
+        546
+      ],
+      "caption_len_quantiles": {
+        "levels": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "values": [
+          10.0,
+          261.0,
+          429.5,
+          654.0,
+          2571.0
+        ]
+      },
+      "n_truncated": 1,
+      "full": {
+        "n_distinct": 2230,
+        "n_duplicate_groups": 0,
+        "n_contradictory_groups": 0,
+        "n_contradictory_rows": 0,
+        "lower_bound_errors": 0
+      },
+      "effective": {
+        "n_distinct": 2230,
+        "n_duplicate_groups": 0,
+        "n_contradictory_groups": 0,
+        "n_contradictory_rows": 0,
+        "lower_bound_errors": 0
+      },
+      "truncation_merger": {
+        "n_effective_contradictory_groups_merging_distinct_full": 0,
+        "n_new_contradictory_groups_from_truncation_verified": 0,
+        "n_new_rows_affected_verified": 0
+      },
+      "caption_column_used": "cap_text"
+    }
+  },
+  "caveats": [
+    "Lower-bound errors are sum(group_size - max_class_count) for a deterministic mapping of that EXACT identity on these TRAIN rows only; not a Bayes error.",
+    "This does not diagnose semantically incorrect labels; label-pure groups may still be wrong.",
+    "Byte-MD5 identity misses visual duplicates (same pixels, different bytes).",
+    "A downstream image processor may collapse additional images, so this is a narrow diagnostic on byte identity only.",
+    "Effective and full conflict totals are reported independently; an effective conflict is attributed to truncation only when a verified new merger is counted (constituent full identities each label-pure but differing)."
+  ],
+  "note": "Effective and full conflict totals are independent; truncation is implicated only for the verified new-merger counts."
+}
