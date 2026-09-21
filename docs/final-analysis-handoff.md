@@ -134,3 +134,17 @@ primary-source checks are in `docs/citation-audit.md` and
 `analysis/citation-audit.json`. The updated paper cites the PP-OCRv6 research
 paper directly and standardizes SciOL's DOI/pagination. Both PDF variants retain
 four content pages and six total, with no unresolved citations or overfull boxes.
+
+## Fable prose and paired figure revision
+
+Claude Fable 5.1 reviewed the paper and rewrote the later sections, preserving
+the accepted opening. Its critique foregrounds the matched gold-stage result
+and retains unmatched compute, one public parent, exposure, and selection
+limitations. The acknowledgment credits its manuscript review/prose work.
+`docs/fable-editorial-review.md` records integration and validation.
+
+Both PDFs have four content pages including acknowledgments, with references
+on pages five and six; the template fonts/margins are unchanged. The figure
+now pairs all three gold-only/public-initialized seeds alongside the historical
+duration sweep. Results and citation keys are unchanged. Submission fields are
+synchronized. No further GPU work or OpenReview submission was performed.

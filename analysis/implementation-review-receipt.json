@@ -1,5 +1,5 @@
 {
-  "scope": "Pi/Muse implementation and review metadata; raw sessions excluded",
+  "scope": "Implementation and editorial review metadata; raw sessions excluded",
   "jobs": [
     {
       "name": "recover-images-0921",
@@ -565,6 +565,22 @@
         "bash": 18
       },
       "checks": []
+    },
+    {
+      "name": "figure-matched-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "turns": 8,
+      "elapsedMs": 95934,
+      "toolCalls": {
+        "read": 7,
+        "grep": 1,
+        "find": 1,
+        "write": 2
+      },
+      "checks": []
     }
   ],
   "coordinator_validation": "62 CPU tests and 6 subtests passed; archived training source unchanged. Portability review exact-explicit-model finding rejected by design: omitted --model adopts parent identity; explicit --model must match it. Other review findings repaired and tested.",
@@ -577,5 +593,77 @@
   "prose_revision_validation": "Original prose revision using two documented empirical-paper references for exposition. Coordinator refined Pi draft and removed repetition. Separate Pi review found no material factual drift or citation omissions; its IXI averaging ambiguity was fixed by specifying arithmetic mean of class probabilities. All numerical tokens preserved, all 28 citations resolve. Both PDFs compile without undefined references/citations or overfull boxes, four content pages and six total; page renders checked. Submission abstract synchronized.",
   "reviewer_clarifications_validation": "Integrated filtering/exposure, historical/fresh lineage, short SFT matching, feature baseline definitions, private availability, and conditional historical CXI bootstrap intervals. Critical reviewer followup found no substantive contradiction; restored explicit unmatched total compute and clarified interval scope. Coordinator checked manifest prompts against source. All 28 citation keys preserved; both PDFs compile without overfull boxes or undefined references/citations, four content pages and six total; all twelve page renders inspected. AI disclosure scope and live WASP form checked against ACL policy. No new GPU work.",
   "public_release_validation": "Coordinator ran 29 script CPU tests, all passed. Actual four packaged checkpoints pass hash/config checks; selected task markers match. Public HF metadata independently confirms 36 file sizes and all LFS tensor SHA-256 values. Public inference has not been GPU-tested. Legacy source unmodified. Source history scanner six findings individually verified as tokenizer SHA-256 false positives.",
-  "citation_audit_validation": "Three Muse Spark 1.3 Contributor online audits covered all 28 bibliography records (26 cited). Coordinator resolved Matplotlib false alarm, confirmed repeated author names and DAPO full-text support, replaced PP-OCRv6 collection-only credit with original paper, normalized Look/Read title, and added SciOL DOI with IEEE pagination. See docs/citation-audit.md for primary-source evidence and limitations."
+  "citation_audit_validation": "Three Muse Spark 1.3 Contributor online audits covered all 28 bibliography records (26 cited). Coordinator resolved Matplotlib false alarm, confirmed repeated author names and DAPO full-text support, replaced PP-OCRv6 collection-only credit with original paper, normalized Look/Read title, and added SciOL DOI with IEEE pagination. See docs/citation-audit.md for primary-source evidence and limitations.",
+  "claude_editorial_runs": [
+    {
+      "scope": "critical editorial review and complete proposed rewrite",
+      "model_identifiers": [
+        "claude-fable-5-1"
+      ],
+      "providers": [
+        "firstParty"
+      ],
+      "subtype": "success",
+      "is_error": false,
+      "duration_ms": 241055,
+      "num_turns": 2,
+      "tools_enabled": false
+    },
+    {
+      "scope": "rewrite of Data, System, Results and Conclusion, preserving the accepted opening",
+      "model_identifiers": [
+        "claude-fable-5-1"
+      ],
+      "providers": [
+        "firstParty"
+      ],
+      "subtype": "success",
+      "is_error": false,
+      "duration_ms": 108982,
+      "num_turns": 2,
+      "tools_enabled": false
+    },
+    {
+      "scope": "proposed length reduction, rejected as insufficient",
+      "model_identifiers": [
+        "claude-fable-5-1"
+      ],
+      "providers": [
+        "firstParty"
+      ],
+      "subtype": "success",
+      "is_error": false,
+      "duration_ms": 85745,
+      "num_turns": 2,
+      "tools_enabled": false
+    },
+    {
+      "scope": "file-based prose revision with Python-verified length and invariants",
+      "model_identifiers": [
+        "claude-fable-5-1"
+      ],
+      "providers": [
+        "firstParty"
+      ],
+      "subtype": "success",
+      "is_error": false,
+      "duration_ms": 500355,
+      "num_turns": 12,
+      "tools_enabled": true
+    }
+  ],
+  "fable_editorial_validation": {
+    "final_sections_sha256": "b807348d837128a9341f5c5c660444ec533fe7375e3b9b76797f095c84e3443c",
+    "final_sections_whitespace_words": 2071,
+    "scope": "Fable rewrote later sections while preserving the accepted opening. Coordinator restored four factually preferable sentences from earlier Fable output; no new experimental claims.",
+    "checks": [
+      "Numerical token sets and all cited keys preserved relative to pre-review manuscript",
+      "Both table environments and figure environment unchanged aside from whitespace",
+      "Plotted matched scores and gains exactly match analysis/matched-gold-controls.json",
+      "Both PDFs: four content pages including acknowledgments; references start on page five; six total pages",
+      "All twelve page renders visually inspected; no overfull boxes or undefined citations/references",
+      "Anonymous PDF omits author identity, funding and repository link",
+      "Abstract synchronized with submission-fields.md; Claude Fable 5.1 disclosure included"
+    ]
+  }
 }

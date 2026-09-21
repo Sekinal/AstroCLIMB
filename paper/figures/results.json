@@ -1,17 +1,36 @@
 {
   "metric": "macro-F1",
-  "selection": "Repeated development selection; single-seed results, no uncertainty estimate",
+  "selection": "Repeated development selection; historical single-seed duration sweep and three fresh matched gold-stage seed pairs; no uncertainty interval plotted",
   "public_adaptation": {
     "scope": "CXI development, 794 pairs, four classes",
+    "provenance": "Historical campaign on NVIDIA L40S; 4k point is the selected submission (seed 7 parent lineage)",
     "public_updates": [2000, 4000, 8000],
     "selected_gold_updates": [837, 837, 279],
-    "scores": [0.70851, 0.74839, 0.74285]
+    "scores": [0.70851, 0.74839, 0.74285],
+    "plotted": "Left panel (a)"
+  },
+  "matched_gold_seeds": {
+    "scope": "CXI development, 794 pairs, four classes; same repeatedly consulted DEV set",
+    "provenance": "Fresh matched controls completed 2026-09-21 on NVIDIA RTX 3090; values are chosen_score from analysis/matched-gold-controls.json seed_results",
+    "runtime": "Same pinned base, rank16 adapters, and same gold schedule; horizon 837 with validations at 279, 558, 837",
+    "shared_parent": "Public parent fixed at original seed 7; comparison checks gold-stage variability, not public-pretraining variability",
+    "extra_compute": "Public adaptation adds compute relative to the gold-only arm",
+    "seeds": [7, 19, 37],
+    "chosen_steps": {"7": 837, "19": 558, "37": 837},
+    "gold_only": [0.6890615484365484, 0.67697972938954, 0.6818083099566284],
+    "public4k": [0.7561928104575164, 0.7481113031019686, 0.7456937560086401],
+    "paired_gains": [0.06713126202096797, 0.07113157371242862, 0.06388544605201163],
+    "statistics": "Descriptive only for n=3 pairs; no confidence interval; three positives do not establish significance or independent test performance",
+    "verification": "Fresh-export replay of selected and final checkpoints reproduces logged scores",
+    "plotted": "Right panel (b)"
   },
   "generative_alternatives": {
     "scope": "Pooled development, 1986 pairs, four classes; IXI/CXC held fixed",
     "labels": ["Submitted classifier", "Answer SFT", "Matched SFT control", "GSPO: 32 updates", "GSPO: 512 updates"],
-    "scores": [0.75620, 0.74630, 0.74670, 0.74494, 0.75115]
+    "scores": [0.75620, 0.74630, 0.74670, 0.74494, 0.75115],
+    "plotted": false,
+    "note": "Retained for reference; not plotted in the current figure"
   },
-  "precision": "Five-decimal values from verified manuscript result tables; not Kaggle scores",
-  "caveat": "GSPO 32 and 512 runs differ in context pool as well as update count"
+  "precision": "Historical values at five decimals; matched seed values at full receipt precision with gains displayed to four decimals; not Kaggle scores",
+  "caveat": "Historical submission and fresh matched controls use different runtimes; score discrepancy cause not isolated. Fresh seed 7 public4k (0.75619) differs from historical 4k selection (0.74839); parent file and training row hashes identical, config differences limited to paths and deadline. Earlier unmatched 0.71367 gold-only reference used a different gold schedule and is not part of this comparison. GSPO 32 and 512 runs differ in context pool as well as update count"
 }
