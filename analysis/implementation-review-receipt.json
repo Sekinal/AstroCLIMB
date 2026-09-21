@@ -1,0 +1,102 @@
+{
+  "scope": "Pi/Muse implementation and review metadata; raw sessions excluded",
+  "jobs": [
+    {
+      "name": "recover-images-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 139634,
+      "toolCalls": {
+        "read": 5,
+        "find": 1,
+        "grep": 2,
+        "write": 2,
+        "run_checks": 4,
+        "edit": 2
+      },
+      "checks": [
+        {
+          "kind": null,
+          "status": "rejected",
+          "exitCode": null,
+          "files": [],
+          "tsconfig": null,
+          "durationMs": null
+        },
+        {
+          "kind": "pytest",
+          "status": "fail",
+          "exitCode": 1,
+          "files": [
+            "analysis/test_recover_gold_images.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 991
+        },
+        {
+          "kind": "pytest",
+          "status": "pass",
+          "exitCode": 0,
+          "files": [
+            "analysis/test_recover_gold_images.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 483
+        },
+        {
+          "kind": "pytest",
+          "status": "pass",
+          "exitCode": 0,
+          "files": [
+            "analysis/test_recover_gold_images.py"
+          ],
+          "tsconfig": null,
+          "durationMs": 474
+        }
+      ]
+    },
+    {
+      "name": "paired-review-0921",
+      "mode": "review",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 96690,
+      "toolCalls": {
+        "read": 5,
+        "grep": 1
+      },
+      "checks": []
+    },
+    {
+      "name": "paper-insights-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 60926,
+      "toolCalls": {
+        "read": 4,
+        "edit": 1
+      },
+      "checks": []
+    },
+    {
+      "name": "paper-trim-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 135976,
+      "toolCalls": {
+        "read": 3,
+        "edit": 8,
+        "grep": 1
+      },
+      "checks": []
+    }
+  ],
+  "coordinator_validation": "16 CPU tests and 6 subtests passed; archive training code unchanged; both PDFs compile"
+}

@@ -12,3 +12,12 @@ AI assistants supported programming, debugging, experiment coordination, documen
 Stored backend identifiers do not independently attest a provider's internal weights or version mapping. Requesting a model, naming a model in a handoff, and recording a completed provider request are different kinds of evidence. The manuscript should use the level of specificity supported by the records and describe substantive assistance, rather than presenting a model roster as verification of the research.
 
 No private reasoning, credentials, or raw conversation excerpts are included here. Detailed accounting remains in the private provenance archive. The recorded request counts cover the historical ZCode project sessions inspected, not the entire multi-tool campaign.
+
+## Final analysis pass, 2026-09-21
+
+The Pi harness invoked provider `opencode-go`, model identifier
+`muse-spark-1.3-contributor`, for image-cache recovery implementation and tests,
+read-only numerical-code review, and manuscript revision. Local job summaries
+record the calls and executed checks; raw sessions are not part of the release.
+The coordinator reviewed changes and ran integration checks. This identifier
+describes the configured interface, not an independently audited backend.

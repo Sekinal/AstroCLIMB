@@ -4,10 +4,10 @@ The PDF and fields are prepared locally; no submission has been created.
 
 ## Deadline conflict: use the earlier portal deadline until resolved
 
-Verified September 14, 2026 via the public OpenReview API. The current
+Verified September 21, 2026 via the public OpenReview API. The current
 [submission invitation](https://openreview.net/invitation?id=aclweb.org/AACL-IJCNLP/2026/Workshop/WASP/-/Submission)
-has a due date of **September 15, 2026 at 03:59 UTC**, which is
-**September 14 at 21:59 in Mexico City**. Its expiration is 30 minutes later;
+has a due date of **September 22, 2026 at 03:59 UTC**, which is
+**September 21 at 21:59 in Mexico City**. Its expiration is 30 minutes later;
 do not treat that grace period as the submission deadline.
 
 The official workshop CFP/index instead extends papers to September 21 AoE.
@@ -32,11 +32,11 @@ parameter-efficient fine-tuning, reinforcement learning
 
 **Abstract:**
 
-We describe a 4B vision–language system for AstroCLIMB, which classifies relations between scientific figures and captions. A balanced public corpus supplies graph-derived caption–image supervision, followed by separate low-rank adaptations for caption–image, image–image, and caption–caption inputs. The submitted system obtains a Kaggle public score of 0.75149. Under a matched gold adaptation recipe, increasing public adaptation from 2,000 to 4,000 updates improves caption–image development macro-F1 from 0.70851 to 0.74839; 8,000 updates do not improve further. Standalone generative supervised and group sequence policy optimization replacements also fail to improve the selected classifier. We document data-exclusion boundaries, repeated development selection, and inference-context sensitivity to make these results interpretable.
+We describe a 4B vision–language system for AstroCLIMB, which classifies relations between scientific figures and captions. A balanced public corpus supplies graph-derived caption–image supervision, followed by separate low-rank adaptations per input modality. The submitted system obtains a Kaggle public score of 0.75149. Under a matched gold adaptation recipe, increasing public adaptation from 2,000 to 4,000 updates improves caption–image development macro-F1 from 0.70851 to 0.74839; 8,000 updates do not improve further. Neither generative supervision nor group sequence policy optimization replacements improve the selected classifier. We document exclusion boundaries, repeated development selection, and inference-context sensitivity.
 
 **PDF:** `paper/build/main.pdf` is the conservative anonymous review version;
 `paper/build/author.pdf` includes author/funding metadata. Both have at most
-four content pages, with references occupying pages five and six. Use the
+four content pages, with references continuing through page six. Use the
 anonymous PDF unless the system track explicitly instructs otherwise.
 
 ## Form declarations for the author

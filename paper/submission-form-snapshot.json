@@ -1,9 +1,9 @@
 {
-  "retrieved_at_utc": "2026-09-14T03:36:49.763707+00:00",
+  "retrieved_at_utc": "2026-09-21T06:39:03.004029+00:00",
   "source": "https://api2.openreview.net/invitations?id=aclweb.org%2FAACL-IJCNLP%2F2026%2FWorkshop%2FWASP%2F-%2FSubmission",
   "invitation_id": "aclweb.org/AACL-IJCNLP/2026/Workshop/WASP/-/Submission",
-  "due_utc": "2026-09-15T03:59:00+00:00",
-  "expires_utc": "2026-09-15T04:29:00+00:00",
+  "due_utc": "2026-09-22T03:59:00+00:00",
+  "expires_utc": "2026-09-22T04:29:00+00:00",
   "fields": {
     "title": {
       "order": 1,

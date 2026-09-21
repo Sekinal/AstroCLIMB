@@ -39,3 +39,9 @@ cannot be separated by this confusion matrix alone.
   training-seed variability. It is not a substitute for new evaluation.
 
 These are proposed future experiments, not completed work or promised gains.
+
+## Paired comparisons added September 21
+
+See [paired findings](paired-findings.md) for class tradeoffs, corrected/broken
+predictions, and paired inherited-group resampling of fixed saved models.
+The additional diagnostics are descriptive and do not replace fresh evaluation.
