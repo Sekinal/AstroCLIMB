@@ -344,8 +344,48 @@
         "grep": 1
       },
       "checks": []
+    },
+    {
+      "name": "paper-question-led-rewrite-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 100188,
+      "toolCalls": {
+        "read": 4,
+        "write": 1
+      },
+      "checks": []
+    },
+    {
+      "name": "paper-natural-prose-0921",
+      "mode": "code",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 80653,
+      "toolCalls": {
+        "read": 2,
+        "write": 1,
+        "grep": 3
+      },
+      "checks": []
+    },
+    {
+      "name": "paper-rewrite-review-0921",
+      "mode": "review",
+      "provider": "opencode-go",
+      "model": "muse-spark-1.3-contributor",
+      "code": 0,
+      "elapsedMs": 88267,
+      "toolCalls": {
+        "read": 2
+      },
+      "checks": []
     }
   ],
   "coordinator_validation": "62 CPU tests and 6 subtests passed; archived training source unchanged. Portability review exact-explicit-model finding rejected by design: omitted --model adopts parent identity; explicit --model must match it. Other review findings repaired and tested.",
-  "operational_validation": "Replication launcher and continuation pass bash syntax checks. Export coordinator path assertions pass; remote preflight confirms actual gold label field and 794 unique label-free export rows. Fresh GPU exports are pending, not claimed complete. Operational scripts are private and are not the archived training source."
+  "operational_validation": "Replication launcher and continuation pass bash syntax checks. Export coordinator path assertions pass; remote preflight confirms actual gold label field and 794 unique label-free export rows. Fresh GPU exports are pending, not claimed complete. Operational scripts are private and are not the archived training source.",
+  "editorial_validation": "Original academic rewrite reviewed against previous manuscript; no substantive factual drift found. Coordinator clarified matched gold schedule and inference wording. All 28 citation keys resolve. Both ACL PDFs compile with four content pages, six total; page renders inspected. Ongoing matched controls remain outside manuscript pending verification/replication."
 }
