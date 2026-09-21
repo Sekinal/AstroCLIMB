@@ -43,6 +43,18 @@ Environment/data staging is allowed during the cheap phase. Before training,
 resolve private image-cache and parent-probe availability. If unavailable, report
 that blocker rather than bypassing replay guards or inventing a matched result.
 
+## Conditional seed replication, specified before matched-run results
+
+If the first pair completes successfully and measured runtime permits all work
+before the collection cutoff, repeat the same paired comparison with gold-stage
+seeds 19 and 37, in that order, one pair per wave. Decide whether to run these
+waves from elapsed runtime and remaining time, not the sign or size of observed
+F1 differences. Preserve the fixed seed-7 public4000 parent in every transfer arm:
+this tests gold-stage seed sensitivity conditional on that parent, not variation
+in public pretraining. Report all completed seeds, selected and final-epoch
+scores, and individual paired differences. Three seeds are a limited robustness
+check, not a broad population claim or an excuse to select the best seed.
+
 ## Time discipline
 
 At the Sep21 check, live OpenReview due time is Sep22 03:59 UTC (Sep21 21:59
