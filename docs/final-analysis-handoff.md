@@ -31,8 +31,10 @@ wording or the portal grace period.
 
 Two RTX 3090 GPUs run gold-only and public4k-initialized CXI with the same
 three-epoch, 837-update, seed-7 schedule. Both passed gradient/update and saved
-checkpoint replay guards. Full validation results and fresh exports are pending;
-this is not yet a completed or positive result.
+checkpoint replay guards. At the first 279-update validation, logged CXI macro-F1 is 0.6184316863
+for gold-only and 0.7276152394 for public4k initialization. These are interim
+training-log values; full three-epoch results and fresh exports remain pending.
+They do not constitute a new Kaggle result or a completed matched comparison.
 
 The first setup attempt exposed a model-path identity mismatch in the transfer
 arm, before transfer training began. Its parallel gold-only attempt was stopped
@@ -66,3 +68,14 @@ GPU machine after staging.
 Operational paths, launcher scripts, private logs and prediction tables live in
 ignored local output/harness directories and on the GPU machine. Do not publish
 raw session logs, authentication files, row-level gold data, or training probes.
+
+## Continuation staged and running
+
+A guarded coordinator waits for seed 7, requires completion and matching fresh
+exports, then launches seeds 19 and 37 sequentially. Each replication pair has a
+two-hour outer training limit and must have at least four hours remaining before
+the collection cutoff. Export subprocesses have 30-minute timeouts. A failed
+completion, replay, or score check stops continuation; scores never gate whether
+a replication is attempted. The coordinator holds an exclusive process lock.
+Remote preflight verified 794 unique label-free inference rows and the actual
+gold label field before launch. Final experiment results are still pending.
