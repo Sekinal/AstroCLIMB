@@ -102,3 +102,15 @@ Seed-7 inference checkpoints and their private replay probes are backed up local
 optimizer states are intentionally excluded. These private probes are not release
 artifacts. The standalone matched-control figure currently shows one verified pair
 and will be regenerated with every completed replication.
+
+## Authorized GPU shutdown
+
+The author explicitly authorized terminating the Lium GPU instances after the
+work is done. Before termination, finish or explicitly account for every queued
+run, verify required exports, and preserve all needed checkpoints, predictions,
+logs, environment/provenance receipts, and analysis inputs outside the instance.
+Confirm backup integrity and that no remaining paper/reproduction work needs the
+GPUs. Then identify and terminate the exact Lium instance(s) used for this project
+and confirm their stopped/deleted state with the provider. This authorization
+persists; no further confirmation is required. Do not terminate unrelated account
+instances or publish account credentials. GPU shutdown is not yet completed.
