@@ -88,3 +88,8 @@ The source ZIP is refreshed from the final committed snapshot.
 The author still handles OpenReview submission and its profile/consent fields.
 No submission has been created. Fresh CXI controls do not constitute independent
 end-to-end reproduction of the full three-modality submitted system.
+
+The final prose pass develops each comparison around its purpose and result;
+see [editorial references and checks](prose-revision.md). A separate factual
+review found no material drift; the identified averaging ambiguity was repaired.
+Both PDF variants and the submission abstract include this revision.

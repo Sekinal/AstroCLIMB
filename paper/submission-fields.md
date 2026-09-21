@@ -32,7 +32,7 @@ parameter-efficient fine-tuning, reinforcement learning
 
 **Abstract:**
 
-We study public supervised adaptation for AstroCLIMB, which classifies relations between scientific figures and captions. A 4B vision–language model adapted on graph-derived public pairs improves caption–image development macro-F1 by 0.0674 on average over gold-only training across three gold-stage seeds, conditional on one public checkpoint. Our modality-specific system obtains a Kaggle public score of 0.75149. Increasing public adaptation from 2,000 to 4,000 updates improves paper-relation classification, but 8,000 updates bring no further gain. Generative supervision and the tested group sequence policy optimization variants do not improve the selected classifier. These comparisons use repeatedly consulted development data, limiting their interpretation.
+We ask whether public scientific figures and captions improve a 4B vision–language model on AstroCLIMB. Supervised adaptation on graph-derived public pairs improves caption–image development macro-F1 in all three matched gold-training runs, with a mean gain of 0.0674. These runs share one public checkpoint. The submitted system combines separate modality classifiers and obtains a Kaggle public score of 0.75149. Increasing public adaptation from 2,000 to 4,000 updates improves paper-relation classification, but 8,000 updates bring no further gain. Neither answer generation nor the tested reinforcement-learning variants improve the selected classifier. Repeated development selection limits these findings to the evaluated setting.
 
 **PDF:** `paper/build/main.pdf` is the conservative anonymous review version;
 `paper/build/author.pdf` includes author/funding metadata. Both have at most
